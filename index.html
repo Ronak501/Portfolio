@@ -1743,7 +1743,7 @@
         </ul>
         <div class="nav-actions">
           <a
-            href="./Ronak_Talaviya_Resume.pdf"
+            href="./Ronak Talaviya Resume.pdf"
             class="nav-resume"
             target="_blank"
             download
@@ -1758,7 +1758,7 @@
         <a href="#home">Home</a><a href="#about">About</a>
         <a href="#skills">Skills</a><a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a href="./Ronak_Talaviya_Resume.pdf" target="_blank" download
+        <a href="./Ronak Talaviya Resume.pdf" target="_blank" download
           >Download Resume</a
         >
       </div>
@@ -1788,7 +1788,7 @@
               ><i class="fas fa-rocket"></i> View Projects</a
             >
             <a
-              href="./Ronak_Talaviya_Resume.pdf"
+              href="./Ronak Talaviya Resume.pdf"
               class="btn-primary"
               target="_blank"
               download
@@ -2669,7 +2669,7 @@
     </footer>
 
     <div class="sticky-cta">
-      <a href="./Ronak_Talaviya_Resume.pdf" target="_blank" download
+      <a href="./Ronak Talaviya Resume.pdf" target="_blank" download
         ><i class="fas fa-file-arrow-down"></i> Download Resume</a
       >
     </div>
@@ -2704,11 +2704,11 @@
     </div>
 
     <script>
-      const RESUME_URL = "./Ronak_Talaviya_Resume.pdf";
+      const RESUME_URL = "./Ronak Talaviya Resume.pdf";
       const FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
 
       const LIVE_DEMOS = {
-        orrery: "https://ronak501.github.io/Orrery-Web/",
+        orrery: "",
         "social-analyzer": "",
         "task-management": "",
         finance: "",
@@ -2719,20 +2719,41 @@
         orrery: {
           title: "Orrery Web Project",
           problem:
-            "Students found static astronomy content hard to visualize, reducing engagement and concept retention.",
-          role: "Designed and developed the full front-end experience, 3D interactions, and educational UX flow.",
-          tech: "Used Three.js for planetary simulation, modular JavaScript for motion logic, and optimized render loops for smooth interaction.",
+            "Static astronomy explainers made it hard for new learners to intuitively understand planetary motion and scale.",
+          role: "Designed and built the interactive front-end simulation experience and visualization flow.",
+          tech: "HTML, CSS, JavaScript, and Three.js for 3D rendering, orbital animation logic, and guided interaction states.",
           results:
-            "Improved conceptual understanding in pilot demos and achieved high engagement during hackathon showcase sessions.",
+            "In demo sessions, users explored concepts longer and reported higher understanding due to interactive visual learning.",
         },
-        "social-analyzer": {
-          title: "Social Media Analyzer",
+
+        finance: {
+          title: "Finance Dashboard",
           problem:
-            "Teams lacked a unified way to measure social performance across channels and extract actionable insights.",
-          role: "Built dashboard architecture and integrated backend APIs for analytics aggregation and AI insight cards.",
-          tech: "React UI with reusable chart components, FastAPI for processing pipelines, MongoDB for flexible data snapshots.",
+            "Users had fragmented views of spending, trends, and market movement, which slowed daily financial decisions.",
+          role: "Built dashboard UX, chart workflows, and optimized frontend rendering for responsive data exploration.",
+          tech: "React and Tailwind with reusable components, data visualization patterns, and state-driven filtering.",
           results:
-            "Reduced manual analysis time and enabled faster campaign iteration through centralized performance metrics.",
+            "Enabled faster trend identification and clearer monthly decision-making through a single actionable dashboard.",
+        },
+
+        factChecking: {
+          title: "AI-Powered Fact Checking Platform",
+          problem:
+            "The rapid spread of misinformation on social media makes it difficult for users to verify the authenticity of news in real time.",
+          role: "Developed the full-stack application including AI integration, real-time analysis pipeline, and user interface for interactive fact-checking.",
+          tech: "Built with React.js for frontend, Node.js/Python backend, integrated AI agents using n8n workflows, external APIs, and vector-based analysis for claim verification.",
+          results:
+            "Enabled users to instantly analyze and verify news content, improving trust and reducing misinformation exposure through automated credibility scoring.",
+        },
+
+        researchAgent: {
+          title: "AI Research Agent & Paper Generator",
+          problem:
+            "Manual research and academic paper writing is time-consuming, requiring extensive data collection, analysis, and structured documentation.",
+          role: "Designed and implemented an AI-driven research agent capable of automating data gathering, summarization, and structured paper generation.",
+          tech: "Developed using Python backend, LLM integrations (Gemini/OpenAI), n8n automation workflows, and API orchestration for multi-source research aggregation.",
+          results:
+            "Automated end-to-end research workflow, significantly reducing research time and enabling users to generate structured, high-quality research outputs efficiently.",
         },
         "task-management": {
           title: "Task Management System",
@@ -2743,15 +2764,6 @@
           results:
             "Improved team response speed and cut status-update friction with instant task state propagation.",
         },
-        finance: {
-          title: "Finance Dashboard",
-          problem:
-            "Personal finance tools often hide actionable insights behind cluttered views and delayed updates.",
-          role: "Created data-first dashboard design and implemented responsive visual components.",
-          tech: "Built in React with Tailwind-style utility patterns, chart rendering optimization, and compact state management.",
-          results:
-            "Delivered faster trend identification and more consistent user tracking behavior in testing sessions.",
-        },
         motel: {
           title: "Motel Management System",
           problem:
@@ -2760,6 +2772,15 @@
           tech: "React frontend, Node.js service layer, MongoDB persistence, and TypeScript models for safer domain logic.",
           results:
             "Reduced booking overhead and streamlined operations with unified records and real-time status updates.",
+        },
+        "social-analyzer": {
+          title: "Social Media Analyzer",
+          problem:
+            "Teams lacked a unified way to measure social performance across channels and extract actionable insights.",
+          role: "Built dashboard architecture and integrated backend APIs for analytics aggregation and AI insight cards.",
+          tech: "React UI with reusable chart components, FastAPI for processing pipelines, MongoDB for flexible data snapshots.",
+          results:
+            "Reduced manual analysis time and enabled faster campaign iteration through centralized performance metrics.",
         },
       };
 
@@ -2809,11 +2830,9 @@
       document.querySelectorAll('a[target="_blank"]').forEach((a) => {
         a.setAttribute("rel", "noopener noreferrer");
       });
-      document
-        .querySelectorAll('[href*="Ronak_Talaviya_Resume.pdf"]')
-        .forEach((a) => {
-          a.setAttribute("href", RESUME_URL);
-        });
+      document.querySelectorAll("a[download]").forEach((a) => {
+        a.setAttribute("href", RESUME_URL);
+      });
 
       /* ── Typing animation ── */
       const words = [
