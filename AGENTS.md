@@ -1,24 +1,32 @@
 # AGENTS.md
 
-## Repository Overview
-- This repository hosts a static personal portfolio site.
-- The primary page is `/home/runner/work/Portfolio/Portfolio/index.html`.
-- There is no application framework or package-manager-based build setup in the repo.
+## Repository overview
+- This repository is a single-page personal portfolio site.
+- Main source file: `/home/runner/work/Portfolio/Portfolio/index.html`
+- Static assets in repo root:
+  - `/home/runner/work/Portfolio/Portfolio/Ronak.jpeg`
+  - `/home/runner/work/Portfolio/Portfolio/Ronak Talaviya Resume.pdf`
 
-## Key Files
-- `/home/runner/work/Portfolio/Portfolio/index.html` — main portfolio page markup, styles, and scripts.
-- `/home/runner/work/Portfolio/Portfolio/Ronak.jpeg` — profile image used by the site.
-- `/home/runner/work/Portfolio/Portfolio/Ronak Talaviya Resume.pdf` — resume asset.
-- `/home/runner/work/Portfolio/Portfolio/.github/workflows/jekyll-docker.yml` — CI workflow using Jekyll builder container.
+## Tech stack
+- Plain HTML with inline CSS and JavaScript.
+- No package manager, no local build system, and no test suite in the repository.
 
-## CI and Validation
-- Existing CI runs a Jekyll build in Docker:
-  - `jekyll/builder:latest ... jekyll build --future`
-- There are no repository-defined unit tests or lint scripts.
-- For content-only changes, validate by reviewing the updated HTML/asset references and ensuring formatting remains consistent.
+## CI/build context
+- GitHub Actions workflow: `/home/runner/work/Portfolio/Portfolio/.github/workflows/jekyll-docker.yml`
+- CI builds with Jekyll in Docker using:
+  - `jekyll/builder:latest`
+  - `jekyll build --future`
 
-## Editing Guidelines for Agents
-- Keep changes minimal and targeted to the requested task.
-- Preserve existing page structure and inline styling conventions unless explicitly asked to refactor.
-- When editing `index.html`, avoid unrelated formatting churn.
-- Use absolute repository paths when referencing files in task output.
+## Contribution guidance for agents
+- Keep changes minimal and targeted.
+- Prefer editing `index.html` directly for UI/content updates.
+- Preserve existing visual style and section structure unless explicitly asked to redesign.
+- Use absolute repository paths in tooling operations when possible.
+- Avoid adding new dependencies or tooling unless explicitly requested.
+
+## Validation guidance
+- For documentation-only changes: no build/test run is required.
+- For HTML/content changes, at minimum:
+  - verify the file remains valid and complete,
+  - ensure referenced asset paths still exist,
+  - keep metadata and external links consistent.
