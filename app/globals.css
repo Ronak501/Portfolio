@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="sunset"] {
+  --background: #140e0b;
+  --foreground: #f7eee4;
+  --card: #1e1511;
+  --card-foreground: #f7eee4;
+  --border: rgba(247, 238, 228, 0.12);
+  --accent-ink: #f97316;
+  --accent-hover: #fb923c;
+  --accent-soft: rgba(249, 115, 22, 0.14);
+  --muted: #261b16;
+  --muted-foreground: #bdae9e;
+  --glow: rgba(249, 115, 22, 0.28);
+}
+
+[data-theme="rainy"] {
+  --background: #0a0f1d;
+  --foreground: #e4edf8;
+  --card: #121a2d;
+  --card-foreground: #e4edf8;
+  --border: rgba(148, 163, 184, 0.15);
+  --accent-ink: #38bdf8;
+  --accent-hover: #7dd3fc;
+  --accent-soft: rgba(56, 189, 248, 0.14);
+  --muted: #1a253d;
+  --muted-foreground: #94a3b8;
+  --glow: rgba(56, 189, 248, 0.28);
+}
+
+[data-theme="matrix"] {
+  --background: #060f0a;
+  --foreground: #ebfbee;
+  --card: #0d1c13;
+  --card-foreground: #ebfbee;
+  --border: rgba(74, 222, 128, 0.16);
+  --accent-ink: #10b981;
+  --accent-hover: #34d399;
+  --accent-soft: rgba(16, 185, 129, 0.15);
+  --muted: #13271b;
+  --muted-foreground: #86efac;
+  --glow: rgba(16, 185, 129, 0.28);
+}
+
+[data-theme="cyber"] {
+  --background: #0e0a19;
+  --foreground: #f6eeff;
+  --card: #19122b;
+  --card-foreground: #f6eeff;
+  --border: rgba(192, 132, 252, 0.16);
+  --accent-ink: #a855f7;
+  --accent-hover: #c084fc;
+  --accent-soft: rgba(168, 85, 247, 0.15);
+  --muted: #251a3e;
+  --muted-foreground: #d8b4fe;
+  --glow: rgba(168, 85, 247, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-ink);
+}
+
+/* Sound Bar Animation */
+@keyframes soundBar {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+.sound-bar {
+  animation: soundBar 1.1s ease-in-out infinite;
+}
+
+/* Glass effect utility */
+.glass-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Glow gradient borders */
+.glow-border {
+  position: relative;
+}
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent-ink), transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Subtle grid backdrop */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Noise overlay */
+.bg-radial-vignette {
+  background: radial-gradient(circle at 50% 0%, var(--glow) 0%, transparent 60%);
+}
+
+/* Hide cursor on coarse pointer */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
