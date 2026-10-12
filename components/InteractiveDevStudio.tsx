@@ -73,7 +73,7 @@ export default function InteractiveDevStudio() {
         setTermInput('');
         return;
       case 'help':
-        reply = 'Available commands: skills, projects, ventures, grants, contact, whoami, clear';
+        reply = 'Available commands: skills, projects, ventures, grants, credits, contact, whoami, clear';
         break;
       case 'whoami':
         reply = 'Ronak Talaviya: Founder @ Ornitech.in | Building Techsodh.in, MyEntryPass.in, Shapentic.com, BolnaSeekho.in | Computer Eng @ SCET (4th Year)';
@@ -84,9 +84,10 @@ export default function InteractiveDevStudio() {
       case 'projects':
         reply = '1. AI Fact Checking | 2. Research Paper Agent | 3. Social Media Analyzer | 4. Task Management | 5. Motel System';
         break;
+      case 'credits':
       case 'grants':
       case 'funding':
-        reply = 'Govt Prototype Grants (₹2.87L+ Total): 1. Swachh Sense (₹1,37,000 SSIP) | 2. Vision Sentinel (₹90,000 SSIP) | 3. Trabit Guard (₹60,000)';
+        reply = 'Cloud & AI Credits ($32.5K+ Total): IACON ($30,000) | Google Cloud ($2,000) | MongoDB ($500) --- Grants (₹5.87L+ Total): SSIP Govt (₹2.87L) | Sarvam AI (₹1.5L) | TechSodh (₹1.5L)';
         break;
       case 'ventures':
         reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in | 6. Swachh Sense (₹1.37L) | 7. Vision Sentinel (₹90K) | 8. Trabit Guard (₹60K)';
@@ -151,11 +152,10 @@ export default function InteractiveDevStudio() {
                   sound.playClick();
                   setActiveTab('arch');
                 }}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${
-                  activeTab === 'arch'
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${activeTab === 'arch'
                     ? 'bg-accent/20 text-accent border border-accent/30'
                     : 'text-muted-foreground hover:text-foreground'
-                }`}
+                  }`}
               >
                 <Layers className="size-3.5" />
                 <span>Architecture</span>
@@ -167,11 +167,10 @@ export default function InteractiveDevStudio() {
                   sound.playClick();
                   setActiveTab('code');
                 }}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${
-                  activeTab === 'code'
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${activeTab === 'code'
                     ? 'bg-accent/20 text-accent border border-accent/30'
                     : 'text-muted-foreground hover:text-foreground'
-                }`}
+                  }`}
               >
                 <Cpu className="size-3.5" />
                 <span>AI-Pipeline.ts</span>
@@ -183,11 +182,10 @@ export default function InteractiveDevStudio() {
                   sound.playClick();
                   setActiveTab('terminal');
                 }}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${
-                  activeTab === 'terminal'
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${activeTab === 'terminal'
                     ? 'bg-accent/20 text-accent border border-accent/30'
                     : 'text-muted-foreground hover:text-foreground'
-                }`}
+                  }`}
               >
                 <TerminalIcon className="size-3.5" />
                 <span>Terminal</span>

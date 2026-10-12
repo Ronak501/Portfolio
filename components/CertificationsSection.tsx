@@ -21,7 +21,7 @@ export interface Credential {
   id: string;
   title: string;
   issuer: string;
-  category: 'gov_global' | 'awards' | 'industry' | 'research';
+  category: 'gov_global' | 'awards' | 'industry' | 'research' | 'credits';
   issueDate: string;
   image?: string;
   badgeText: string;
@@ -216,10 +216,65 @@ const CREDENTIALS: Credential[] = [
       'Published architectural blueprint for multi-hop scientific literature retrieval agents with automated citation verification and hallucination guards.',
     skills: ['Autonomous Agents', 'Vector Embeddings', 'Semantic Synthesis', 'NLP'],
   },
+  {
+    id: 'IACON-cloud-credits',
+    title: '$30,000 Cloud Infrastructure Grant — IACON',
+    issuer: 'Amazon Web Services (IACON)',
+    category: 'credits',
+    issueDate: '2025',
+    badgeText: '☁️ $30,000 IACON Portfolio Grant',
+    description:
+      'Awarded $30,000 in IACON portfolio cloud infrastructure credits to support scalable cloud computing, distributed database hosting, and high-throughput application deployment.',
+    skills: ['IACON Activate', '$30,000 Grant', 'Cloud Infrastructure', 'EC2 & S3', 'Enterprise Hosting'],
+  },
+  {
+    id: 'google-cloud-credits',
+    title: '$2,000 Google Cloud Platform AI & Compute Grant',
+    issuer: 'Google Cloud Platform',
+    category: 'credits',
+    issueDate: '2025',
+    badgeText: '🌐 $2,000 Google Cloud Grant',
+    description:
+      'Received $2,000 in Google Cloud credits to power machine learning model inference, high-performance computing, and scalable full-stack application development.',
+    skills: ['Google Cloud', '$2,000 Grant', 'Vertex AI', 'Compute Engine', 'Cloud Run'],
+  },
+  {
+    id: 'mongodb-credits',
+    title: '$500 MongoDB Atlas Database Grant',
+    issuer: 'MongoDB Atlas',
+    category: 'credits',
+    issueDate: '2025',
+    badgeText: '🍃 $500 MongoDB Grant',
+    description:
+      'Awarded $500 MongoDB Atlas credits for production-ready document database clusters, aggregation pipelines, and high-availability database architectures.',
+    skills: ['MongoDB Atlas', '$500 Grant', 'NoSQL Architecture', 'Database Clusters'],
+  },
+  {
+    id: 'sarvam-ai-grant',
+    title: '₹1,50,000 Sarvam AI Innovation Grant — BolnaSeekho',
+    issuer: 'Sarvam AI',
+    category: 'credits',
+    issueDate: '2025',
+    badgeText: '🤖 ₹1,50,000 AI Grant',
+    description:
+      'Secured ₹1,50,000 funding from Sarvam AI to support the development and research of BolnaSeekho.in, an AI-powered speech rehabilitation and interactive English learning platform.',
+    skills: ['Sarvam AI', '₹1,50,000 Grant', 'Speech AI', 'Language Models', 'BolnaSeekho'],
+  },
+  {
+    id: 'techsodh-grant',
+    title: '₹1,50,000 Technology Initiative Grant — TechSodh',
+    issuer: 'Technology & Startup Initiative',
+    category: 'credits',
+    issueDate: '2025',
+    badgeText: '💡 ₹1,50,000 Venture Grant',
+    description:
+      'Awarded ₹1,50,000 development funding for TechSodh.in to support technology infrastructure, automated curation algorithms, and product growth.',
+    skills: ['TechSodh.in', '₹1,50,000 Grant', 'Platform Architecture', 'Product Scaling'],
+  },
 ];
 
 export default function CertificationsSection() {
-  const [filter, setFilter] = useState<'all' | 'gov_global' | 'awards' | 'industry' | 'research'>('all');
+  const [filter, setFilter] = useState<'all' | 'gov_global' | 'awards' | 'industry' | 'research' | 'credits'>('all');
   const [activeModal, setActiveModal] = useState<Credential | null>(null);
 
   const filtered = CREDENTIALS.filter((c) => (filter === 'all' ? true : c.category === filter));
@@ -243,6 +298,7 @@ export default function CertificationsSection() {
           <div className="flex flex-wrap items-center justify-center gap-2 pt-6">
             {[
               { id: 'all', label: 'All Credentials' },
+              { id: 'credits', label: 'Cloud & Venture Grants ($32.5K+ / ₹5.8L+)' },
               { id: 'gov_global', label: 'Govt & Global (ISRO/NASA/SSIP)' },
               { id: 'awards', label: 'Hackathons & Awards' },
               { id: 'industry', label: 'Google, Microsoft & Industry' },
@@ -255,11 +311,10 @@ export default function CertificationsSection() {
                   sound.playClick();
                   setFilter(tab.id as typeof filter);
                 }}
-                className={`rounded-full px-4 py-2 font-mono text-xs font-semibold transition-all ${
-                  filter === tab.id
+                className={`rounded-full px-4 py-2 font-mono text-xs font-semibold transition-all ${filter === tab.id
                     ? 'bg-accent text-white shadow-md shadow-accent/20 ring-2 ring-accent/30'
                     : 'border border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground'
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>

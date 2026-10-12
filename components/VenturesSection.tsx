@@ -40,9 +40,10 @@ const CORE_VENTURES = [
     tagline: 'Tech Discovery, Research & Software Ecosystem Insights',
     description:
       'Curated platform dedicated to in-depth research, tech discovery, and engineering benchmarks across modern developer stacks, AI frameworks, and emerging tools.',
+    award: '💡 ₹1,50,000 Technology Initiative Grant',
     role: 'Creator & Tech Lead',
-    tags: ['Tech Research', 'Discovery', 'Software Reviews', 'Ecosystem'],
-    badge: 'Building',
+    tags: ['₹1.5L Grant', 'Tech Research', 'Discovery', 'Software Reviews', 'Ecosystem'],
+    badge: 'Building · ₹1.5L Funded',
     isPrimary: false,
     accentColor: 'from-blue-500/20 via-cyan-500/5 to-transparent',
     borderColor: 'hover:border-cyan-500/50',
@@ -50,7 +51,7 @@ const CORE_VENTURES = [
   },
   {
     title: 'MyEntryPass.in',
-    url: 'https://myentrypass.in',
+    url: 'https://myentryPass.in',
     tagline: 'Next-Gen Digital Ticketing & Live QR Access Management',
     description:
       'Seamless event ticketing and access control infrastructure. Provides dynamic fraud-proof QR credentials, instant gate scanning, and live organizer analytics.',
@@ -82,9 +83,9 @@ const CORE_VENTURES = [
     tagline: 'Interactive Speech, Communication & Language Learning Platform',
     description:
       'AI-powered verbal communication and public speaking training ecosystem. Designed to build conversational confidence, pronunciation accuracy, and expressive fluency through voice interaction.',
-    award: '🏆 2nd Prize Winner — Rotary Club of Surat Innovation Challenge',
+    award: '🏆 2nd Prize Rotary Surat · ₹1,50,000 Sarvam AI Grant',
     role: 'Creator & Lead Architect',
-    tags: ['Rotary Surat 2nd Prize', 'Speech AI', 'Language Learning', 'EdTech', 'Voice Models'],
+    tags: ['Rotary Surat 2nd Prize', '₹1.5L Sarvam AI', 'Speech AI', 'Language Learning', 'EdTech'],
     badge: 'Building · Rotary 2nd Prize',
     isPrimary: false,
     accentColor: 'from-amber-500/20 via-orange-500/5 to-transparent',

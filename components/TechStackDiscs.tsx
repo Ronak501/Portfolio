@@ -356,7 +356,42 @@ export default function TechStackDiscs() {
       title: 'DATABASES & CLOUD DEVOPS',
       items: [
         {
+          name: 'IACON',
+          badge: '$30,000',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#232F3E" />
+              <path
+                d="M40 54l-8 24h8l2-6h8l2 6h8l-8-24H40zm3 12l3-8 3 8h-6zm23-12l-6 24h7l4-16 4 16h6l4-16 4 16h7l-6-24h-8l-3 13-3-13h-6zm33 18c-2-2-5-3-9-3-3 0-5 .7-7 2l3 5c1-.8 2-1 4-1 2 0 3 .6 3 1.3 0 2-12 1-12 8 0 4 3 6 7 6 3 0 5-1 6-3l1 3h6v-13c0-3-1-5-2-6zm-4 6c0 1.5-1.5 2.5-3.5 2.5-1.5 0-2.5-.7-2.5-1.8 0-1.5 2.5-1.8 6-1.8v1.1z"
+                fill="#fff"
+              />
+              <path
+                d="M32 90c24 13 48 13 64-2"
+                stroke="#FF9900"
+                strokeWidth="5"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path d="M98 87l-4 6 7-2-3-4z" fill="#FF9900" />
+            </svg>
+          ),
+        },
+        {
+          name: 'Google Cloud',
+          badge: '$2,000',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#ffffff" stroke="#E5E7EB" strokeWidth="2" />
+              <path d="M72 40a20 20 0 0 0-19 13.5A16 16 0 0 0 36 68a16 16 0 0 0 16 16h40a18 18 0 0 0 18-18 18 18 0 0 0-15-17.7A20 20 0 0 0 72 40z" fill="#4285F4" />
+              <path d="M52 84h40a18 18 0 0 0 18-18c0-.7 0-1.4-.1-2L76 76 52 84z" fill="#34A853" />
+              <path d="M52 84a16 16 0 0 1-16-16c0-7.3 5-13.4 11.7-15.3l12.3 15.3L52 84z" fill="#EA4335" />
+              <path d="M47.7 52.7A20 20 0 0 1 72 40a20 20 0 0 1 19 13.5L68 68 47.7 52.7z" fill="#FBBC05" />
+            </svg>
+          ),
+        },
+        {
           name: 'MongoDB',
+          badge: '$500',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
               <path
@@ -453,6 +488,11 @@ export default function TechStackDiscs() {
                 >
                   {/* Round Elevated Disc */}
                   <div className="relative flex size-14 sm:size-16 items-center justify-center rounded-full bg-white dark:bg-[#1a1824] shadow-md dark:shadow-black/50 border border-zinc-200/80 dark:border-white/10 transition-all duration-300 ease-out group-hover:-translate-y-2 group-hover:shadow-xl group-hover:border-accent group-hover:ring-4 group-hover:ring-accent/20">
+                    {'badge' in item && item.badge && (
+                      <span className="absolute -top-2 -right-3 z-20 rounded-full bg-emerald-500 text-[10px] font-mono font-bold text-white px-1.5 py-0.5 shadow-md border border-emerald-300">
+                        {item.badge}
+                      </span>
+                    )}
                     <div className="transition-transform duration-300 group-hover:scale-110">
                       {item.icon}
                     </div>

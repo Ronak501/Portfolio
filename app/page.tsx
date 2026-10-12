@@ -63,9 +63,9 @@ const MODULES = [
     href: '/certifications',
     category: 'MODULE // 05',
     description:
-      '₹2.87L+ Govt Grants (Swachh Sense ₹1.37L, Vision ₹90K, Trabit ₹60K), Rotary Club 2nd Prize, ISRO & NASA Hackathons, Google Cloud badges.',
+      '$32.5K+ Cloud Credits (IACON, Google, MongoDB), ₹5.87L+ Grants (SSIP, Sarvam AI), Rotary Surat 2nd Prize, ISRO & NASA Hackathons.',
     icon: Award,
-    badge: '15+ Credentials',
+    badge: '20+ Credentials',
     gradient: 'from-amber-500/25 via-yellow-500/5 to-transparent',
   },
   {

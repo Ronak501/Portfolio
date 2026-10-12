@@ -2,9 +2,14 @@
 
 const STATS = [
   {
-    value: '₹2.87L+',
-    title: 'Govt Grants Approved',
-    subtitle: 'Swachh Sense (₹1.37L) · Vision (₹90K) · Trabit Guard (₹60K)',
+    value: '$32.5K+',
+    title: 'Cloud & AI Credits',
+    subtitle: 'IACON ($30K) · Google Cloud ($2K) · MongoDB ($500)',
+  },
+  {
+    value: '₹5.87L+',
+    title: 'Grants & Funding',
+    subtitle: 'SSIP Govt (₹2.87L) · Sarvam AI (₹1.5L) · TechSodh (₹1.5L)',
   },
   {
     value: '2nd',
@@ -12,14 +17,9 @@ const STATS = [
     subtitle: 'Innovation award for BolnaSeekho.in',
   },
   {
-    value: '15+',
+    value: '20+',
     title: 'Verified Credentials',
-    subtitle: 'Google Cloud, Microsoft, ISRO, NASA & Tata',
-  },
-  {
-    value: '5+',
-    title: 'Live Ventures & Apps',
-    subtitle: 'Ornitech, Techsodh, MyEntryPass, Shapentic & BolnaSeekho',
+    subtitle: 'Google Cloud, Microsoft, ISRO, NASA, Tata & Flipkart',
   },
 ];
 
