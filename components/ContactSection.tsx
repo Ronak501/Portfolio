@@ -136,7 +136,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <span className="text-foreground font-medium block">SCET Surat</span>
-                    <span className="text-xs text-muted-foreground">B.Tech Computer Engineering (3rd Year)</span>
+                    <span className="text-xs text-muted-foreground">B.Tech Computer Engineering (4th Year)</span>
                   </div>
                 </div>
               </div>

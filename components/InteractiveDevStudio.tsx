@@ -27,7 +27,7 @@ export default function InteractiveDevStudio() {
     {
       command: 'whoami',
       output:
-        'Ronak Talaviya — Full Stack & AI Developer | SCET Surat (3rd Year)',
+        'Ronak Talaviya — Full Stack & AI Developer | SCET Surat (4th Year)',
     },
     {
       command: 'help',
