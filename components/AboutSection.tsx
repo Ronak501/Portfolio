@@ -15,8 +15,8 @@ import {
 const HIGHLIGHTS = [
   {
     icon: Trophy,
-    title: 'Awards & Hackathons',
-    desc: '2nd Prize Winner at Rotary Club of Surat (BolnaSeekho.in), plus NASA Space Apps Challenge and FindCoder accolades.',
+    title: '₹2.87L+ Govt Grants & Awards',
+    desc: 'Approved funding for Swachh Sense (₹1.37L), Vision Sentinel (₹90K), Trabit Guard (₹60K), plus Rotary Club 2nd Prize & NASA Space Apps.',
   },
   {
     icon: Rocket,

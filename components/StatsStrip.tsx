@@ -2,9 +2,9 @@
 
 const STATS = [
   {
-    value: '₹90K',
-    title: 'Govt SSIP Grant',
-    subtitle: 'Approved for AI Swachh Sense & Vision Sentinel',
+    value: '₹2.87L+',
+    title: 'Govt Grants Approved',
+    subtitle: 'Swachh Sense (₹1.37L) · Vision (₹90K) · Trabit Guard (₹60K)',
   },
   {
     value: '2nd',

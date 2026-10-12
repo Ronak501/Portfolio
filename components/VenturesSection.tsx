@@ -100,10 +100,11 @@ const CIVIC_AI_VENTURES = [
     description:
       'Computer vision system monitoring waste accumulation in public spaces and triggering municipal sanitation dispatches.',
     role: 'Edge AI detection & sensor telemetry',
-    tags: ['Computer Vision', 'IoT Sensors', 'Smart City'],
-    impact: 'Automated waste alerts',
+    funding: '₹1,37,000 SSIP Govt Grant Approved',
+    tags: ['SSIP ₹1.37L', 'Computer Vision', 'IoT Sensors', 'Smart City'],
+    impact: '₹1,37,000 SSIP Grant · Automated municipal alerts',
     icon: Leaf,
-    badge: 'Smart City',
+    badge: '₹1,37,000 Govt Grant',
   },
   {
     title: 'Vision Sentinel',
@@ -111,21 +112,23 @@ const CIVIC_AI_VENTURES = [
     description:
       'Intelligent video analytics platform utilizing Google Vision for real-time facility security and crowd anomaly detection.',
     role: 'Google Vision API & dispatcher pipeline',
-    tags: ['Google Vision AI', 'Real-time', 'Security'],
-    impact: 'Automated threat detection',
+    funding: '₹90,000 SSIP Govt Grant Approved',
+    tags: ['SSIP ₹90K', 'Google Vision AI', 'Real-time', 'Security'],
+    impact: '₹90,000 SSIP Grant · Automated threat detection',
     icon: Shield,
-    badge: 'Security AI',
+    badge: '₹90,000 Govt Grant',
   },
   {
-    title: 'Transit Guard',
+    title: 'Trabit Guard',
     tagline: 'YOLOv8 Edge Passenger Counting & Transport Analytics',
     description:
-      'Computer vision system using YOLOv8 for passenger flow tracking, overcrowding detection, and capacity metrics.',
+      'Computer vision system using YOLOv8 for passenger flow tracking, overcrowding detection, and transit capacity metrics.',
     role: 'YOLOv8 edge object tracking',
-    tags: ['YOLOv8', 'Edge AI', 'Public Transit'],
-    impact: '96% counting precision',
+    funding: '₹60,000 Govt Grant Approved',
+    tags: ['₹60K Govt Grant', 'YOLOv8', 'Edge AI', 'Public Transit'],
+    impact: '₹60,000 Grant · 96% counting precision',
     icon: Bus,
-    badge: 'Transit AI',
+    badge: '₹60,000 Govt Grant',
   },
 ];
 

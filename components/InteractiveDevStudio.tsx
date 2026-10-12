@@ -73,10 +73,10 @@ export default function InteractiveDevStudio() {
         setTermInput('');
         return;
       case 'help':
-        reply = 'Available commands: skills, projects, ventures, contact, whoami, clear';
+        reply = 'Available commands: skills, projects, ventures, grants, contact, whoami, clear';
         break;
       case 'whoami':
-        reply = 'Ronak Talaviya: Founder @ Ornitech.in | Building Techsodh.in, MyEntryPass.in, Shapentic.com, BolnaSeekho.in | Computer Eng @ SCET';
+        reply = 'Ronak Talaviya: Founder @ Ornitech.in | Building Techsodh.in, MyEntryPass.in, Shapentic.com, BolnaSeekho.in | Computer Eng @ SCET (4th Year)';
         break;
       case 'skills':
         reply = 'Frontend: React, Next.js, TS | Backend: Node.js, FastAPI, Python | AI: YOLOv8, NLP | DB: MongoDB, Docker';
@@ -84,8 +84,12 @@ export default function InteractiveDevStudio() {
       case 'projects':
         reply = '1. AI Fact Checking | 2. Research Paper Agent | 3. Social Media Analyzer | 4. Task Management | 5. Motel System';
         break;
+      case 'grants':
+      case 'funding':
+        reply = 'Govt Prototype Grants (₹2.87L+ Total): 1. Swachh Sense (₹1,37,000 SSIP) | 2. Vision Sentinel (₹90,000 SSIP) | 3. Trabit Guard (₹60,000)';
+        break;
       case 'ventures':
-        reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in | 6. Swachh Sense';
+        reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in | 6. Swachh Sense (₹1.37L) | 7. Vision Sentinel (₹90K) | 8. Trabit Guard (₹60K)';
         break;
       case 'contact':
         reply = 'Email: ronaktalaviya51@gmail.com | GitHub: github.com/Ronak501 | LinkedIn: ronak-talaviya';

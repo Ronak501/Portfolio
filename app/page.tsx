@@ -63,7 +63,7 @@ const MODULES = [
     href: '/certifications',
     category: 'MODULE // 05',
     description:
-      'SSIP ₹90K Govt Grants, Rotary Club 2nd Prize, ISRO & NASA Hackathons, Google Cloud badges, Flipkart & Tata credentials.',
+      '₹2.87L+ Govt Grants (Swachh Sense ₹1.37L, Vision ₹90K, Trabit ₹60K), Rotary Club 2nd Prize, ISRO & NASA Hackathons, Google Cloud badges.',
     icon: Award,
     badge: '15+ Credentials',
     gradient: 'from-amber-500/25 via-yellow-500/5 to-transparent',
