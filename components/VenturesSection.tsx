@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import {
   Sparkles,
   Shield,
@@ -12,8 +13,10 @@ import {
   Layers,
   Crown,
   Mic,
+  Eye,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
+import VenturePreviewModal, { VentureItem } from '@/components/VenturePreviewModal';
 
 const CORE_VENTURES = [
   {
@@ -125,6 +128,8 @@ const CIVIC_AI_VENTURES = [
 ];
 
 export default function VenturesSection() {
+  const [previewVenture, setPreviewVenture] = useState<VentureItem | null>(null);
+
   return (
     <section id="ventures" className="border-b border-border py-20 bg-background/40">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -168,17 +173,31 @@ export default function VenturesSection() {
                       </span>
                     </div>
 
-                    <a
-                      href={v.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => sound.playClick()}
-                      className="flex items-center gap-1 rounded-full border border-border bg-card/80 px-3 py-1 font-mono text-xs font-semibold text-foreground hover:bg-muted hover:border-accent/40 transition-colors"
-                    >
-                      <Globe className="size-3 text-accent" />
-                      <span>Visit</span>
-                      <ArrowUpRight className="size-3 text-muted-foreground" />
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          sound.playChime();
+                          setPreviewVenture(v);
+                        }}
+                        className="flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-3 py-1 font-mono text-xs font-bold text-accent hover:bg-accent hover:text-white transition-all shadow-sm"
+                      >
+                        <Eye className="size-3" />
+                        <span>Preview</span>
+                      </button>
+
+                      <a
+                        href={v.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => sound.playClick()}
+                        className="flex items-center gap-1 rounded-full border border-border bg-card/80 px-3 py-1 font-mono text-xs font-semibold text-foreground hover:bg-muted hover:border-accent/40 transition-colors"
+                      >
+                        <Globe className="size-3 text-accent" />
+                        <span>Visit</span>
+                        <ArrowUpRight className="size-3 text-muted-foreground" />
+                      </a>
+                    </div>
                   </div>
 
                   <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground group-hover:text-accent transition-colors">
@@ -196,6 +215,26 @@ export default function VenturesSection() {
                   <div className="mt-4 rounded-xl border border-border/70 bg-muted/30 p-2.5 text-xs text-foreground/85">
                     <span className="font-semibold text-accent">Role: </span>
                     {v.role}
+                  </div>
+
+                  {/* Live Link Interactive Preview Bar */}
+                  <div
+                    onClick={() => {
+                      sound.playChime();
+                      setPreviewVenture(v);
+                    }}
+                    className="mt-4 flex items-center justify-between rounded-xl border border-border/80 bg-[#090b10] px-3.5 py-2.5 cursor-pointer group/preview hover:border-accent/60 transition-all shadow-inner"
+                  >
+                    <div className="flex items-center gap-2 overflow-hidden">
+                      <span className="size-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                      <span className="font-mono text-xs text-zinc-300 group-hover/preview:text-white transition-colors truncate">
+                        {v.url}
+                      </span>
+                    </div>
+                    <span className="flex items-center gap-1 font-mono text-[11px] font-semibold text-accent shrink-0 group-hover/preview:underline pl-2">
+                      <span>Live Preview</span>
+                      <ArrowUpRight className="size-3" />
+                    </span>
                   </div>
                 </div>
 
@@ -258,6 +297,12 @@ export default function VenturesSection() {
           </div>
         </div>
       </div>
+
+      {/* Interactive In-App Venture Preview Modal */}
+      <VenturePreviewModal
+        venture={previewVenture}
+        onClose={() => setPreviewVenture(null)}
+      />
     </section>
   );
 }
