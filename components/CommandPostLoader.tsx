@@ -22,9 +22,7 @@ interface RouteMeta {
 
 const ROUTE_DATA: Record<string, RouteMeta> = {
   '/': { title: 'System Overview', badge: 'Command Center', icon: Terminal },
-  '/work': { title: 'Work & Projects', badge: 'Production Systems', icon: Layers },
-  '/ai': { title: 'God-Tier AI Engine', badge: 'Agent Architecture', icon: Cpu },
-  '/ventures': { title: 'Ventures & Companies', badge: 'Ornitech & Products', icon: Crown },
+  '/work': { title: 'Work, AI & Ventures', badge: 'Ecosystem Showcase', icon: Layers },
   '/skills': { title: 'Skills & Tech Stack', badge: 'Tech Matrix', icon: Layers },
   '/certifications': { title: 'Honors & Certifications', badge: 'Verified Credentials', icon: Award },
   '/about': { title: 'About Ronak Talaviya', badge: 'Engineer Dossier', icon: Sparkles },

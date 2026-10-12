@@ -19,39 +19,19 @@ import Marquee from '@/components/Marquee';
 
 const MODULES = [
   {
-    title: 'Featured Work & Projects',
+    title: 'Work, AI Engine & Active Ventures',
     href: '/work',
     category: 'MODULE // 01',
     description:
-      'AI Fact Checking, Research Agents, Real-Time Task Managers, and live GitHub repositories.',
-    icon: Code2,
-    badge: '5+ Projects',
-    gradient: 'from-orange-500/20 via-red-500/5 to-transparent',
-  },
-  {
-    title: 'God-Tier AI & Token Architecture',
-    href: '/ai',
-    category: 'MODULE // 02',
-    description:
-      'Autonomous agent loops, token economics benchmarks (-42% reduction), and self-healing tool calling.',
-    icon: Cpu,
-    badge: 'AI Systems',
-    gradient: 'from-cyan-500/20 via-blue-500/5 to-transparent',
-  },
-  {
-    title: 'Founder & Active Ventures',
-    href: '/ventures',
-    category: 'MODULE // 03',
-    description:
-      'Founder @ Ornitech.in, actively scaling Techsodh.in, MyEntryPass.in, Shapentic.com, and BolnaSeekho.in.',
+      'Founder @ Ornitech.in, actively scaling Techsodh, MyEntryPass, Shapentic, and BolnaSeekho, plus Autonomous AI Agents, Token Engineering benchmarks, and live code repositories.',
     icon: Crown,
-    badge: 'Ornitech + 4 Products',
+    badge: 'All-in-One Flagship',
     gradient: 'from-accent/25 via-accent/5 to-transparent',
   },
   {
     title: 'Skills & Tech Stack Matrix',
     href: '/skills',
-    category: 'MODULE // 04',
+    category: 'MODULE // 02',
     description:
       'Circular badge stack across Code, AI/Vision, Cloud DevOps, and 3D Design ecosystems.',
     icon: Layers,
@@ -61,9 +41,9 @@ const MODULES = [
   {
     title: 'Honors, Grants & Certifications',
     href: '/certifications',
-    category: 'MODULE // 05',
+    category: 'MODULE // 03',
     description:
-      '$32.5K+ Cloud Credits (IACON, Google, MongoDB), ₹5.87L+ Grants (SSIP, Sarvam AI), Rotary Surat 2nd Prize, ISRO & NASA Hackathons.',
+      '$32.5K+ Cloud Credits (AWS, Google, MongoDB), ₹5.87L+ Grants (SSIP, Sarvam AI), Rotary Surat 2nd Prize, ISRO & NASA Hackathons.',
     icon: Award,
     badge: '20+ Credentials',
     gradient: 'from-amber-500/25 via-yellow-500/5 to-transparent',
@@ -71,7 +51,7 @@ const MODULES = [
   {
     title: 'About Ronak & Philosophy',
     href: '/about',
-    category: 'MODULE // 06',
+    category: 'MODULE // 04',
     description:
       'Computer Engineering at SCET, hackathon wins (NASA Space Apps), and engineering principles.',
     icon: Sparkles,
@@ -81,7 +61,7 @@ const MODULES = [
   {
     title: 'Communication & Uplink',
     href: '/contact',
-    category: 'MODULE // 07',
+    category: 'MODULE // 05',
     description:
       'Direct dispatch form, 1-click email copy, social links, and project commission inquiries.',
     icon: Terminal,

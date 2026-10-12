@@ -35,13 +35,7 @@ export default function Footer() {
 
           <div className="flex flex-wrap items-center gap-5 text-xs sm:text-sm font-semibold text-muted-foreground">
             <Link href="/work" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
-              Work
-            </Link>
-            <Link href="/ai" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
-              AI Engine
-            </Link>
-            <Link href="/ventures" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
-              Ventures
+              Work & Ventures
             </Link>
             <Link href="/skills" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
               Skills

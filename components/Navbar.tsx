@@ -62,9 +62,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Work', href: '/work' },
-    { label: 'AI Engine', href: '/ai' },
-    { label: 'Ventures', href: '/ventures' },
+    { label: 'Work & Ventures', href: '/work' },
     { label: 'Skills', href: '/skills' },
     { label: 'Certifications', href: '/certifications' },
     { label: 'About', href: '/about' },
