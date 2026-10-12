@@ -3,19 +3,33 @@
 import React from 'react';
 import { sound } from '@/lib/audio';
 
-interface TechItem {
-  name: string;
-  category: string;
-  icon: React.ReactNode;
-  brandColor?: string;
-}
-
 export default function TechStackDiscs() {
   const categories = [
     {
       id: 'code',
       title: 'CODE',
       items: [
+        {
+          name: 'Roblox Studio',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <path d="M26 12l88 24-26 80-88-24L26 12z" fill="#E2231A" />
+              <rect x="52" y="52" width="24" height="24" rx="3" transform="rotate(15 64 64)" fill="#fff" />
+            </svg>
+          ),
+        },
+        {
+          name: 'Luau',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="54" fill="#000080" />
+              <circle cx="86" cy="40" r="16" fill="#fff" />
+              <circle cx="38" cy="78" r="8" fill="#fff" />
+              <circle cx="98" cy="28" r="6" fill="#000080" />
+              <text x="44" y="74" fill="#fff" fontSize="22" fontFamily="sans-serif" fontWeight="bold">Lua</text>
+            </svg>
+          ),
+        },
         {
           name: 'Next.js',
           icon: (
@@ -43,6 +57,18 @@ export default function TechStackDiscs() {
               <path
                 d="M38 48h52v12h-20v40H58V60H38V48zm50 28c3 4 8 7 14 7 5 0 9-3 9-6 0-11-23-4-23-22 0-9 7-15 19-15 8 0 14 3 18 8l-7 8c-3-3-6-5-11-5-5 0-8 2-8 5 0 10 23 4 23 21 0 10-8 16-20 16-9 0-17-4-22-10l7-9z"
                 fill="#fff"
+              />
+            </svg>
+          ),
+        },
+        {
+          name: 'JavaScript',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <rect width="128" height="128" rx="20" fill="#F7DF1E" />
+              <path
+                d="M36 94l14-8c3 6 7 10 13 10 6 0 10-3 10-9V42h16v45c0 14-9 22-24 22-14 0-23-8-29-15zm48 3l14-8c4 7 10 11 17 11 7 0 11-4 11-8 0-6-6-8-15-12-14-6-21-12-21-22 0-11 9-19 22-19 11 0 18 4 24 13l-13 8c-3-5-6-7-11-7-5 0-8 3-8 6 0 4 5 7 13 10 16 7 24 12 24 24 0 12-10 21-25 21-15 0-25-7-32-17z"
+                fill="#000"
               />
             </svg>
           ),
@@ -98,14 +124,21 @@ export default function TechStackDiscs() {
           ),
         },
         {
+          name: 'HTML5 & CSS3',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <path d="M18 12l9 100 37 10 37-10 9-100H18z" fill="#E44D26" />
+              <path d="M64 22v88l28-8 7-79H64z" fill="#F16529" />
+              <path d="M38 42h52l-2 18H52l1 14h36l-3 30-22 6-22-6-1-16h14l1 7 8 2 8-2 2-11H36l2-38z" fill="#fff" />
+            </svg>
+          ),
+        },
+        {
           name: 'FastAPI',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8" fill="none">
               <circle cx="64" cy="64" r="64" fill="#009688" />
-              <path
-                d="M68 20L34 72h26l-6 36 34-52H62l6-36z"
-                fill="#fff"
-              />
+              <path d="M68 20L34 72h26l-6 36 34-52H62l6-36z" fill="#fff" />
             </svg>
           ),
         },
@@ -113,10 +146,7 @@ export default function TechStackDiscs() {
           name: 'Node.js',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <path
-                d="M64 8l52 30v60L64 128 12 98V38L64 8z"
-                fill="#339933"
-              />
+              <path d="M64 8l52 30v60L64 128 12 98V38L64 8z" fill="#339933" />
               <path
                 d="M64 42v44M44 54l20 12 20-12"
                 stroke="#fff"
@@ -125,6 +155,17 @@ export default function TechStackDiscs() {
                 strokeLinejoin="round"
                 fill="none"
               />
+            </svg>
+          ),
+        },
+        {
+          name: 'Express.js',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#18181B" />
+              <text x="64" y="80" fill="#fff" fontSize="48" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle">
+                ex
+              </text>
             </svg>
           ),
         },
@@ -141,26 +182,14 @@ export default function TechStackDiscs() {
           ),
         },
         {
-          name: 'Roblox Studio',
+          name: 'GitHub',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#181717" />
               <path
-                d="M26 12l88 24-26 80-88-24L26 12z"
-                fill="#E2231A"
+                d="M64 24c-22.1 0-40 17.9-40 40 0 17.7 11.5 32.7 27.4 38 2 .4 2.7-.9 2.7-2v-7c-11.1 2.4-13.5-5.4-13.5-5.4-1.8-4.6-4.4-5.8-4.4-5.8-3.6-2.5.3-2.4.3-2.4 4 .3 6.1 4.1 6.1 4.1 3.6 6.1 9.4 4.3 11.7 3.3.4-2.6 1.4-4.3 2.5-5.3-8.9-1-18.2-4.4-18.2-19.8 0-4.4 1.6-7.9 4.1-10.7-.4-1-.18-5.1.4-10.6 0 0 3.4-1.1 11 4.1 3.2-.9 6.7-1.3 10.1-1.3 3.4 0 6.9.4 10.1 1.3 7.6-5.2 11-4.1 11-4.1 2.2 5.5 1 9.6.4 10.6 2.6 2.8 4.1 6.3 4.1 10.7 0 15.4-9.4 18.7-18.3 19.7 1.4 1.2 2.7 3.7 2.7 7.4v11c0 1.1.7 2.4 2.8 2C92.5 96.7 104 81.7 104 64c0-22.1-17.9-40-40-40z"
+                fill="#fff"
               />
-              <rect x="52" y="52" width="24" height="24" rx="3" transform="rotate(15 64 64)" fill="#fff" />
-            </svg>
-          ),
-        },
-        {
-          name: 'Luau',
-          icon: (
-            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <circle cx="64" cy="64" r="54" fill="#000080" />
-              <circle cx="86" cy="40" r="16" fill="#fff" />
-              <circle cx="38" cy="78" r="8" fill="#fff" />
-              <circle cx="98" cy="28" r="6" fill="#000080" />
-              <text x="44" y="74" fill="#fff" fontSize="22" fontFamily="sans-serif" fontWeight="bold">Lua</text>
             </svg>
           ),
         },
@@ -255,9 +284,100 @@ export default function TechStackDiscs() {
       ],
     },
     {
-      id: 'ai_cloud',
-      title: 'AI, CLOUD & DATABASE',
+      id: 'ai',
+      title: 'AI & COMPUTER VISION',
       items: [
+        {
+          name: 'YOLOv8',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#111827" />
+              <circle cx="64" cy="64" r="44" stroke="#F97316" strokeWidth="6" strokeDasharray="8 6" fill="none" />
+              <circle cx="64" cy="64" r="14" fill="#F97316" />
+              <path d="M64 16v16M64 96v16M16 64h16M96 64h16" stroke="#F97316" strokeWidth="6" />
+            </svg>
+          ),
+        },
+        {
+          name: 'OpenAI / Gemini',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#10A37F" />
+              <path
+                d="M64 32v64M32 64h64M42 42l44 44M42 86l44-44"
+                stroke="#fff"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
+            </svg>
+          ),
+        },
+        {
+          name: 'Google Vision',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#4285F4" />
+              <circle cx="64" cy="64" r="26" fill="#fff" />
+              <circle cx="64" cy="64" r="14" fill="#34A853" />
+            </svg>
+          ),
+        },
+        {
+          name: 'n8n Automation',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#EA4B71" />
+              <path
+                d="M40 64h48M64 40v48"
+                stroke="#fff"
+                strokeWidth="10"
+                strokeLinecap="round"
+              />
+              <circle cx="40" cy="64" r="8" fill="#fff" />
+              <circle cx="88" cy="64" r="8" fill="#fff" />
+            </svg>
+          ),
+        },
+        {
+          name: 'NLP & Agents',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#8B5CF6" />
+              <circle cx="48" cy="48" r="8" fill="#fff" />
+              <circle cx="80" cy="48" r="8" fill="#fff" />
+              <path d="M44 80c6 8 14 12 20 12s14-4 20-12" stroke="#fff" strokeWidth="6" strokeLinecap="round" fill="none" />
+            </svg>
+          ),
+        },
+      ],
+    },
+    {
+      id: 'databases_cloud',
+      title: 'DATABASES & CLOUD DEVOPS',
+      items: [
+        {
+          name: 'MongoDB',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <path
+                d="M64 8c-3 12-22 36-22 62 0 25 15 44 22 50 7-6 22-25 22-50 0-26-19-50-22-62z"
+                fill="#47A248"
+              />
+              <path d="M64 8v112" stroke="#fff" strokeWidth="4" />
+            </svg>
+          ),
+        },
+        {
+          name: 'Firebase & Firestore',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <path d="M26 94L42 22l18 34-34 38z" fill="#FFA000" />
+              <path d="M82 46l-22 48 42-48-20-22-20 22z" fill="#F57C00" />
+              <path d="M60 56l18-38 12 26-30 12z" fill="#FFCA28" />
+              <path d="M26 94l38 24 38-24-42-48-34 48z" fill="#FF8F00" />
+            </svg>
+          ),
+        },
         {
           name: 'Docker',
           icon: (
@@ -274,36 +394,11 @@ export default function TechStackDiscs() {
           ),
         },
         {
-          name: 'MongoDB',
+          name: 'Linux / Bash',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <path
-                d="M64 8c-3 12-22 36-22 62 0 25 15 44 22 50 7-6 22-25 22-50 0-26-19-50-22-62z"
-                fill="#47A248"
-              />
-              <path d="M64 8v112" stroke="#fff" strokeWidth="4" />
-            </svg>
-          ),
-        },
-        {
-          name: 'YOLOv8',
-          icon: (
-            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <circle cx="64" cy="64" r="64" fill="#111827" />
-              <circle cx="64" cy="64" r="44" stroke="#F97316" strokeWidth="6" strokeDasharray="8 6" fill="none" />
-              <circle cx="64" cy="64" r="14" fill="#F97316" />
-              <path d="M64 16v16M64 96v16M16 64h16M96 64h16" stroke="#F97316" strokeWidth="6" />
-            </svg>
-          ),
-        },
-        {
-          name: 'Firebase',
-          icon: (
-            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <path d="M26 94L42 22l18 34-34 38z" fill="#FFA000" />
-              <path d="M82 46l-22 48 42-48-20-22-20 22z" fill="#F57C00" />
-              <path d="M60 56l18-38 12 26-30 12z" fill="#FFCA28" />
-              <path d="M26 94l38 24 38-24-42-48-34 48z" fill="#FF8F00" />
+              <rect width="128" height="128" rx="20" fill="#2D3748" />
+              <path d="M32 44l24 20-24 20M64 84h32" stroke="#48BB78" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
           ),
         },
@@ -316,12 +411,21 @@ export default function TechStackDiscs() {
             </svg>
           ),
         },
+        {
+          name: 'WebSockets',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#0284C7" />
+              <path d="M38 52l-14 12 14 12M90 52l14 12-14 12M52 82l24-36" stroke="#fff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            </svg>
+          ),
+        },
       ],
     },
   ];
 
   return (
-    <div className="rounded-3xl border border-border bg-card/60 p-6 sm:p-10 shadow-xl backdrop-blur-sm mb-16">
+    <div className="rounded-3xl border border-border bg-card/60 p-6 sm:p-10 shadow-xl backdrop-blur-sm">
       {/* Title with matching warm accent underline */}
       <div className="mb-10 inline-block">
         <h3 className="font-heading text-2xl sm:text-4xl font-extrabold tracking-tight text-foreground">
@@ -331,7 +435,7 @@ export default function TechStackDiscs() {
       </div>
 
       {/* Category Rows */}
-      <div className="space-y-10">
+      <div className="space-y-12">
         {categories.map((cat) => (
           <div key={cat.id} className="space-y-5">
             {/* Category Label */}
