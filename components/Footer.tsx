@@ -43,9 +43,6 @@ export default function Footer() {
             <Link href="/ventures" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
               Ventures
             </Link>
-            <Link href="/studio" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
-              Studio
-            </Link>
             <Link href="/skills" onClick={() => sound.playClick()} className="hover:text-foreground transition-colors">
               Skills
             </Link>

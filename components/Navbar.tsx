@@ -65,7 +65,6 @@ export default function Navbar() {
     { label: 'Work', href: '/work' },
     { label: 'AI Engine', href: '/ai' },
     { label: 'Ventures', href: '/ventures' },
-    { label: 'Studio', href: '/studio' },
     { label: 'Skills', href: '/skills' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },

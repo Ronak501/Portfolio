@@ -48,21 +48,11 @@ const MODULES = [
     gradient: 'from-accent/25 via-accent/5 to-transparent',
   },
   {
-    title: 'Interactive Dev Studio',
-    href: '/studio',
-    category: 'MODULE // 04',
-    description:
-      'Live architecture dataflow, runnable TypeScript AI pipeline simulator, and interactive terminal.',
-    icon: Terminal,
-    badge: 'Live Workstation',
-    gradient: 'from-purple-500/20 via-pink-500/5 to-transparent',
-  },
-  {
     title: 'Skills & Tech Stack Matrix',
     href: '/skills',
-    category: 'MODULE // 05',
+    category: 'MODULE // 04',
     description:
-      'Comprehensive Bento breakdown of Frontend, Backend, AI/Vision, and DevOps capabilities.',
+      'Circular badge stack across Code, AI/Vision, Cloud DevOps, and 3D Design ecosystems.',
     icon: Layers,
     badge: 'Tech Matrix',
     gradient: 'from-emerald-500/20 via-teal-500/5 to-transparent',
@@ -70,12 +60,22 @@ const MODULES = [
   {
     title: 'About Ronak & Philosophy',
     href: '/about',
-    category: 'MODULE // 06',
+    category: 'MODULE // 05',
     description:
-      'Computer Engineering at SCET, hackathon wins (NASA Space Apps), and client testimonials.',
+      'Computer Engineering at SCET, hackathon wins (NASA Space Apps), and engineering principles.',
     icon: Sparkles,
     badge: 'Dossier',
     gradient: 'from-amber-500/20 via-yellow-500/5 to-transparent',
+  },
+  {
+    title: 'Communication & Uplink',
+    href: '/contact',
+    category: 'MODULE // 06',
+    description:
+      'Direct dispatch form, 1-click email copy, social links, and project commission inquiries.',
+    icon: Terminal,
+    badge: 'Uplink',
+    gradient: 'from-purple-500/20 via-pink-500/5 to-transparent',
   },
 ];
 
