@@ -9,6 +9,7 @@ import {
   Layers,
   Sparkles,
 } from 'lucide-react';
+import TechStackDiscs from '@/components/TechStackDiscs';
 
 const SKILL_GROUPS = [
   {
@@ -81,6 +82,9 @@ export default function SkillsBento() {
             Technologies, frameworks, and AI ecosystems I rely on to turn ideas into software.
           </p>
         </div>
+
+        {/* Circular Logo Tech Stack Display */}
+        <TechStackDiscs />
 
         {/* Bento Grid */}
         <div className="grid gap-6 md:grid-cols-2">
