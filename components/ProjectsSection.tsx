@@ -19,140 +19,118 @@ import { sound } from '@/lib/audio';
 
 const PROJECTS: ProjectData[] = [
   {
-    id: 'fact-checking',
-    title: 'AI Fact Checking Platform',
-    category: 'ai',
-    tags: ['React', 'Node.js', 'Python', 'NLP', 'n8n'],
-    proof: '+58% claim verification accuracy',
-    description:
-      'AI-powered platform for instant news verification using NLP, external source scraping, and credibility scoring. Analyzes claims and provides real-time fact-check results with source citations.',
-    outcome:
-      'Automated real-time verification reduced misinformation exposure and improved user trust significantly.',
-    role: 'Full-stack development with AI pipeline orchestration and real-time UI.',
-    gradient: 'from-orange-500/20 via-red-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501',
-    caseStudy: {
-      problem:
-        'Manual fact-checking of rapidly spreading online claims is too slow to stop misinformation waves across media platforms.',
-      architecture: [
-        'Multi-agent pipeline extracting semantic entity claims using NLP models',
-        'Real-time vector search across trusted news sources and public datasets',
-        'Scoring engine producing confidence bounds and human-readable explanations',
-      ],
-      keyResults: [
-        '+58% improvement in verification accuracy against test datasets',
-        'Sub-second query response times for trending claims',
-        'Automated citations with transparent source confidence percentages',
-      ],
-    },
-  },
-  {
-    id: 'research-agent',
-    title: 'AI Research Agent & Paper Generator',
-    category: 'ai',
-    tags: ['Python', 'LLM', 'n8n', 'Gemini API'],
-    proof: '75% time saved on literature review',
-    description:
-      'Intelligent research assistant powered by LLMs that aggregates data from academic sources and synthesizes structured academic literature reviews automatically.',
-    outcome:
-      'Automated multi-source research and paper generation cut initial research time by 75%.',
-    role: 'Designed agent architecture, LLM integration, and automated workflow pipelines.',
-    gradient: 'from-blue-500/20 via-indigo-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501',
-    caseStudy: {
-      problem:
-        'Synthesizing dozens of papers across arXiv and research repositories takes researchers days of manual reading and outlining.',
-      architecture: [
-        'Automated paper fetcher querying research APIs and extracting key abstracts',
-        'Hierarchical summarization agent clustering recurring arguments and methodologies',
-        'Markdown paper generator creating citations and bibliography entries',
-      ],
-      keyResults: [
-        'Cut manual literature review time from 12 hours down to 2.5 hours',
-        'Consistent LaTeX and Markdown bibliography generation',
-        'Multi-model fallback handling for long context windows',
-      ],
-    },
-  },
-  {
-    id: 'social-analyzer',
-    title: 'Social Media Analyzer',
-    category: 'ai',
-    tags: ['React', 'FastAPI', 'MongoDB'],
-    proof: '35% faster reporting',
-    description:
-      'Comprehensive analytics dashboard aggregating and visualizing cross-platform social media metrics with actionable AI-powered audience growth insights.',
-    outcome:
-      'Reduced manual campaign analysis time with centralized insights and predictive engagement scores.',
-    role: 'Full-stack implementation with high-speed analytics API integration.',
-    gradient: 'from-cyan-500/20 via-blue-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501/profile-analyzer',
-    caseStudy: {
-      problem:
-        'Marketing teams waste hours manually assembling spreadsheets from disparate social channels without predictive indicators.',
-      architecture: [
-        'FastAPI backend aggregating social metrics with asynchronous workers',
-        'MongoDB document store indexing high-volume timeseries metrics',
-        'Interactive React charts with AI recommendations for optimal posting windows',
-      ],
-      keyResults: [
-        'Centralized tracking across multiple brand channels into one dashboard',
-        '35% reduction in time needed to produce weekly campaign reports',
-        'Intuitive cohort engagement visualizations',
-      ],
-    },
-  },
-  {
-    id: 'task-management',
-    title: 'Task Management System',
+    id: 'myentrypass',
+    title: 'MyEntryPass',
     category: 'realtime',
-    tags: ['React', 'Node.js', 'Docker', 'WebSockets'],
-    proof: '2.3x faster team sync',
+    tags: ['Next.js', 'FastAPI', 'Dynamic QR', 'Real-Time Gates', 'FinTech'],
+    proof: 'Sub-second encrypted QR gate scanning',
     description:
-      'Collaborative sprint task manager featuring automated AI prioritization, instant bidirectional WebSocket updates, and Dockerized microservice architecture.',
+      'Next-generation digital event ticketing and live QR access management infrastructure. Provides anti-fraud encrypted rotating QR credentials, instantaneous gate scanning verification, and live organizer attendance telemetry.',
     outcome:
-      'Real-time sync lowered coordination delays for distributed engineering teams.',
-    role: 'Owned collaboration architecture, AI priority logic, and containerized deployment.',
-    gradient: 'from-purple-500/20 via-pink-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501/task_management',
+      'Eliminated fraudulent duplicate pass transfers and reduced gate congestion by 65% across high-traffic college & tech events.',
+    role: 'Founder, Product Architect & Full-Stack Lead',
+    gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
+    githubUrl: 'https://github.com/Ronak501',
+    demoUrl: 'https://myentrypass.in',
     caseStudy: {
       problem:
-        'Distributed agile teams experience synchronization drift when updates lag across separate browser tabs and team members.',
+        'Traditional paper tickets and static barcodes suffer from counterfeit copying, gate bottleneck delays, and zero real-time attendee tracking.',
       architecture: [
-        'WebSocket hub broadcasting task mutations with optimistic UI updates',
-        'AI priority engine re-weighting backlogs based on deadline risk and dependencies',
-        'Docker Compose setup for one-command local dev and isolated testing',
+        'High-throughput dynamic encrypted QR token generation preventing duplicate entry',
+        'Real-time WebSocket scanning synchronization across distributed mobile gate scanners',
+        'Organizer telemetry dashboard providing instant capacity warnings and check-in velocity',
       ],
       keyResults: [
-        'Zero-latency card movements across concurrent team sessions',
-        '2.3x faster team updates without requiring manual browser refreshes',
+        'Sub-second scan validation at gate entry points',
+        'Zero unauthorized admissions via single-use rotating token verification',
+        'Scalable serverless backend handling peak checkout and gate rush bursts',
       ],
     },
   },
   {
-    id: 'motel-management',
-    title: 'Motel Management System',
+    id: 'shapentic',
+    title: 'Shapentic',
     category: 'fullstack',
-    tags: ['React', 'Node.js', 'MongoDB', 'TypeScript'],
-    proof: '30% faster check-in flow',
+    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'UI/UX Design', 'Product Studio'],
+    proof: '98+ Lighthouse & fluid micro-interactions',
     description:
-      'Full-stack hospitality system with visual room booking, customer tracking, role-based staff authentication, and real-time check-in/checkout status.',
+      'Modern digital product studio crafting high-converting brand platforms, bespoke user interfaces, and interactive web applications engineered to scale from zero to one.',
     outcome:
-      'Streamlined front-desk room operations and eliminated double-booking friction.',
-    role: 'Led full-stack module design, state workflows, and data modeling.',
-    gradient: 'from-violet-500/20 via-accent/10 to-transparent',
+      'Shipped custom interactive digital brand experiences with lighthouse 98+ performance scores and engaging micro-interactions.',
+    role: 'Co-Creator & Frontend Architect',
+    gradient: 'from-purple-500/20 via-pink-500/10 to-transparent',
     githubUrl: 'https://github.com/Ronak501',
+    demoUrl: 'https://shapentic.com',
     caseStudy: {
       problem:
-        'Independent hospitality operations struggle with paper logs and clunky legacy software causing check-in bottlenecks.',
+        'Early-stage ventures and modern brands struggle with generic templates that fail to convert visitors or communicate technical credibility.',
       architecture: [
-        'TypeScript end-to-end type safety between API routes and frontend state',
-        'Room allocation state machine preventing overlapping reservation conflicts',
-        'Role-based access control separating administrative reporting from staff desks',
+        'Component-driven design system with bespoke typography and tailored dark mode aesthetics',
+        'Optimized client-side transitions and fluid micro-animations powered by Framer Motion',
+        'Zero-bloat bundle footprint guaranteeing sub-second Largest Contentful Paint (LCP)',
       ],
       keyResults: [
-        '30% reduction in average customer check-in turnaround time',
-        'Real-time room occupancy color grids for front-desk operators',
+        '98+ Lighthouse scores across SEO, Performance, and Accessibility',
+        'Over 40% increase in visitor interaction time on client pages',
+        'Scalable component library reusable across future venture spin-offs',
+      ],
+    },
+  },
+  {
+    id: 'techsodh',
+    title: 'Techsodh',
+    category: 'ai',
+    tags: ['₹1.5L Grant', 'Next.js', 'Automated Curation', 'Tech Discovery', 'AI Insights'],
+    proof: '₹1,50,000 Technology Initiative Grant',
+    description:
+      'Curated developer discovery and tech ecosystem platform dedicated to in-depth research, software reviews, benchmark evaluations, and emerging developer tooling insights.',
+    outcome:
+      'Secured ₹1,50,000 development grant to accelerate technical research, automated tool categorization, and benchmark comparisons.',
+    role: 'Creator & Tech Lead',
+    gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
+    githubUrl: 'https://github.com/Ronak501',
+    demoUrl: 'https://techsodh.in',
+    caseStudy: {
+      problem:
+        'Developers face acute discovery fatigue when evaluating hundreds of competing AI tools, frameworks, and APIs without objective benchmarks.',
+      architecture: [
+        'Automated pipeline scraping, indexing, and categorizing developer releases',
+        'Interactive comparison matrix evaluating speed, licensing, and API costs',
+        'Serverless incremental static regeneration (ISR) keeping benchmark indexes fresh with low server overhead',
+      ],
+      keyResults: [
+        'Secured ₹1,50,000 Technology Initiative Development Grant',
+        'Thousands of monthly impressions across developer and student tech communities',
+        'Indexed benchmark comparisons for modern developer ecosystems',
+      ],
+    },
+  },
+  {
+    id: 'bolnaseekho',
+    title: 'BolnaSeekho',
+    category: 'ai',
+    tags: ['Rotary 2nd Prize', '₹1.5L Sarvam AI', 'Speech AI', 'Language Models', 'EdTech'],
+    proof: '2nd Prize Rotary Surat · ₹1.5L Sarvam AI',
+    description:
+      'AI-powered verbal communication, pronunciation training, and speech stuttering rehabilitation ecosystem. Empowers users to build conversational fluency and public speaking confidence through interactive voice AI.',
+    outcome:
+      'Awarded 2nd Prize at Rotary Club of Surat Innovation Challenge and won ₹1,50,000 (₹1.5 Lakh) model credits from Sarvam AI.',
+    role: 'Creator & Lead Architect',
+    gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
+    githubUrl: 'https://github.com/Ronak501',
+    demoUrl: 'https://bolnaseekho.in',
+    caseStudy: {
+      problem:
+        'Speech rehabilitation and conversational confidence training are prohibitively expensive and inaccessible, leaving millions without guided practice.',
+      architecture: [
+        'Low-latency speech-to-text and audio feature extraction analyzing pitch and pauses',
+        'Indic voice foundation models fine-tuned with Sarvam AI for pronunciation precision',
+        'Adaptive conversational feedback loops generating progressive fluency exercises',
+      ],
+      keyResults: [
+        'Awarded 2nd Prize in Rotary Club of Surat Innovation Challenge',
+        'Awarded ₹1,50,000 model and platform credits from Sarvam AI',
+        'Measurable fluency score improvement for users practicing daily voice modules',
       ],
     },
   },
