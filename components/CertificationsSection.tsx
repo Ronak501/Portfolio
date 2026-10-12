@@ -137,6 +137,30 @@ const CREDENTIALS: Credential[] = [
     skills: ['GitHub Copilot', 'Prompt Synthesis', 'AI Test Generation', 'Code Security'],
   },
   {
+    id: 'genai-exchange',
+    title: 'Gen-AI Exchange National Hackathon',
+    issuer: 'Google Cloud & Hack2Skill',
+    category: 'awards',
+    issueDate: '2025',
+    image: '/certificates/genai_exchange.png',
+    badgeText: '🏆 Gen-AI Hackathon',
+    description:
+      'Engineered and demonstrated production GenAI agent systems leveraging Foundation Models, vector embeddings, and autonomous retrieval loops.',
+    skills: ['Generative AI', 'Agent Workflows', 'Multimodal LLMs', 'Hack2Skill'],
+  },
+  {
+    id: 'agentic-ai-cert',
+    title: 'Agentic AI Architecture & Implementation Specialist',
+    issuer: 'Hack2Skill & Industry Mentors',
+    category: 'industry',
+    issueDate: '2025',
+    image: '/certificates/agentic_ai_cert.png',
+    badgeText: 'Agentic AI Certified',
+    description:
+      'Specialized certification in autonomous multi-agent systems, function calling orchestration, and self-healing error recovery loops.',
+    skills: ['Agentic AI', 'Multi-Agent Systems', 'Tool Calling', 'LLM Guardrails'],
+  },
+  {
     id: 'iit-mandi',
     title: 'National Hackathon & Tech Competition',
     issuer: 'IIT Mandi',
@@ -153,6 +177,7 @@ const CREDENTIALS: Credential[] = [
     issuer: 'IIIT (Indian Institute of Information Technology)',
     category: 'awards',
     issueDate: '2025',
+    image: '/certificates/iiit_dev_heat.jpg',
     badgeText: 'IIIT Finalist',
     description:
       'Nominated finalist in Dev Heat hackathon organized by IIIT for developing high-impact civic software solutions.',
@@ -200,6 +225,7 @@ const CREDENTIALS: Credential[] = [
     issuer: 'Independent Research & SCET',
     category: 'research',
     issueDate: '2026',
+    image: '/certificates/research_cert.png',
     badgeText: 'Research Paper',
     description:
       'Authored in-depth technical paper detailing multi-tool agent orchestration, JSON-RPC streaming, and low-latency sandboxed context delivery.',
@@ -277,7 +303,16 @@ export default function CertificationsSection() {
   const [filter, setFilter] = useState<'all' | 'gov_global' | 'awards' | 'industry' | 'research' | 'credits'>('all');
   const [activeModal, setActiveModal] = useState<Credential | null>(null);
 
-  const filtered = CREDENTIALS.filter((c) => (filter === 'all' ? true : c.category === filter));
+  const filtered = CREDENTIALS
+    .filter((c) => (filter === 'all' ? true : c.category === filter))
+    .sort((a, b) => {
+      // Prioritize certificates with verified image/scan first
+      const aHasImg = Boolean(a.image);
+      const bHasImg = Boolean(b.image);
+      if (aHasImg && !bHasImg) return -1;
+      if (!aHasImg && bHasImg) return 1;
+      return 0;
+    });
 
   return (
     <section id="certifications" className="py-20 border-b border-border bg-background/50">
