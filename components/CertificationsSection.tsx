@@ -318,13 +318,13 @@ const CREDENTIALS: Credential[] = [
   {
     id: 'IACON-cloud-credits',
     title: '$30,000 Cloud Infrastructure Grant — IACON',
-    issuer: 'Amazon Web Services (IACON)',
+    issuer: 'IACON',
     category: 'credits',
     issueDate: '2025',
     badgeText: '☁️ $30,000 IACON Portfolio Grant',
     description:
       'Awarded $30,000 in IACON portfolio cloud infrastructure credits to support scalable cloud computing, distributed database hosting, and high-throughput application deployment.',
-    skills: ['IACON Activate', '$30,000 Grant', 'Cloud Infrastructure', 'EC2 & S3', 'Enterprise Hosting'],
+    skills: ['IACON Grant', '$30,000 Grant', 'Cloud Infrastructure', 'Hosting & Compute', 'Enterprise Infrastructure'],
   },
   {
     id: 'google-cloud-credits',

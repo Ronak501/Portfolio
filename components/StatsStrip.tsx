@@ -4,7 +4,7 @@ const STATS = [
   {
     value: '$32.5K+',
     title: 'Cloud Infrastructure Credits',
-    subtitle: 'AWS ($30K) · Google Cloud ($2K) · MongoDB ($500)',
+    subtitle: 'IACON ($30K) · Google Cloud ($2K) · MongoDB ($500)',
   },
   {
     value: '₹5.87L+',

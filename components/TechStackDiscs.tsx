@@ -380,19 +380,27 @@ export default function TechStackDiscs() {
           badge: '$30,000',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <circle cx="64" cy="64" r="64" fill="#232F3E" />
+              <circle cx="64" cy="64" r="64" fill="#0B132B" stroke="#3A86FF" strokeWidth="3" />
               <path
-                d="M40 54l-8 24h8l2-6h8l2 6h8l-8-24H40zm3 12l3-8 3 8h-6zm23-12l-6 24h7l4-16 4 16h6l4-16 4 16h7l-6-24h-8l-3 13-3-13h-6zm33 18c-2-2-5-3-9-3-3 0-5 .7-7 2l3 5c1-.8 2-1 4-1 2 0 3 .6 3 1.3 0 2-12 1-12 8 0 4 3 6 7 6 3 0 5-1 6-3l1 3h6v-13c0-3-1-5-2-6zm-4 6c0 1.5-1.5 2.5-3.5 2.5-1.5 0-2.5-.7-2.5-1.8 0-1.5 2.5-1.8 6-1.8v1.1z"
-                fill="#fff"
+                d="M64 26L96 44V80L64 98L32 80V44Z"
+                fill="#1C2541"
+                stroke="#3A86FF"
+                strokeWidth="4"
+                strokeLinejoin="round"
               />
               <path
-                d="M32 90c24 13 48 13 64-2"
-                stroke="#FF9900"
-                strokeWidth="5"
+                d="M64 42v40M46 52l36 20M46 72l36-20"
+                stroke="#60A5FA"
+                strokeWidth="3.5"
                 strokeLinecap="round"
-                fill="none"
               />
-              <path d="M98 87l-4 6 7-2-3-4z" fill="#FF9900" />
+              <circle cx="64" cy="62" r="7" fill="#38BDF8" />
+              <circle cx="64" cy="26" r="4" fill="#3A86FF" />
+              <circle cx="96" cy="44" r="4" fill="#3A86FF" />
+              <circle cx="96" cy="80" r="4" fill="#3A86FF" />
+              <circle cx="64" cy="98" r="4" fill="#3A86FF" />
+              <circle cx="32" cy="80" r="4" fill="#3A86FF" />
+              <circle cx="32" cy="44" r="4" fill="#3A86FF" />
             </svg>
           ),
         },

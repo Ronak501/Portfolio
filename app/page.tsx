@@ -43,7 +43,7 @@ const MODULES = [
     href: '/certifications',
     category: 'MODULE // 03',
     description:
-      '$32.5K+ Cloud Credits (AWS, Google, MongoDB), ₹5.87L+ Grants (SSIP, Sarvam AI), Rotary Surat 2nd Prize, ISRO & NASA Hackathons.',
+      '$32.5K+ Cloud Credits (IACON, Google, MongoDB), ₹5.87L+ Grants (SSIP, Sarvam AI), Rotary Surat 2nd Prize, ISRO & NASA Hackathons.',
     icon: Award,
     badge: '20+ Credentials',
     gradient: 'from-amber-500/25 via-yellow-500/5 to-transparent',
