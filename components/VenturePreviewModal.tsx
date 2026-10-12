@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   ArrowUpRight,
   Sparkles,
+  Trophy,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
 
@@ -21,6 +22,7 @@ export interface VentureItem {
   url: string;
   tagline: string;
   description: string;
+  award?: string;
   role: string;
   tags: string[];
   badge: string;
@@ -96,6 +98,12 @@ export default function VenturePreviewModal({
               <span className="font-mono text-[10px] text-accent bg-accent/15 px-2 py-0.5 rounded-full font-semibold border border-accent/20">
                 {venture.badge}
               </span>
+              {venture.award && (
+                <span className="hidden md:inline-flex items-center gap-1 font-mono text-[10px] text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded-full font-semibold border border-amber-500/30">
+                  <Trophy className="size-3 text-amber-400" />
+                  <span>Rotary Surat 2nd Prize</span>
+                </span>
+              )}
             </div>
           </div>
 

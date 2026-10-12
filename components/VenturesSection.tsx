@@ -14,6 +14,7 @@ import {
   Crown,
   Mic,
   Eye,
+  Trophy,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
 import VenturePreviewModal, { VentureItem } from '@/components/VenturePreviewModal';
@@ -81,12 +82,13 @@ const CORE_VENTURES = [
     tagline: 'Interactive Speech, Communication & Language Learning Platform',
     description:
       'AI-powered verbal communication and public speaking training ecosystem. Designed to build conversational confidence, pronunciation accuracy, and expressive fluency through voice interaction.',
+    award: '🏆 2nd Prize Winner — Rotary Club of Surat Innovation Challenge',
     role: 'Creator & Lead Architect',
-    tags: ['Speech AI', 'Language Learning', 'EdTech', 'Voice Models', 'Next.js'],
-    badge: 'Building',
+    tags: ['Rotary Surat 2nd Prize', 'Speech AI', 'Language Learning', 'EdTech', 'Voice Models'],
+    badge: 'Building · Rotary 2nd Prize',
     isPrimary: false,
     accentColor: 'from-amber-500/20 via-orange-500/5 to-transparent',
-    borderColor: 'hover:border-amber-500/50',
+    borderColor: 'border-amber-500/30 hover:border-amber-500/70 hover:shadow-amber-500/20',
     icon: Mic,
   },
 ];
@@ -211,6 +213,13 @@ export default function VenturesSection() {
                   <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {v.description}
                   </p>
+
+                  {v.award && (
+                    <div className="mt-3.5 flex items-center gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs font-semibold text-amber-300 shadow-sm">
+                      <Trophy className="size-4 text-amber-400 shrink-0" />
+                      <span>{v.award}</span>
+                    </div>
+                  )}
 
                   <div className="mt-4 rounded-xl border border-border/70 bg-muted/30 p-2.5 text-xs text-foreground/85">
                     <span className="font-semibold text-accent">Role: </span>

@@ -15,8 +15,8 @@ import {
 const HIGHLIGHTS = [
   {
     icon: Trophy,
-    title: 'Hackathons',
-    desc: 'NASA Space Apps Challenge and FindCoder competitions finalist & winner.',
+    title: 'Awards & Hackathons',
+    desc: '2nd Prize Winner at Rotary Club of Surat (BolnaSeekho.in), plus NASA Space Apps Challenge and FindCoder accolades.',
   },
   {
     icon: Rocket,
