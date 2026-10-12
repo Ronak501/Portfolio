@@ -5,6 +5,7 @@ const BADGES = [
   { name: 'Techsodh.in', tag: 'Venture' },
   { name: 'MyEntryPass.in', tag: 'Venture' },
   { name: 'Shapentic.com', tag: 'Product Studio' },
+  { name: 'BolnaSeekho.in', tag: 'Speech AI' },
   { name: 'React.js', tag: 'Frontend' },
   { name: 'Next.js', tag: 'Full Stack' },
   { name: 'Node.js', tag: 'Runtime' },

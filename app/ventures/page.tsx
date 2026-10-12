@@ -5,7 +5,7 @@ import Marquee from '@/components/Marquee';
 export const metadata: Metadata = {
   title: 'Ventures & Companies | Ronak Talaviya',
   description:
-    'Founder @ Ornitech.in, actively scaling Techsodh.in, MyEntryPass.in, and Shapentic.com. Real-world platforms and civic AI innovations.',
+    'Founder @ Ornitech.in, actively scaling Techsodh.in, MyEntryPass.in, Shapentic.com, and BolnaSeekho.in. Real-world platforms and civic AI innovations.',
 };
 
 export default function VenturesPage() {

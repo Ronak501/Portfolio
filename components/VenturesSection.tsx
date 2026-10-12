@@ -11,6 +11,7 @@ import {
   Compass,
   Layers,
   Crown,
+  Mic,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
 
@@ -71,6 +72,20 @@ const CORE_VENTURES = [
     borderColor: 'hover:border-purple-500/50',
     icon: Layers,
   },
+  {
+    title: 'BolnaSeekho.in',
+    url: 'https://bolnaseekho.in',
+    tagline: 'Interactive Speech, Communication & Language Learning Platform',
+    description:
+      'AI-powered verbal communication and public speaking training ecosystem. Designed to build conversational confidence, pronunciation accuracy, and expressive fluency through voice interaction.',
+    role: 'Creator & Lead Architect',
+    tags: ['Speech AI', 'Language Learning', 'EdTech', 'Voice Models', 'Next.js'],
+    badge: 'Building',
+    isPrimary: false,
+    accentColor: 'from-amber-500/20 via-orange-500/5 to-transparent',
+    borderColor: 'hover:border-amber-500/50',
+    icon: Mic,
+  },
 ];
 
 const CIVIC_AI_VENTURES = [
@@ -122,18 +137,20 @@ export default function VenturesSection() {
             Companies & <span className="text-accent">Products</span>
           </h2>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground">
-            From founding <strong>Ornitech.in</strong> to launching specialized software platforms like <strong>Techsodh</strong>, <strong>MyEntryPass</strong>, and <strong>Shapentic</strong>.
+            From founding <strong>Ornitech.in</strong> to launching specialized software platforms like <strong>Techsodh</strong>, <strong>MyEntryPass</strong>, <strong>Shapentic</strong>, and <strong>BolnaSeekho</strong>.
           </p>
         </div>
 
-        {/* Core Ventures Grid (4 Key Products) */}
+        {/* Core Ventures Grid (Flagship Founder + Active Products) */}
         <div className="grid gap-6 md:grid-cols-2 mb-12">
           {CORE_VENTURES.map((v) => {
             const Icon = v.icon;
             return (
               <div
                 key={v.title}
-                className={`group relative flex flex-col justify-between rounded-3xl border bg-card p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${v.borderColor} overflow-hidden`}
+                className={`group relative flex flex-col justify-between rounded-3xl border bg-card p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${v.borderColor} ${
+                  v.isPrimary ? 'md:col-span-2 border-accent/40 ring-1 ring-accent/20' : ''
+                } overflow-hidden`}
               >
                 {/* Background glow gradient */}
                 <div

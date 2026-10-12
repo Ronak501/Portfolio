@@ -60,7 +60,7 @@ export default function AboutSection() {
             </h3>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              I&apos;m the Founder of <strong className="text-foreground">Ornitech.in</strong>, actively developing <strong className="text-foreground">Techsodh.in</strong>, <strong className="text-foreground">MyEntryPass.in</strong>, and <strong className="text-foreground">Shapentic.com</strong>, while completing my 3rd year in Computer Engineering at SCET, Surat.
+              I&apos;m the Founder of <strong className="text-foreground">Ornitech.in</strong>, actively developing <strong className="text-foreground">Techsodh.in</strong>, <strong className="text-foreground">MyEntryPass.in</strong>, <strong className="text-foreground">Shapentic.com</strong>, and <strong className="text-foreground">BolnaSeekho.in</strong>, while completing my 3rd year in Computer Engineering at SCET, Surat.
             </p>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">

@@ -42,9 +42,9 @@ const MODULES = [
     href: '/ventures',
     category: 'MODULE // 03',
     description:
-      'Founder @ Ornitech.in, actively scaling Techsodh.in, MyEntryPass.in, and Shapentic.com.',
+      'Founder @ Ornitech.in, actively scaling Techsodh.in, MyEntryPass.in, Shapentic.com, and BolnaSeekho.in.',
     icon: Crown,
-    badge: 'Ornitech + 3 Products',
+    badge: 'Ornitech + 4 Products',
     gradient: 'from-accent/25 via-accent/5 to-transparent',
   },
   {

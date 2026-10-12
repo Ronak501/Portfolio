@@ -29,13 +29,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ronak501.github.io'),
   title: 'Ronak Talaviya | Founder & Full Stack AI Developer',
   description:
-    'Portfolio of Ronak Talaviya — Founder @ Ornitech.in, building Techsodh.in, MyEntryPass.in, and Shapentic.com. Full Stack & AI Developer.',
+    'Portfolio of Ronak Talaviya — Founder @ Ornitech.in, building Techsodh.in, MyEntryPass.in, Shapentic.com, and BolnaSeekho.in. Full Stack & AI Developer.',
   keywords: [
     'Ronak Talaviya',
     'Ornitech',
     'Techsodh',
     'MyEntryPass',
     'Shapentic',
+    'BolnaSeekho',
     'Full Stack Developer',
     'AI Engineer',
     'Next.js',
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Ronak Talaviya | Founder & Full Stack AI Developer',
     description:
-      'Founder @ Ornitech.in. Exploring autonomous AI architectures, smart city systems, and scalable full-stack products.',
+      'Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic, and BolnaSeekho. Autonomous AI architectures & scalable full-stack products.',
     url: 'https://ronak501.github.io/',
     siteName: 'Ronak Talaviya Portfolio',
     images: [
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ronak Talaviya | Founder & Full Stack AI Developer',
     description:
-      'Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic. AI & Web Systems.',
+      'Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic, BolnaSeekho. AI & Web Systems.',
     images: ['/Ronak.jpeg'],
     creator: '@ronak_51',
   },

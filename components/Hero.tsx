@@ -54,7 +54,7 @@ export default function Hero() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-75" />
                 <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
               </span>
-              <span>Founder @ Ornitech.in · Building Techsodh, MyEntryPass & Shapentic</span>
+              <span>Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic & BolnaSeekho</span>
             </a>
 
             {/* Intro text */}
@@ -79,7 +79,7 @@ export default function Hero() {
 
             {/* Short Bio */}
             <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Founder at <strong className="text-foreground font-semibold">Ornitech.in</strong>, actively developing <strong className="text-foreground font-semibold">Techsodh.in</strong>, <strong className="text-foreground font-semibold">MyEntryPass.in</strong>, and <strong className="text-foreground font-semibold">Shapentic.com</strong>. Computer Engineering student at SCET Surat crafting resilient full-stack systems and production AI agents.
+              Founder at <strong className="text-foreground font-semibold">Ornitech.in</strong>, actively developing <strong className="text-foreground font-semibold">Techsodh.in</strong>, <strong className="text-foreground font-semibold">MyEntryPass.in</strong>, <strong className="text-foreground font-semibold">Shapentic.com</strong>, and <strong className="text-foreground font-semibold">BolnaSeekho.in</strong>. Computer Engineering student at SCET Surat crafting resilient full-stack systems and production AI agents.
             </p>
 
             {/* Action Buttons */}

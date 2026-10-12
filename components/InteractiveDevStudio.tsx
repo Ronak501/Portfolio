@@ -76,7 +76,7 @@ export default function InteractiveDevStudio() {
         reply = 'Available commands: skills, projects, ventures, contact, whoami, clear';
         break;
       case 'whoami':
-        reply = 'Ronak Talaviya: Founder @ Ornitech.in | Building Techsodh.in, MyEntryPass.in, Shapentic.com | Computer Eng @ SCET';
+        reply = 'Ronak Talaviya: Founder @ Ornitech.in | Building Techsodh.in, MyEntryPass.in, Shapentic.com, BolnaSeekho.in | Computer Eng @ SCET';
         break;
       case 'skills':
         reply = 'Frontend: React, Next.js, TS | Backend: Node.js, FastAPI, Python | AI: YOLOv8, NLP | DB: MongoDB, Docker';
@@ -85,7 +85,7 @@ export default function InteractiveDevStudio() {
         reply = '1. AI Fact Checking | 2. Research Paper Agent | 3. Social Media Analyzer | 4. Task Management | 5. Motel System';
         break;
       case 'ventures':
-        reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. Swachh Sense';
+        reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in | 6. Swachh Sense';
         break;
       case 'contact':
         reply = 'Email: ronaktalaviya51@gmail.com | GitHub: github.com/Ronak501 | LinkedIn: ronak-talaviya';
