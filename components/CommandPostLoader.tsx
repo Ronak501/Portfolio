@@ -10,6 +10,7 @@ import {
   Crown,
   ShieldCheck,
   CheckCircle2,
+  Award,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
 
@@ -25,6 +26,7 @@ const ROUTE_DATA: Record<string, RouteMeta> = {
   '/ai': { title: 'God-Tier AI Engine', badge: 'Agent Architecture', icon: Cpu },
   '/ventures': { title: 'Ventures & Companies', badge: 'Ornitech & Products', icon: Crown },
   '/skills': { title: 'Skills & Tech Stack', badge: 'Tech Matrix', icon: Layers },
+  '/certifications': { title: 'Honors & Certifications', badge: 'Verified Credentials', icon: Award },
   '/about': { title: 'About Ronak Talaviya', badge: 'Engineer Dossier', icon: Sparkles },
   '/contact': { title: 'Communication Uplink', badge: 'Direct Dispatch', icon: Terminal },
   '/terms': { title: 'Terms & Conditions', badge: 'Legal Framework', icon: ShieldCheck },

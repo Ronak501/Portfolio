@@ -2,24 +2,24 @@
 
 const STATS = [
   {
+    value: '₹90K',
+    title: 'Govt SSIP Grant',
+    subtitle: 'Approved for AI Swachh Sense & Vision Sentinel',
+  },
+  {
+    value: '2nd',
+    title: 'Rotary Surat Winner',
+    subtitle: 'Innovation award for BolnaSeekho.in',
+  },
+  {
+    value: '15+',
+    title: 'Verified Credentials',
+    subtitle: 'Google Cloud, Microsoft, ISRO, NASA & Tata',
+  },
+  {
     value: '5+',
-    title: 'Shipped Projects',
-    subtitle: 'Production & hackathon apps',
-  },
-  {
-    value: '3+',
-    title: 'Hackathons Won',
-    subtitle: 'NASA Space Apps & sprints',
-  },
-  {
-    value: '120+',
-    title: 'Users Tested',
-    subtitle: 'Feedback across live deployments',
-  },
-  {
-    value: '75%',
-    title: 'AI Workflow Speedup',
-    subtitle: 'Via automated LLM & agent tasks',
+    title: 'Live Ventures & Apps',
+    subtitle: 'Ornitech, Techsodh, MyEntryPass, Shapentic & BolnaSeekho',
   },
 ];
 

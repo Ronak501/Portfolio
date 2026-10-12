@@ -10,6 +10,7 @@ import {
   Crown,
   Compass,
   CheckCircle2,
+  Award,
 } from 'lucide-react';
 import IntroLoader from '@/components/IntroLoader';
 import Hero from '@/components/Hero';
@@ -58,24 +59,34 @@ const MODULES = [
     gradient: 'from-emerald-500/20 via-teal-500/5 to-transparent',
   },
   {
+    title: 'Honors, Grants & Certifications',
+    href: '/certifications',
+    category: 'MODULE // 05',
+    description:
+      'SSIP ₹90K Govt Grants, Rotary Club 2nd Prize, ISRO & NASA Hackathons, Google Cloud badges, Flipkart & Tata credentials.',
+    icon: Award,
+    badge: '15+ Credentials',
+    gradient: 'from-amber-500/25 via-yellow-500/5 to-transparent',
+  },
+  {
     title: 'About Ronak & Philosophy',
     href: '/about',
-    category: 'MODULE // 05',
+    category: 'MODULE // 06',
     description:
       'Computer Engineering at SCET, hackathon wins (NASA Space Apps), and engineering principles.',
     icon: Sparkles,
     badge: 'Dossier',
-    gradient: 'from-amber-500/20 via-yellow-500/5 to-transparent',
+    gradient: 'from-purple-500/20 via-pink-500/5 to-transparent',
   },
   {
     title: 'Communication & Uplink',
     href: '/contact',
-    category: 'MODULE // 06',
+    category: 'MODULE // 07',
     description:
       'Direct dispatch form, 1-click email copy, social links, and project commission inquiries.',
     icon: Terminal,
     badge: 'Uplink',
-    gradient: 'from-purple-500/20 via-pink-500/5 to-transparent',
+    gradient: 'from-blue-500/20 via-indigo-500/5 to-transparent',
   },
 ];
 
