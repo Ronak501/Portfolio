@@ -87,7 +87,7 @@ export default function InteractiveDevStudio() {
       case 'credits':
       case 'grants':
       case 'funding':
-        reply = 'Cloud & AI Credits ($32.5K+ Total): IACON ($30,000) | Google Cloud ($2,000) | MongoDB ($500) --- Grants (₹5.87L+ Total): SSIP Govt (₹2.87L) | Sarvam AI (₹1.5L) | TechSodh (₹1.5L)';
+        reply = 'Cloud & AI Credits ($32.5K+ Total): AWS ($30,000) | Google Cloud ($2,000) | MongoDB ($500) | Sarvam AI (₹1.5 Lakh Credits) --- Grants (₹5.87L+ Total): SSIP Govt (₹2.87L) | Sarvam AI (₹1.5L) | TechSodh (₹1.5L)';
         break;
       case 'ventures':
         reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in | 6. Swachh Sense (₹1.37L) | 7. Vision Sentinel (₹90K) | 8. Trabit Guard (₹60K)';

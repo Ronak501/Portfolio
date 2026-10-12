@@ -277,14 +277,14 @@ const CREDENTIALS: Credential[] = [
   },
   {
     id: 'sarvam-ai-grant',
-    title: '₹1,50,000 Sarvam AI Innovation Grant — BolnaSeekho',
-    issuer: 'Sarvam AI',
+    title: '₹1.5 Lakh Sarvam AI Speech & GenAI Model Credits — BolnaSeekho',
+    issuer: 'Sarvam AI (Indic GenAI Foundation Models)',
     category: 'credits',
     issueDate: '2025',
-    badgeText: '🤖 ₹1,50,000 AI Grant',
+    badgeText: '🤖 ₹1.5 Lakh AI Credits',
     description:
-      'Secured ₹1,50,000 funding from Sarvam AI to support the development and research of BolnaSeekho.in, an AI-powered speech rehabilitation and interactive English learning platform.',
-    skills: ['Sarvam AI', '₹1,50,000 Grant', 'Speech AI', 'Language Models', 'BolnaSeekho'],
+      'Awarded ₹1,50,000 (₹1.5 Lakh) in Sarvam AI platform credits and speech model APIs to power BolnaSeekho.in with real-time voice intelligence, Indic language modeling, and conversational speech rehabilitation.',
+    skills: ['Sarvam AI', '₹1.5 Lakh Credits', 'Speech-to-Text', 'Indic GenAI', 'BolnaSeekho.in'],
   },
   {
     id: 'techsodh-grant',

@@ -313,6 +313,26 @@ export default function TechStackDiscs() {
           ),
         },
         {
+          name: 'Sarvam AI',
+          badge: '₹1.5 Lakh',
+          icon: (
+            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#0F172A" />
+              <circle cx="64" cy="64" r="50" fill="url(#sarvam_grad)" />
+              <path
+                d="M44 48c0-6 5-10 12-10h16c7 0 12 4 12 10 0 5-3 8-8 10l12 24h-12l-10-20h-8v20H44V48zm12 16h8c3 0 6-2 6-5s-3-5-6-5h-8v10z"
+                fill="#ffffff"
+              />
+              <defs>
+                <linearGradient id="sarvam_grad" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#F97316" />
+                  <stop offset="1" stopColor="#EA580C" />
+                </linearGradient>
+              </defs>
+            </svg>
+          ),
+        },
+        {
           name: 'Google Vision',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">

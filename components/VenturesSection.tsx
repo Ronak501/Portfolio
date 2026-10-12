@@ -83,10 +83,10 @@ const CORE_VENTURES = [
     tagline: 'Interactive Speech, Communication & Language Learning Platform',
     description:
       'AI-powered verbal communication and public speaking training ecosystem. Designed to build conversational confidence, pronunciation accuracy, and expressive fluency through voice interaction.',
-    award: '🏆 2nd Prize Rotary Surat · ₹1,50,000 Sarvam AI Grant',
+    award: '🏆 2nd Prize Rotary Surat · ₹1.5 Lakh Sarvam AI Credits',
     role: 'Creator & Lead Architect',
-    tags: ['Rotary Surat 2nd Prize', '₹1.5L Sarvam AI', 'Speech AI', 'Language Learning', 'EdTech'],
-    badge: 'Building · Rotary 2nd Prize',
+    tags: ['Rotary Surat 2nd Prize', '₹1.5L Sarvam AI Credits', 'Speech AI', 'Language Learning', 'EdTech'],
+    badge: 'Building · ₹1.5L Sarvam AI',
     isPrimary: false,
     accentColor: 'from-amber-500/20 via-orange-500/5 to-transparent',
     borderColor: 'border-amber-500/30 hover:border-amber-500/70 hover:shadow-amber-500/20',

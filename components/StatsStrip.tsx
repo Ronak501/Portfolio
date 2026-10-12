@@ -3,13 +3,13 @@
 const STATS = [
   {
     value: '$32.5K+',
-    title: 'Cloud & AI Credits',
-    subtitle: 'IACON ($30K) · Google Cloud ($2K) · MongoDB ($500)',
+    title: 'Cloud Infrastructure Credits',
+    subtitle: 'AWS ($30K) · Google Cloud ($2K) · MongoDB ($500)',
   },
   {
     value: '₹5.87L+',
-    title: 'Grants & Funding',
-    subtitle: 'SSIP Govt (₹2.87L) · Sarvam AI (₹1.5L) · TechSodh (₹1.5L)',
+    title: 'Grants & AI Credits',
+    subtitle: 'SSIP Govt (₹2.87L) · Sarvam AI (₹1.5L Credits) · TechSodh (₹1.5L)',
   },
   {
     value: '2nd',
