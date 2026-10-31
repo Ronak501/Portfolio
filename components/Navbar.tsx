@@ -111,6 +111,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
+                aria-current={isActive ? 'page' : undefined}
                 onClick={() => sound.playClick()}
                 className={`group relative text-xs lg:text-sm font-semibold transition-colors py-1 ${
                   isActive
@@ -180,7 +181,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => sound.playClick()}
-            className="hidden sm:inline-flex items-center gap-1.5 h-9 rounded-full bg-accent px-4 text-xs sm:text-sm font-semibold text-white shadow-md shadow-accent/20 transition-all duration-200 hover:bg-accent-hover hover:scale-105 active:scale-95"
+            className="motion-scale hidden sm:inline-flex items-center gap-1.5 h-9 rounded-full bg-accent px-4 text-xs sm:text-sm font-semibold text-white shadow-md shadow-accent/20 transition-all duration-200 hover:bg-accent-hover hover:scale-105 active:scale-95"
           >
             <span>Let&apos;s Talk</span>
             <ChevronRight className="size-4" />
@@ -193,7 +194,9 @@ export default function Navbar() {
               sound.playClick();
               setMobileMenuOpen(!mobileMenuOpen);
             }}
-            aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             className="flex size-9 items-center justify-center rounded-full border border-border bg-card text-foreground md:hidden hover:bg-muted"
           >
             {mobileMenuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -203,7 +206,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="border-b border-border bg-card px-4 py-4 md:hidden animate-in slide-in-from-top-2">
+        <div id="mobile-navigation" className="border-b border-border bg-card px-4 py-4 md:hidden animate-in slide-in-from-top-2">
           <nav className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;

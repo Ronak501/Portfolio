@@ -23,14 +23,13 @@ const PROJECTS: ProjectData[] = [
     title: 'MyEntryPass',
     category: 'realtime',
     tags: ['Next.js', 'FastAPI', 'Dynamic QR', 'Real-Time Gates', 'FinTech'],
-    proof: 'Sub-second encrypted QR gate scanning',
+    proof: 'Encrypted rotating QR check-in',
     description:
       'Next-generation digital event ticketing and live QR access management infrastructure. Provides anti-fraud encrypted rotating QR credentials, instantaneous gate scanning verification, and live organizer attendance telemetry.',
     outcome:
-      'Eliminated fraudulent duplicate pass transfers and reduced gate congestion by 65% across high-traffic college & tech events.',
+      'Designed encrypted rotating QR credentials and real-time attendance tracking for event entry.',
     role: 'Founder, Product Architect & Full-Stack Lead',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501',
     demoUrl: 'https://myentrypass.in',
     caseStudy: {
       problem:
@@ -41,9 +40,9 @@ const PROJECTS: ProjectData[] = [
         'Organizer telemetry dashboard providing instant capacity warnings and check-in velocity',
       ],
       keyResults: [
-        'Sub-second scan validation at gate entry points',
-        'Zero unauthorized admissions via single-use rotating token verification',
-        'Scalable serverless backend handling peak checkout and gate rush bursts',
+        'Single-use rotating tokens support duplicate-pass prevention at entry.',
+        'WebSocket synchronization shares scan status across gate devices.',
+        'Organizer telemetry surfaces capacity and check-in activity.',
       ],
     },
   },
@@ -52,14 +51,13 @@ const PROJECTS: ProjectData[] = [
     title: 'Shapentic',
     category: 'fullstack',
     tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'UI/UX Design', 'Product Studio'],
-    proof: '98+ Lighthouse & fluid micro-interactions',
+    proof: 'Interactive digital product experiences',
     description:
       'Modern digital product studio crafting high-converting brand platforms, bespoke user interfaces, and interactive web applications engineered to scale from zero to one.',
     outcome:
-      'Shipped custom interactive digital brand experiences with lighthouse 98+ performance scores and engaging micro-interactions.',
+      'Shipped custom interactive digital brand experiences with reusable interface components and motion design.',
     role: 'Co-Creator & Frontend Architect',
     gradient: 'from-purple-500/20 via-pink-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501',
     demoUrl: 'https://shapentic.com',
     caseStudy: {
       problem:
@@ -67,12 +65,11 @@ const PROJECTS: ProjectData[] = [
       architecture: [
         'Component-driven design system with bespoke typography and tailored dark mode aesthetics',
         'Optimized client-side transitions and fluid micro-animations powered by Framer Motion',
-        'Zero-bloat bundle footprint guaranteeing sub-second Largest Contentful Paint (LCP)',
+        'Reusable component library supports future product experiences.',
       ],
       keyResults: [
-        '98+ Lighthouse scores across SEO, Performance, and Accessibility',
-        'Over 40% increase in visitor interaction time on client pages',
-        'Scalable component library reusable across future venture spin-offs',
+        'Custom interfaces replace generic templates with product-specific branding.',
+        'Interaction patterns and components can be reused across product sites.',
       ],
     },
   },
@@ -88,7 +85,6 @@ const PROJECTS: ProjectData[] = [
       'Secured ₹1,50,000 development grant to accelerate technical research, automated tool categorization, and benchmark comparisons.',
     role: 'Creator & Tech Lead',
     gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501',
     demoUrl: 'https://techsodh.in',
     caseStudy: {
       problem:
@@ -100,8 +96,7 @@ const PROJECTS: ProjectData[] = [
       ],
       keyResults: [
         'Secured ₹1,50,000 Technology Initiative Development Grant',
-        'Thousands of monthly impressions across developer and student tech communities',
-        'Indexed benchmark comparisons for modern developer ecosystems',
+        'Organizes developer tools and benchmark comparisons for discovery.',
       ],
     },
   },
@@ -117,7 +112,6 @@ const PROJECTS: ProjectData[] = [
       'Awarded 2nd Prize at Rotary Club of Surat Innovation Challenge and won ₹1,50,000 (₹1.5 Lakh) model credits from Sarvam AI.',
     role: 'Creator & Lead Architect',
     gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
-    githubUrl: 'https://github.com/Ronak501',
     demoUrl: 'https://bolnaseekho.in',
     caseStudy: {
       problem:
@@ -130,7 +124,7 @@ const PROJECTS: ProjectData[] = [
       keyResults: [
         'Awarded 2nd Prize in Rotary Club of Surat Innovation Challenge',
         'Awarded ₹1,50,000 model and platform credits from Sarvam AI',
-        'Measurable fluency score improvement for users practicing daily voice modules',
+        'Adaptive practice flows provide feedback on pronunciation and speaking exercises.',
       ],
     },
   },
@@ -238,6 +232,7 @@ export default function ProjectsSection() {
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <input
+              aria-label="Search featured projects"
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -268,6 +263,7 @@ export default function ProjectsSection() {
                     ? 'bg-accent text-white shadow-md shadow-accent/20'
                     : 'border border-border bg-card text-foreground/75 hover:bg-muted hover:text-foreground'
                 }`}
+                aria-pressed={filter === tab.id}
               >
                 {tab.label}
               </button>
@@ -276,11 +272,11 @@ export default function ProjectsSection() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group flex flex-col justify-between rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl relative overflow-hidden"
+              className="project-card group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl"
             >
               {/* Subtle top gradient glow */}
               <div
@@ -289,17 +285,17 @@ export default function ProjectsSection() {
 
               <div>
                 {/* Badge and Proof Pill */}
-                <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="mb-4 flex flex-col items-start gap-2">
                   <span className="font-mono text-[11px] font-semibold text-accent bg-accent/15 px-2.5 py-0.5 rounded-full border border-accent/25 uppercase">
                     {project.category}
                   </span>
-                  <span className="font-mono text-[11px] text-emerald-400 font-medium">
+                  <span className="text-xs leading-snug text-muted-foreground">
                     {project.proof}
                   </span>
                 </div>
 
                 {/* Project Title */}
-                <h3 className="font-heading text-xl font-bold text-foreground group-hover:text-accent transition-colors">
+                <h3 className="font-heading text-2xl font-bold text-foreground transition-colors duration-200 group-hover:text-accent">
                   {project.title}
                 </h3>
 
@@ -322,38 +318,49 @@ export default function ProjectsSection() {
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-6 flex items-center justify-between border-t border-border/80 pt-4">
+              <div className="mt-6 flex items-center gap-2 border-t border-border/80 pt-4">
                 <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => openModal(project, 'demo')}
-                    className="rounded-full bg-accent/15 border border-accent/30 px-3 py-1 text-xs font-semibold text-accent hover:bg-accent hover:text-white transition-colors"
-                  >
-                    Live Demo
-                  </button>
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => sound.playClick()}
+                      className="inline-flex min-h-10 items-center rounded-full border border-accent/30 bg-accent/15 px-4 text-xs font-semibold text-accent transition-colors hover:bg-accent hover:text-white"
+                    >
+                      Visit Live Site
+                    </a>
+                  )}
                   <button
                     type="button"
                     onClick={() => openModal(project, 'case')}
-                    className="rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-medium text-foreground hover:bg-muted transition-colors"
+                    className="inline-flex min-h-10 items-center rounded-full border border-border bg-muted/40 px-4 text-xs font-medium text-foreground transition-colors hover:bg-muted"
                   >
                     Case Study
                   </button>
                 </div>
 
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => sound.playClick()}
-                  className="flex size-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground hover:text-foreground hover:border-accent/40 transition-colors"
-                  aria-label="View on GitHub"
-                >
-                  <Github className="size-4" />
-                </a>
               </div>
             </div>
           ))}
         </div>
+        {filteredProjects.length === 0 && (
+          <div role="status" className="mt-6 flex flex-col items-center gap-3 rounded-2xl border border-border bg-card px-5 py-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              No projects match the current search and filter.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery('');
+                setFilter('all');
+              }}
+              className="inline-flex min-h-10 items-center rounded-full border border-accent/30 px-4 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
+            >
+              Clear filters
+            </button>
+          </div>
+        )}
 
         {/* GitHub Repositories Live Feed */}
         <div className="mt-16 rounded-3xl border border-border bg-card/60 p-6 sm:p-8">

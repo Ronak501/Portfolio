@@ -9,6 +9,12 @@ export default function IntroLoader({ onFinish }: { onFinish?: () => void }) {
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      sessionStorage.setItem('intro-seen', 'true');
+      onFinish?.();
+      return;
+    }
+
     // Check if intro was already seen this session
     const seen = sessionStorage.getItem('intro-seen');
     if (seen) {
@@ -49,8 +55,10 @@ export default function IntroLoader({ onFinish }: { onFinish?: () => void }) {
 
   return (
     <div
-      onClick={handleComplete}
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background select-none cursor-pointer transition-opacity duration-600 ${
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="intro-title"
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background select-none transition-opacity duration-600 ${
         fading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
@@ -59,7 +67,7 @@ export default function IntroLoader({ onFinish }: { onFinish?: () => void }) {
           hey, i&apos;m
         </p>
 
-        <h1 className="font-heading text-4xl sm:text-6xl font-black tracking-tight text-foreground bg-gradient-to-r from-foreground via-accent to-foreground bg-clip-text text-transparent">
+        <h1 id="intro-title" className="font-heading text-4xl sm:text-6xl font-black tracking-tight text-accent">
           RONAK
         </h1>
 
@@ -70,6 +78,11 @@ export default function IntroLoader({ onFinish }: { onFinish?: () => void }) {
         {/* Progress Bar */}
         <div className="w-full max-w-xs h-1.5 bg-muted rounded-full mt-8 overflow-hidden relative border border-border">
           <div
+            role="progressbar"
+            aria-label="Loading portfolio intro"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={progress}
             className="h-full bg-accent transition-all duration-100 ease-out rounded-full shadow-[0_0_12px_var(--accent-ink)]"
             style={{ width: `${progress}%` }}
           />
@@ -77,9 +90,14 @@ export default function IntroLoader({ onFinish }: { onFinish?: () => void }) {
 
         <div className="flex items-center justify-between w-full max-w-xs mt-3">
           <span className="font-mono text-xs text-muted-foreground">{progress}%</span>
-          <span className="font-mono text-xs text-muted-foreground/60 hover:text-foreground transition-colors">
+          <button
+            type="button"
+            onClick={handleComplete}
+            autoFocus
+            className="font-mono text-xs text-muted-foreground/60 hover:text-foreground transition-colors focus-visible:text-foreground"
+          >
             click to skip
-          </span>
+          </button>
         </div>
       </div>
     </div>

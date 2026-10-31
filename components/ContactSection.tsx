@@ -1,9 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import confetti from 'canvas-confetti';
 import {
-  Mail,
   MapPin,
   GraduationCap,
   Copy,
@@ -13,13 +11,12 @@ import {
   Linkedin,
   Twitter,
   Instagram,
-  Sparkles,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [draftOpened, setDraftOpened] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,27 +31,15 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-
-    sound.playChime();
-
-    // Trigger celebratory confetti
-    try {
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.7 },
-        colors: ['#f97316', '#38bdf8', '#10b981', '#a855f7'],
-      });
-    } catch {
-      // Confetti fallback
-    }
-
-    setFormSubmitted(true);
-    setFormData({ name: '', email: '', topic: 'project', message: '' });
-    setTimeout(() => setFormSubmitted(false), 6000);
+    const subject = encodeURIComponent(`Portfolio inquiry: ${formData.topic}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nTopic: ${formData.topic}\n\n${formData.message}`,
+    );
+    sound.playClick();
+    window.location.href = `mailto:ronaktalaviya51@gmail.com?subject=${subject}&body=${body}`;
+    setDraftOpened(true);
   };
 
   return (
@@ -198,24 +183,19 @@ export default function ContactSection() {
               Leave your project details, inquiry, or timeline below.
             </p>
 
-            {formSubmitted ? (
-              <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center space-y-2 animate-in zoom-in-95">
-                <Sparkles className="size-8 text-emerald-400 mx-auto" />
-                <h4 className="font-heading text-lg font-bold text-foreground">
-                  Message Sent Successfully!
-                </h4>
-                <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto">
-                  Thank you for reaching out! Ronak will review your message and reply back shortly.
-                </p>
-              </div>
-            ) : (
+            {draftOpened && (
+              <p role="status" className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-sm text-emerald-300">
+                Your email draft should open in your mail app. Review it and press Send to deliver your message. If no mail app opened, use the email address at left.
+              </p>
+            )}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-1.5">
-                    <label className="font-mono text-xs text-muted-foreground font-semibold">
+                    <label htmlFor="contact-name" className="font-mono text-xs text-muted-foreground font-semibold">
                       Your Name
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       required
                       value={formData.name}
@@ -228,10 +208,11 @@ export default function ContactSection() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-mono text-xs text-muted-foreground font-semibold">
+                    <label htmlFor="contact-email" className="font-mono text-xs text-muted-foreground font-semibold">
                       Your Email
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       required
                       value={formData.email}
@@ -245,10 +226,11 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="font-mono text-xs text-muted-foreground font-semibold">
+                  <label htmlFor="contact-topic" className="font-mono text-xs text-muted-foreground font-semibold">
                     Inquiry Topic
                   </label>
                   <select
+                    id="contact-topic"
                     value={formData.topic}
                     onChange={(e) =>
                       setFormData({ ...formData, topic: e.target.value })
@@ -263,10 +245,11 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="font-mono text-xs text-muted-foreground font-semibold">
+                  <label htmlFor="contact-message" className="font-mono text-xs text-muted-foreground font-semibold">
                     Message
                   </label>
                   <textarea
+                    id="contact-message"
                     required
                     rows={4}
                     value={formData.message}
@@ -283,10 +266,9 @@ export default function ContactSection() {
                   className="w-full flex items-center justify-center gap-2 rounded-full bg-accent py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:bg-accent-hover hover:scale-[1.01] active:scale-[0.99] transition-all"
                 >
                   <Send className="size-4" />
-                  <span>Send Message</span>
+                  <span>Open Email Draft</span>
                 </button>
-              </form>
-            )}
+            </form>
           </div>
         </div>
       </div>

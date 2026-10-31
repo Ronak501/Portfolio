@@ -1,6 +1,7 @@
 'use client';
 
-import { X, ExternalLink, Github, CheckCircle2 } from 'lucide-react';
+import { useEffect } from 'react';
+import { X, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { sound } from '@/lib/audio';
 
 export interface ProjectData {
@@ -13,7 +14,6 @@ export interface ProjectData {
   outcome: string;
   role: string;
   gradient: string;
-  githubUrl: string;
   demoUrl?: string;
   caseStudy: {
     problem: string;
@@ -31,17 +31,30 @@ export default function ProjectModal({
   mode: 'demo' | 'case' | null;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    if (!project || !mode) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [project, mode, onClose]);
+
   if (!project || !mode) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
         className="relative w-full max-w-2xl rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-2xl animate-in zoom-in-95 duration-200 overflow-hidden max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
+          autoFocus
           onClick={() => {
             sound.playClick();
             onClose();
@@ -60,7 +73,7 @@ export default function ProjectModal({
           <span className="font-mono text-xs text-muted-foreground">{project.proof}</span>
         </div>
 
-        <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground mb-3">
+        <h3 id="project-modal-title" className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground mb-3">
           {project.title}
         </h3>
 
@@ -160,16 +173,6 @@ export default function ProjectModal({
               </a>
             )}
 
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => sound.playClick()}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-            >
-              <Github className="size-3.5" />
-              <span>GitHub</span>
-            </a>
           </div>
         </div>
       </div>

@@ -10,7 +10,10 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // Only enable for fine pointers (mouse)
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });

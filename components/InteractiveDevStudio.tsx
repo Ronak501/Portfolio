@@ -122,11 +122,7 @@ export default function InteractiveDevStudio() {
           </div>
 
           <div className="flex w-fit shrink-0 items-center gap-2.5 rounded-full border border-border bg-card px-4 py-2 text-xs sm:text-sm font-semibold text-foreground">
-            <span className="flex gap-1">
-              <span className="size-1.5 animate-bounce rounded-full bg-accent" />
-              <span className="size-1.5 animate-bounce rounded-full bg-accent delay-150" />
-              <span className="size-1.5 animate-bounce rounded-full bg-accent delay-300" />
-            </span>
+            <span aria-hidden="true" className="size-2 rounded-full bg-emerald-400" />
             <span>Live Workstation</span>
           </div>
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -24,18 +24,51 @@ const ROLES = [
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % ROLES.length);
-    }, 2800);
-    return () => clearInterval(timer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let timer: ReturnType<typeof setInterval> | undefined;
+    let heroIsVisible = true;
+
+    const stopRotation = () => {
+      if (timer) clearInterval(timer);
+      timer = undefined;
+    };
+    const startRotation = () => {
+      if (!timer && heroIsVisible && !document.hidden) {
+        timer = setInterval(() => {
+          setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        }, 3200);
+      }
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      heroIsVisible = entry.isIntersecting;
+      if (heroIsVisible) startRotation();
+      else stopRotation();
+    }, { threshold: 0.2 });
+
+    if (heroRef.current) observer.observe(heroRef.current);
+    const handleVisibilityChange = () => {
+      if (document.hidden) stopRotation();
+      else startRotation();
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      stopRotation();
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   return (
     <section
+      ref={heroRef}
       id="home"
-      className="relative flex min-h-[640px] lg:min-h-[760px] items-center overflow-hidden border-b border-border bg-grid-pattern"
+      className="relative flex min-h-[640px] lg:min-h-[760px] items-center overflow-hidden border-b border-border bg-background"
     >
       {/* Ambient background glow */}
       <div className="absolute inset-0 bg-radial-vignette pointer-events-none" />
@@ -70,8 +103,8 @@ export default function Hero() {
             {/* Dynamic Animated Role */}
             <div className="flex items-center gap-2 text-xl sm:text-3xl font-bold font-heading text-foreground">
               <span>I build</span>
-              <span className="relative inline-flex overflow-hidden rounded-md bg-accent/15 px-2.5 py-1 text-accent border border-accent/20">
-                <span key={roleIndex} className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+              <span className="relative inline-flex overflow-hidden rounded-md border border-accent/20 bg-accent/15 px-2.5 py-1 text-accent">
+                <span key={roleIndex} className="role-exchange">
                   {ROLES[roleIndex]}
                 </span>
               </span>
@@ -79,7 +112,7 @@ export default function Hero() {
 
             {/* Short Bio */}
             <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Founder at <strong className="text-foreground font-semibold">Ornitech.in</strong>, actively developing <strong className="text-foreground font-semibold">Techsodh.in</strong>, <strong className="text-foreground font-semibold">MyEntryPass.in</strong>, <strong className="text-foreground font-semibold">Shapentic.com</strong>, and <strong className="text-foreground font-semibold">BolnaSeekho.in</strong>. Computer Engineering student at SCET Surat crafting resilient full-stack systems and production AI agents.
+              Computer Engineering student at SCET Surat and founder at <strong className="text-foreground font-semibold">Ornitech</strong>. I build full-stack products and AI systems with Next.js, Python/FastAPI, and computer vision, including <strong className="text-foreground font-semibold">Techsodh</strong>, <strong className="text-foreground font-semibold">MyEntryPass</strong>, <strong className="text-foreground font-semibold">Shapentic</strong>, and <strong className="text-foreground font-semibold">BolnaSeekho</strong>.
             </p>
 
             {/* Action Buttons */}
@@ -120,7 +153,7 @@ export default function Hero() {
               className="mt-4 flex items-center gap-2 text-xs sm:text-sm font-semibold text-muted-foreground hover:text-accent transition-colors"
             >
               <span>Explore my work & ventures</span>
-              <ArrowDown className="size-4 animate-bounce text-accent" />
+              <ArrowDown className="size-4 text-accent" />
             </Link>
           </div>
 
@@ -133,7 +166,7 @@ export default function Hero() {
               {/* Main Card Frame */}
               <div className="relative rounded-3xl border border-border bg-card p-4 sm:p-5 shadow-2xl backdrop-blur-xl">
                 {/* Photo with glowing ring */}
-                <div className="relative aspect-[4/4.5] w-full overflow-hidden rounded-2xl border border-border/80 group">
+                <div className="hero-photo group relative aspect-[4/4.5] w-full overflow-hidden rounded-2xl border border-border/80">
                   <Image
                     src="/Ronak.jpeg"
                     alt="Ronak Talaviya"

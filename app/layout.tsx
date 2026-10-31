@@ -7,6 +7,8 @@ import SoundPlayer from '@/components/SoundPlayer';
 import CustomCursor from '@/components/CustomCursor';
 import CommandPostLoader from '@/components/CommandPostLoader';
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ronak501.github.io').replace(/\/$/, '');
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-heading',
@@ -26,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ronak501.github.io'),
+  metadataBase: new URL(siteUrl),
   title: 'Ronak Talaviya | Founder & Full Stack AI Developer',
   description:
     'Portfolio of Ronak Talaviya — Founder @ Ornitech.in, building Techsodh.in, MyEntryPass.in, Shapentic.com, and BolnaSeekho.in. Full Stack & AI Developer.',
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     title: 'Ronak Talaviya | Founder & Full Stack AI Developer',
     description:
       'Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic, and BolnaSeekho. Autonomous AI architectures & scalable full-stack products.',
-    url: 'https://ronak501.github.io/',
+    url: `${siteUrl}/`,
     siteName: 'Ronak Talaviya Portfolio',
     images: [
       {

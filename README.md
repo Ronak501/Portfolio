@@ -17,11 +17,11 @@
 - 🚀 **Featured Projects & Case Studies**:
   - Filterable by `All`, `AI`, `Full Stack`, and `Real-time`.
   - Search projects by keyword, tech, or topic.
-  - Modals for **Live Demo** previews and **Case Study** architecture breakdowns.
+  - Direct links to live project sites and modals for **Case Study** architecture breakdowns.
   - Real-time GitHub repositories feed pulling dynamically from `https://api.github.com/users/Ronak501/repos`.
 - 🏢 **Ventures Showcase**: Highlighting real-world startup solutions: **Swachh Sense** (Smart City Cleanliness), **Vision Sentinel** (Security Surveillance), and **Transit Guard** (YOLOv8 Transport Monitoring).
 - 🧩 **Categorized Skills Bento Grid**: Frontend, Backend, AI & Computer Vision, and Databases/DevOps with proficiency levels.
-- 📬 **Interactive Contact Section**: 1-click email copy with instant feedback, direct social badges, and working message form with celebratory confetti.
+- 📬 **Interactive Contact Section**: 1-click email copy, direct social badges, and a message form that opens a prefilled email draft for the visitor to send.
 
 ---
 
@@ -61,6 +61,8 @@
    - Build Command: `npm run build`
    - Output Directory: `.next`
 6. Click **Deploy**. Your portfolio will be live worldwide on a `.vercel.app` domain with free SSL!
+
+Set `NEXT_PUBLIC_SITE_URL` in the Vercel project environment variables to the production origin (for example, `https://your-domain.com`) so Open Graph URLs match the deployed site. Without it, metadata uses `https://ronak501.github.io`.
 
 ### Option 2: Deploy via Vercel CLI
 
