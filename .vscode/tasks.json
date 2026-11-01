@@ -1,0 +1,49 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Inspect manifests and status",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"echo --- package.json --- & type package.json & echo --- package-lock.json top --- & powershell -NoProfile -Command \"Get-Content package-lock.json -TotalCount 80\" & echo --- git status --- & git status --short"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Patch npm dependencies",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"npm install --save-exact next@15.5.28 react@18.3.1 react-dom@18.3.1 && npm install --save-dev --save-exact postcss@8.5.32"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Audit and build",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"npm audit --omit=dev && npm run build"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Complete npm install",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"npm install"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
