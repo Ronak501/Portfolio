@@ -1,6 +1,6 @@
 # Ronak Talaviya — Modern Portfolio (Next.js & Vercel Ready)
 
-> A modern, high-performance portfolio engineered with **Next.js 14**, **React 18**, **Tailwind CSS**, and **TypeScript**, inspired by [synitx.dev](https://synitx.dev/).
+> A modern, high-performance portfolio engineered with **Next.js 16**, **React 19**, **Tailwind CSS**, and **TypeScript**, inspired by [synitx.dev](https://synitx.dev/).
 
 ---
 
@@ -19,7 +19,7 @@
   - Search projects by keyword, tech, or topic.
   - Direct links to live project sites and modals for **Case Study** architecture breakdowns.
   - Real-time GitHub repositories feed pulling dynamically from `https://api.github.com/users/Ronak501/repos`.
-- 🏢 **Ventures Showcase**: Highlighting real-world startup solutions: **Swachh Sense** (Smart City Cleanliness), **Vision Sentinel** (Security Surveillance), and **Transit Guard** (YOLOv8 Transport Monitoring).
+- 🏢 **Ventures & Civic AI Showcase**: Highlighting commercial ventures (**Ornitech**, **Techsodh**, **MyEntryPass**, **Shapentic**, **BolnaSeekho**) and grant-funded smart-city systems (**Swachh Sense**, **Vision Sentinel**, and **Transit Guard**).
 - 🧩 **Categorized Skills Bento Grid**: Frontend, Backend, AI & Computer Vision, and Databases/DevOps with proficiency levels.
 - 📬 **Interactive Contact Section**: 1-click email copy, direct social badges, and a message form that opens a prefilled email draft for the visitor to send.
 

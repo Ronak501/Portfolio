@@ -117,34 +117,38 @@ confidence: 0.984`;
           </div>
         </div>
 
-        {/* High-Impact Stat Metrics */}
+        {/* High-Impact Stat Metrics (Grounded in benchmark & pipeline evaluations) */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-10">
           <div className="rounded-2xl border border-border bg-card p-4">
             <div className="flex items-baseline gap-1 text-accent font-heading text-2xl sm:text-3xl font-extrabold">
               <TrendingDown className="size-5" /> 42%
             </div>
-            <p className="mt-1 text-xs font-semibold text-muted-foreground">Token Overhead Reduction</p>
+            <p className="mt-1 text-xs font-semibold text-foreground">Token Overhead Reduction</p>
+            <p className="mt-0.5 text-[11px] text-muted-foreground">Tabular schema vs verbose JSON (68 vs 118 tokens)</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-card p-4">
             <div className="text-accent font-heading text-2xl sm:text-3xl font-extrabold">
               98.6%
             </div>
-            <p className="mt-1 text-xs font-semibold text-muted-foreground">Tool Call Execution Rate</p>
+            <p className="mt-1 text-xs font-semibold text-foreground">Schema-Valid Tool Calls</p>
+            <p className="mt-0.5 text-[11px] text-muted-foreground">With automated self-healing retry guardrails</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-card p-4">
             <div className="text-accent font-heading text-2xl sm:text-3xl font-extrabold">
               &lt;180ms
             </div>
-            <p className="mt-1 text-xs font-semibold text-muted-foreground">Vector Search P95 Latency</p>
+            <p className="mt-1 text-xs font-semibold text-foreground">Vector Search P95 Latency</p>
+            <p className="mt-0.5 text-[11px] text-muted-foreground">Indexed top-k cosine similarity retrieval</p>
           </div>
 
           <div className="rounded-2xl border border-border bg-card p-4">
             <div className="text-accent font-heading text-2xl sm:text-3xl font-extrabold">
-              Zero
+              Strict
             </div>
-            <p className="mt-1 text-xs font-semibold text-muted-foreground">Ungrounded Hallucinations</p>
+            <p className="mt-1 text-xs font-semibold text-foreground">Citation-Grounded Output</p>
+            <p className="mt-0.5 text-[11px] text-muted-foreground">Abstains when source similarity &lt; 0.85</p>
           </div>
         </div>
 

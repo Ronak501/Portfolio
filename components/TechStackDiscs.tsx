@@ -7,29 +7,8 @@ export default function TechStackDiscs() {
   const categories = [
     {
       id: 'code',
-      title: 'CODE',
+      title: 'CODE & FULL-STACK',
       items: [
-        {
-          name: 'Roblox Studio',
-          icon: (
-            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <path d="M26 12l88 24-26 80-88-24L26 12z" fill="#E2231A" />
-              <rect x="52" y="52" width="24" height="24" rx="3" transform="rotate(15 64 64)" fill="#fff" />
-            </svg>
-          ),
-        },
-        {
-          name: 'Luau',
-          icon: (
-            <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <circle cx="64" cy="64" r="54" fill="#000080" />
-              <circle cx="86" cy="40" r="16" fill="#fff" />
-              <circle cx="38" cy="78" r="8" fill="#fff" />
-              <circle cx="98" cy="28" r="6" fill="#000080" />
-              <text x="44" y="74" fill="#fff" fontSize="22" fontFamily="sans-serif" fontWeight="bold">Lua</text>
-            </svg>
-          ),
-        },
         {
           name: 'Next.js',
           icon: (
@@ -46,6 +25,33 @@ export default function TechStackDiscs() {
                   <stop offset="1" stopColor="#fff" stopOpacity="0" />
                 </linearGradient>
               </defs>
+            </svg>
+          ),
+        },
+        {
+          name: 'React Native',
+          icon: (
+            <svg viewBox="0 0 115 102" className="size-7 sm:size-8" fill="none">
+              <ellipse cx="57.5" cy="51" rx="55" ry="20" stroke="#38BDF8" strokeWidth="6" />
+              <ellipse
+                cx="57.5"
+                cy="51"
+                rx="55"
+                ry="20"
+                stroke="#38BDF8"
+                strokeWidth="6"
+                transform="rotate(60 57.5 51)"
+              />
+              <ellipse
+                cx="57.5"
+                cy="51"
+                rx="55"
+                ry="20"
+                stroke="#38BDF8"
+                strokeWidth="6"
+                transform="rotate(120 57.5 51)"
+              />
+              <circle cx="57.5" cy="51" r="9" fill="#38BDF8" />
             </svg>
           ),
         },
@@ -194,14 +200,18 @@ export default function TechStackDiscs() {
           ),
         },
         {
-          name: 'Unreal Engine',
+          name: 'WebSockets & Real-Time',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <circle cx="64" cy="64" r="60" fill="#0E1128" stroke="#31364A" strokeWidth="4" />
-              <circle cx="64" cy="64" r="48" fill="#0E1128" />
-              <text x="64" y="80" fill="#fff" fontSize="56" fontFamily="serif" fontWeight="bold" textAnchor="middle">
-                U
-              </text>
+              <circle cx="64" cy="64" r="60" fill="#0F172A" stroke="#10B981" strokeWidth="4" />
+              <path
+                d="M36 52h40l-12-12m28 36H52l12 12"
+                stroke="#10B981"
+                strokeWidth="8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
             </svg>
           ),
         },
@@ -209,7 +219,7 @@ export default function TechStackDiscs() {
     },
     {
       id: 'design',
-      title: 'DESIGN & 3D',
+      title: 'UI/UX & PRODUCT CRAFT',
       items: [
         {
           name: 'Figma',
@@ -224,60 +234,61 @@ export default function TechStackDiscs() {
           ),
         },
         {
-          name: 'Photoshop',
+          name: 'Framer Motion',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <rect width="128" height="128" rx="24" fill="#001E36" />
-              <text x="64" y="82" fill="#31A8FF" fontSize="52" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle">
-                Ps
-              </text>
+              <rect width="128" height="128" rx="24" fill="#111827" />
+              <path d="M36 28h56v28H64L36 28zm0 28h28l28 28H36V56zm0 28h28v24L36 84z" fill="#A855F7" />
             </svg>
           ),
         },
         {
-          name: 'Affinity',
+          name: 'Design Systems',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <circle cx="64" cy="64" r="64" fill="#1B1C20" />
-              <text x="64" y="82" fill="#884DFF" fontSize="50" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle">
-                Af
-              </text>
+              <circle cx="64" cy="64" r="64" fill="#1E1B4B" />
+              <rect x="30" y="30" width="30" height="30" rx="6" fill="#818CF8" />
+              <rect x="68" y="30" width="30" height="30" rx="6" fill="#C084FC" />
+              <rect x="30" y="68" width="68" height="30" rx="6" fill="#38BDF8" />
             </svg>
           ),
         },
         {
-          name: 'Photopea',
+          name: 'Responsive Architecture',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <rect width="128" height="128" rx="24" fill="#18A499" />
-              <circle cx="64" cy="64" r="34" fill="#fff" />
-              <circle cx="64" cy="64" r="22" fill="#18A499" />
-              <path d="M64 42v44" stroke="#fff" strokeWidth="8" strokeLinecap="round" />
+              <rect width="128" height="128" rx="24" fill="#064E3B" />
+              <rect x="24" y="30" width="64" height="48" rx="6" stroke="#34D399" strokeWidth="6" fill="none" />
+              <rect x="74" y="50" width="30" height="50" rx="5" fill="#064E3B" stroke="#A7F3D0" strokeWidth="6" />
             </svg>
           ),
         },
         {
-          name: 'Blender',
+          name: 'Web Audio & Canvas',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
+              <circle cx="64" cy="64" r="64" fill="#1F2937" />
               <path
-                d="M64 18c-22 0-38 16-38 38 0 15 8 27 20 33L28 106l16 4 14-16c2 .3 4 .5 6 .5 22 0 40-18 40-40 0-20-16-36-40-36z"
-                fill="#EA7600"
+                d="M28 64v-8m18 24V48m18 36V36m18 40V44m18 28v-16"
+                stroke="#F97316"
+                strokeWidth="8"
+                strokeLinecap="round"
               />
-              <circle cx="64" cy="56" r="14" fill="#fff" />
-              <circle cx="64" cy="56" r="8" fill="#265787" />
-              <path d="M84 40l28-14-14 26" fill="#EA7600" />
             </svg>
           ),
         },
         {
-          name: 'Substance Painter',
+          name: 'Accessibility (WCAG)',
           icon: (
             <svg viewBox="0 0 128 128" className="size-7 sm:size-8">
-              <rect width="128" height="128" rx="24" fill="#1B1C20" />
-              <text x="64" y="82" fill="#E23048" fontSize="52" fontFamily="sans-serif" fontWeight="bold" textAnchor="middle">
-                Pt
-              </text>
+              <rect width="128" height="128" rx="24" fill="#1E3A8A" />
+              <circle cx="64" cy="36" r="10" fill="#60A5FA" />
+              <path
+                d="M34 52h60M64 52v26m0 0l-16 24m16-24l16 24"
+                stroke="#fff"
+                strokeWidth="8"
+                strokeLinecap="round"
+              />
             </svg>
           ),
         },

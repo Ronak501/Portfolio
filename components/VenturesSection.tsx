@@ -51,7 +51,7 @@ const CORE_VENTURES = [
   },
   {
     title: 'MyEntryPass.in',
-    url: 'https://myentryPass.in',
+    url: 'https://myentrypass.in',
     tagline: 'Next-Gen Digital Ticketing & Live QR Access Management',
     description:
       'Seamless event ticketing and access control infrastructure. Provides dynamic fraud-proof QR credentials, instant gate scanning, and live organizer analytics.',
@@ -120,7 +120,7 @@ const CIVIC_AI_VENTURES = [
     badge: '₹90,000 Govt Grant',
   },
   {
-    title: 'Trabit Guard',
+    title: 'Transit Guard',
     tagline: 'YOLOv8 Edge Passenger Counting & Transport Analytics',
     description:
       'Computer vision system using YOLOv8 for passenger flow tracking, overcrowding detection, and transit capacity metrics.',
@@ -268,15 +268,23 @@ export default function VenturesSection() {
 
         {/* Civic AI & Smart City Innovations */}
         <div className="rounded-3xl border border-border bg-card/50 p-6 sm:p-8">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
             <div>
               <span className="font-mono text-xs font-bold text-accent uppercase tracking-wider">
-                Civic & Computer Vision Systems
+                Civic & Computer Vision Grants (₹2.87L SSIP)
               </span>
               <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground mt-0.5">
                 AI Solutions for Public Infrastructure
               </h3>
             </div>
+            <a
+              href="#projects"
+              onClick={() => sound.playClick()}
+              className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-accent hover:underline"
+            >
+              <span>Read Architecture Case Studies below</span>
+              <ArrowUpRight className="size-3.5" />
+            </a>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-3">

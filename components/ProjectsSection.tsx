@@ -19,112 +19,162 @@ import { sound } from '@/lib/audio';
 
 const PROJECTS: ProjectData[] = [
   {
-    id: 'myentrypass',
-    title: 'MyEntryPass',
-    category: 'realtime',
-    tags: ['Next.js', 'FastAPI', 'Dynamic QR', 'Real-Time Gates', 'FinTech'],
-    proof: 'Encrypted rotating QR check-in',
+    id: 'swachh-sense',
+    title: 'Swachh Sense',
+    category: 'ai',
+    tags: ['SSIP ₹1.37L Grant', 'Computer Vision', 'IoT Sensors', 'FastAPI', 'Smart City'],
+    proof: '🏛️ ₹1,37,000 SSIP Govt Prototype Grant',
     description:
-      'Next-generation digital event ticketing and live QR access management infrastructure. Provides anti-fraud encrypted rotating QR credentials, instantaneous gate scanning verification, and live organizer attendance telemetry.',
+      'AI-driven municipal cleanliness monitoring and IoT waste detection platform. Analyzes CCTV and edge camera feeds to detect urban waste overflow and automatically dispatches sanitation teams with GPS coordinates.',
     outcome:
-      'Designed encrypted rotating QR credentials and real-time attendance tracking for event entry.',
-    role: 'Founder, Product Architect & Full-Stack Lead',
+      'Awarded ₹1,37,000 SSIP Gujarat prototype grant; automated civic waste detection and dispatch routing.',
+    role: 'Lead AI & IoT Systems Architect',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
-    demoUrl: 'https://myentrypass.in',
     caseStudy: {
       problem:
-        'Traditional paper tickets and static barcodes suffer from counterfeit copying, gate bottleneck delays, and zero real-time attendee tracking.',
+        'Manual municipal waste inspections rely on delayed citizen complaints, leading to uncollected urban waste hotspots and inefficient sanitation truck routing.',
       architecture: [
-        'High-throughput dynamic encrypted QR token generation preventing duplicate entry',
-        'Real-time WebSocket scanning synchronization across distributed mobile gate scanners',
-        'Organizer telemetry dashboard providing instant capacity warnings and check-in velocity',
+        'Edge computer vision pipeline detecting waste accumulation severity and bin fill levels from camera streams',
+        'IoT ultrasonic and weight telemetry fused with FastAPI ingestion microservices',
+        'Automated municipal alert engine dispatching geotagged tickets to nearest sanitation crews',
       ],
       keyResults: [
-        'Single-use rotating tokens support duplicate-pass prevention at entry.',
-        'WebSocket synchronization shares scan status across gate devices.',
-        'Organizer telemetry surfaces capacity and check-in activity.',
+        'Approved for ₹1,37,000 SSIP Gujarat Government Prototype Grant',
+        'Real-time waste classification and severity scoring across multi-camera streams',
+        'Automated ticket routing reduces manual inspection overhead for civic authorities',
       ],
     },
   },
   {
-    id: 'shapentic',
-    title: 'Shapentic',
-    category: 'fullstack',
-    tags: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'UI/UX Design', 'Product Studio'],
-    proof: 'Interactive digital product experiences',
-    description:
-      'Modern digital product studio crafting high-converting brand platforms, bespoke user interfaces, and interactive web applications engineered to scale from zero to one.',
-    outcome:
-      'Shipped custom interactive digital brand experiences with reusable interface components and motion design.',
-    role: 'Co-Creator & Frontend Architect',
-    gradient: 'from-purple-500/20 via-pink-500/10 to-transparent',
-    demoUrl: 'https://shapentic.com',
-    caseStudy: {
-      problem:
-        'Early-stage ventures and modern brands struggle with generic templates that fail to convert visitors or communicate technical credibility.',
-      architecture: [
-        'Component-driven design system with bespoke typography and tailored dark mode aesthetics',
-        'Optimized client-side transitions and fluid micro-animations powered by Framer Motion',
-        'Reusable component library supports future product experiences.',
-      ],
-      keyResults: [
-        'Custom interfaces replace generic templates with product-specific branding.',
-        'Interaction patterns and components can be reused across product sites.',
-      ],
-    },
-  },
-  {
-    id: 'techsodh',
-    title: 'Techsodh',
+    id: 'vision-sentinel',
+    title: 'Vision Sentinel',
     category: 'ai',
-    tags: ['₹1.5L Grant', 'Next.js', 'Automated Curation', 'Tech Discovery', 'AI Insights'],
-    proof: '₹1,50,000 Technology Initiative Grant',
+    tags: ['SSIP ₹90K Grant', 'Google Vision AI', 'Real-Time Alerts', 'Python', 'Security'],
+    proof: '🏛️ ₹90,000 SSIP Govt Prototype Grant',
     description:
-      'Curated developer discovery and tech ecosystem platform dedicated to in-depth research, software reviews, benchmark evaluations, and emerging developer tooling insights.',
+      'Intelligent video surveillance and anomaly detection platform utilizing computer vision to identify unauthorized perimeter breaches, crowd anomalies, and safety hazards in real time.',
     outcome:
-      'Secured ₹1,50,000 development grant to accelerate technical research, automated tool categorization, and benchmark comparisons.',
-    role: 'Creator & Tech Lead',
+      'Awarded ₹90,000 SSIP Gujarat prototype grant for automated real-time threat and anomaly surveillance.',
+    role: 'Computer Vision & Backend Lead',
     gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
-    demoUrl: 'https://techsodh.in',
     caseStudy: {
       problem:
-        'Developers face acute discovery fatigue when evaluating hundreds of competing AI tools, frameworks, and APIs without objective benchmarks.',
+        'Security personnel monitoring dozens of simultaneous CCTV feeds experience severe attention fatigue, missing critical perimeter breaches or safety incidents.',
       architecture: [
-        'Automated pipeline scraping, indexing, and categorizing developer releases',
-        'Interactive comparison matrix evaluating speed, licensing, and API costs',
-        'Serverless incremental static regeneration (ISR) keeping benchmark indexes fresh with low server overhead',
+        'Low-latency frame sampling and object/anomaly classification using Google Vision and custom CV detectors',
+        'Event-driven alert dispatcher pushing instant incident snapshots and bounding-box metadata to operators',
+        'Configurable zone rules and audit trail logging for industrial and campus security compliance',
       ],
       keyResults: [
-        'Secured ₹1,50,000 Technology Initiative Development Grant',
-        'Organizes developer tools and benchmark comparisons for discovery.',
+        'Approved for ₹90,000 SSIP Gujarat Government Prototype Grant',
+        'Sub-second anomaly flagging with automated visual evidence capture',
+        'Reduces operator monitoring fatigue across multi-stream surveillance setups',
       ],
     },
   },
   {
-    id: 'bolnaseekho',
-    title: 'BolnaSeekho',
-    category: 'ai',
-    tags: ['Rotary 2nd Prize', '₹1.5L Sarvam AI', 'Speech AI', 'Language Models', 'EdTech'],
-    proof: '2nd Prize Rotary Surat · ₹1.5L Sarvam AI',
+    id: 'transit-guard',
+    title: 'Transit Guard',
+    category: 'realtime',
+    tags: ['₹60K Govt Grant', 'YOLOv8', 'Edge AI', 'WebSockets', 'Public Transit'],
+    proof: '🏛️ ₹60,000 Govt Grant · 96% Counting Precision',
     description:
-      'AI-powered verbal communication, pronunciation training, and speech stuttering rehabilitation ecosystem. Empowers users to build conversational fluency and public speaking confidence through interactive voice AI.',
+      'YOLOv8 edge computer vision system for public transport passenger flow tracking, boarding/alighting counts, overcrowding detection, and live fleet capacity telemetry.',
     outcome:
-      'Awarded 2nd Prize at Rotary Club of Surat Innovation Challenge and won ₹1,50,000 (₹1.5 Lakh) model credits from Sarvam AI.',
-    role: 'Creator & Lead Architect',
+      'Awarded ₹60,000 prototype grant; achieved 96% passenger counting precision in edge transit evaluations.',
+    role: 'Edge AI & Vision Pipeline Architect',
     gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
-    demoUrl: 'https://bolnaseekho.in',
     caseStudy: {
       problem:
-        'Speech rehabilitation and conversational confidence training are prohibitively expensive and inaccessible, leaving millions without guided practice.',
+        'Public transit authorities lack accurate, real-time occupancy data per bus or coach, causing severe overcrowding on peak routes and underutilized fleet scheduling.',
       architecture: [
-        'Low-latency speech-to-text and audio feature extraction analyzing pitch and pauses',
-        'Indic voice foundation models fine-tuned with Sarvam AI for pronunciation precision',
-        'Adaptive conversational feedback loops generating progressive fluency exercises',
+        'YOLOv8 object detection paired with centroid/ByteTrack multi-object tracking across doorway regions-of-interest',
+        'Directional line-crossing vector logic distinguishing boarding vs. alighting passengers under occlusion',
+        'Real-time WebSocket telemetry streaming live occupancy percentages to central transit dashboards',
       ],
       keyResults: [
-        'Awarded 2nd Prize in Rotary Club of Surat Innovation Challenge',
-        'Awarded ₹1,50,000 model and platform credits from Sarvam AI',
-        'Adaptive practice flows provide feedback on pronunciation and speaking exercises.',
+        'Awarded ₹60,000 Government Prototype Grant',
+        '96% counting precision validated across crowded doorway entry/exit scenarios',
+        'Live overcrowding alerts support dynamic fleet dispatch decisions',
+      ],
+    },
+  },
+  {
+    id: 'nasa-space-apps',
+    title: 'Planetary & Earth Telemetry Explorer',
+    category: 'ai',
+    tags: ['NASA Space Apps', 'Satellite Data', 'Geospatial AI', 'Next.js', 'Python'],
+    proof: '🚀 NASA Space Apps Global Hackathon Winner & Finalist',
+    description:
+      'Interactive Earth observation and planetary data intelligence platform built for the NASA Space Apps Challenge, fusing open satellite datasets with AI anomaly modeling and visual telemetry.',
+    outcome:
+      'Recognized at NASA Space Apps Challenge (2024 & 2025) for rapid geospatial prototyping and scientific visualization.',
+    role: 'Team Lead & Full-Stack AI Engineer',
+    gradient: 'from-purple-500/20 via-pink-500/10 to-transparent',
+    caseStudy: {
+      problem:
+        'Raw multi-spectral satellite and planetary telemetry datasets are massive and difficult for researchers, students, and policymakers to query and interpret interactively.',
+      architecture: [
+        'Automated data ingestion normalizing NASA open APIs and geospatial raster/vector layers',
+        'AI-assisted pattern recognition highlighting environmental anomalies and temporal changes',
+        'Interactive web visualization dashboard with timeline scrubbing and coordinate telemetry inspection',
+      ],
+      keyResults: [
+        'NASA Space Apps Challenge Winner & Finalist across 2024 and 2025 cohorts',
+        'Transforms complex satellite datasets into an intuitive, low-latency browser interface',
+      ],
+    },
+  },
+  {
+    id: 'isro-antariksh',
+    title: 'ISRO Geospatial Payload Analytics',
+    category: 'realtime',
+    tags: ['ISRO Finalist', 'Remote Sensing', 'Computer Vision', 'FastAPI', 'Telemetry'],
+    proof: '🛰️ ISRO Bharatiya Antariksh Hackathon Finalist',
+    description:
+      'Geospatial intelligence and automated remote-sensing image analysis pipeline engineered for the ISRO Bharatiya Antariksh Hackathon, processing high-resolution satellite imagery and payload telemetry.',
+    outcome:
+      'Selected as National Finalist in the ISRO Bharatiya Antariksh Hackathon (September 2025).',
+    role: 'Geospatial AI & Backend Architect',
+    gradient: 'from-cyan-500/20 via-blue-500/10 to-transparent',
+    caseStudy: {
+      problem:
+        'High-resolution remote sensing imagery requires automated feature extraction and rapid coordinate indexing to be actionable during time-sensitive space and terrain missions.',
+      architecture: [
+        'Tile-based satellite image preprocessing and multi-scale computer vision segmentation',
+        'FastAPI asynchronous processing queue for high-throughput payload telemetry decoding',
+        'Structured geospatial metadata output compatible with standard GIS workflows',
+      ],
+      keyResults: [
+        'National Finalist in ISRO Bharatiya Antariksh Hackathon 2025',
+        'High-throughput tile segmentation pipeline designed for rapid terrain analysis',
+      ],
+    },
+  },
+  {
+    id: 'profile-and-task-suite',
+    title: 'Profile Analyzer & Real-Time Task Suite',
+    category: 'fullstack',
+    tags: ['React', 'Next.js', 'FastAPI', 'WebSockets', 'Docker', 'TypeScript'],
+    proof: '⚡ Open-Source Full-Stack & Real-Time Systems',
+    description:
+      'Production-ready open-source full-stack systems: an AI-assisted Social Media Profile Analyzer built with FastAPI + React, and a collaborative real-time Task Management platform powered by WebSockets and Docker.',
+    outcome:
+      'Shipped containerized full-stack architectures demonstrating clean REST/WebSocket APIs and responsive UI state sync.',
+    role: 'Full-Stack Creator & Maintainer',
+    gradient: 'from-orange-500/20 via-amber-500/10 to-transparent',
+    demoUrl: 'https://github.com/Ronak501/profile-analyzer',
+    caseStudy: {
+      problem:
+        'Teams and creators need fast, self-hostable full-stack templates that combine Python AI/analytics backends with real-time TypeScript/React frontends.',
+      architecture: [
+        'FastAPI REST & asynchronous analytics engine paired with a responsive React/TypeScript frontend',
+        'Bi-directional WebSocket state synchronization for instant multi-user task board updates',
+        'Multi-container Docker Compose orchestration for reproducible one-command deployment',
+      ],
+      keyResults: [
+        'Publicly available open-source repositories on GitHub (@Ronak501)',
+        'Demonstrates end-to-end TypeScript + Python full-stack engineering with Docker',
       ],
     },
   },
@@ -190,10 +240,7 @@ export default function ProjectsSection() {
   }, []);
 
   const filteredProjects = PROJECTS.filter((proj) => {
-    const matchesFilter =
-      filter === 'all' ||
-      proj.category === filter ||
-      (filter === 'fullstack' && proj.tags.includes('React') && proj.tags.includes('Node.js'));
+    const matchesFilter = filter === 'all' || proj.category === filter;
 
     const matchesSearch =
       searchQuery === '' ||
@@ -216,13 +263,13 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
-            Portfolio
+            Engineering Case Studies
           </span>
           <h2 className="mt-3 font-heading text-3xl sm:text-5xl font-extrabold text-foreground">
-            Featured <span className="text-accent">Work</span>
+            Featured <span className="text-accent">Systems</span>
           </h2>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground">
-            Handcrafted production-grade projects, AI prototypes, and live GitHub repositories.
+            Grant-funded civic AI prototypes, national hackathon architectures, and open-source GitHub repositories.
           </p>
         </div>
 

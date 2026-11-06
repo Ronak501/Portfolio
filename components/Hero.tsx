@@ -78,8 +78,8 @@ export default function Hero() {
           {/* Left Column: Headlines & CTA */}
           <div className="flex flex-col items-start gap-6 lg:col-span-7">
             {/* Status Pill */}
-            <a
-              href="#ventures"
+            <Link
+              href="/work#ventures"
               onClick={() => sound.playClick()}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card/90 px-3.5 py-1 text-xs sm:text-sm font-semibold text-foreground backdrop-blur hover:border-accent/40 transition-colors shadow-sm"
             >
@@ -88,7 +88,7 @@ export default function Hero() {
                 <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
               </span>
               <span>Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic & BolnaSeekho</span>
-            </a>
+            </Link>
 
             {/* Intro text */}
             <div className="space-y-1">

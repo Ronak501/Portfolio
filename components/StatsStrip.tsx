@@ -9,7 +9,7 @@ const STATS = [
   {
     value: '₹5.87L+',
     title: 'Grants & AI Credits',
-    subtitle: '₹4.37L in grants · ₹1.5L Sarvam AI credits',
+    subtitle: '₹4.37L Grants (₹2.87L SSIP + ₹1.5L Tech) · ₹1.5L Sarvam AI',
   },
   {
     value: '2nd',

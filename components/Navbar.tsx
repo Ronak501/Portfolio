@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -31,6 +31,25 @@ export default function Navbar() {
   const [theme, setTheme] = useState<Theme>('sunset');
   const [themeOpen, setThemeOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const themeDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!themeOpen) return;
+    const handlePointerDown = (e: MouseEvent) => {
+      if (themeDropdownRef.current && !themeDropdownRef.current.contains(e.target as Node)) {
+        setThemeOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setThemeOpen(false);
+    };
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [themeOpen]);
 
   useEffect(() => {
     // Read saved theme
@@ -133,7 +152,7 @@ export default function Navbar() {
         {/* Actions: Theme Switcher & Let's Talk CTA */}
         <div className="flex items-center gap-2.5 sm:gap-3">
           {/* Theme Dropdown */}
-          <div className="relative">
+          <div ref={themeDropdownRef} className="relative">
             <button
               type="button"
               onClick={() => {

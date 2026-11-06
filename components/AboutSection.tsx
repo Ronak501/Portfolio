@@ -15,8 +15,8 @@ import {
 const HIGHLIGHTS = [
   {
     icon: Trophy,
-    title: '₹2.87L Govt Prototype Grants',
-    desc: 'Approved SSIP funding: Swachh Sense (₹1.37L), Vision Sentinel (₹90K), and Trabit Guard (₹60K).',
+    title: '₹4.37L Total Grants (₹2.87L SSIP)',
+    desc: 'Techsodh (₹1.5L Tech Grant) + SSIP Govt Grants: Swachh Sense (₹1.37L), Vision Sentinel (₹90K), and Transit Guard (₹60K).',
   },
   {
     icon: Rocket,

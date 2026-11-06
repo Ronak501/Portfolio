@@ -82,15 +82,15 @@ export default function InteractiveDevStudio() {
         reply = 'Frontend: React, Next.js, TS | Backend: Node.js, FastAPI, Python | AI: YOLOv8, NLP | DB: MongoDB, Docker';
         break;
       case 'projects':
-        reply = '1. MyEntryPass (myentrypass.in) | 2. Shapentic (shapentic.com) | 3. Techsodh (techsodh.in) | 4. BolnaSeekho (bolnaseekho.in)';
+        reply = '1. Swachh Sense (₹1.37L SSIP) | 2. Vision Sentinel (₹90K SSIP) | 3. Transit Guard (₹60K Grant) | 4. NASA Space Apps | 5. ISRO Antariksh | 6. Profile Analyzer & Task Suite';
         break;
       case 'credits':
       case 'grants':
       case 'funding':
-        reply = 'Cloud & AI Credits ($32.5K+ Total): IACON ($30,000) | Google Cloud ($2,000) | MongoDB ($500) | Sarvam AI (₹1.5 Lakh Credits) --- Grants (₹5.87L+ Total): SSIP Govt (₹2.87L) | Sarvam AI (₹1.5L) | TechSodh (₹1.5L)';
+        reply = 'Cloud & AI Credits ($32.5K+ Total): IACON ($30,000) | Google Cloud ($2,000) | MongoDB ($500) --- Grants & AI Credits (₹5.87L+ Total): ₹4.37L Grants (₹2.87L SSIP Govt + ₹1.5L Techsodh) + ₹1.5L Sarvam AI Credits';
         break;
       case 'ventures':
-        reply = '1. Ornitech.in (Founder) | 2. Techsodh.in | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in | 6. Swachh Sense (₹1.37L) | 7. Vision Sentinel (₹90K) | 8. Trabit Guard (₹60K)';
+        reply = '1. Ornitech.in (Founder) | 2. Techsodh.in (₹1.5L Grant) | 3. MyEntryPass.in | 4. Shapentic.com | 5. BolnaSeekho.in (Rotary 2nd Prize · ₹1.5L Sarvam AI) | 6. Swachh Sense (₹1.37L) | 7. Vision Sentinel (₹90K) | 8. Transit Guard (₹60K)';
         break;
       case 'contact':
         reply = 'Email: ronaktalaviya51@gmail.com | GitHub: github.com/Ronak501 | LinkedIn: ronak-talaviya';

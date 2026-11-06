@@ -53,14 +53,6 @@ export const metadata: Metadata = {
       'Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic, and BolnaSeekho. Autonomous AI architectures & scalable full-stack products.',
     url: `${siteUrl}/`,
     siteName: 'Ronak Talaviya Portfolio',
-    images: [
-      {
-        url: '/Ronak.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Ronak Talaviya - Founder & Full Stack Developer',
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -69,7 +61,6 @@ export const metadata: Metadata = {
     title: 'Ronak Talaviya | Founder & Full Stack AI Developer',
     description:
       'Founder @ Ornitech.in · Building Techsodh, MyEntryPass, Shapentic, BolnaSeekho. AI & Web Systems.',
-    images: ['/Ronak.jpeg'],
     creator: '@ronak_51',
   },
   icons: {

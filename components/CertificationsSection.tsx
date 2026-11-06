@@ -85,7 +85,7 @@ const CREDENTIALS: Credential[] = [
   },
   {
     id: 'ssip-trabitguard',
-    title: '₹60,000 Govt Prototype Grant — Trabit Guard',
+    title: '₹60,000 Govt Prototype Grant — Transit Guard',
     issuer: 'SSIP Gujarat & Govt Innovation Council',
     category: 'gov_global',
     issueDate: '2025',
@@ -93,7 +93,7 @@ const CREDENTIALS: Credential[] = [
     grantAmount: '₹60,000',
     credentialType: 'grant',
     description:
-      'Awarded ₹60,000 prototype funding for Trabit Guard (Transit Guard): a YOLOv8-powered edge computer vision system for public transit passenger flow tracking and overcrowding analytics.',
+      'Awarded ₹60,000 prototype funding for Transit Guard: a YOLOv8-powered edge computer vision system for public transit passenger flow tracking and overcrowding analytics.',
     skills: ['₹60,000 Govt Grant', 'YOLOv8', 'Edge AI', 'Public Transit', 'Transport Analytics'],
   },
   {
@@ -547,7 +547,7 @@ export default function CertificationsSection() {
             Certifications & <span className="text-accent">Awards</span>
           </h2>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Verified credentials from Rotary Club of Surat 2nd Prize, SSIP Govt Prototype Grants (₹2,87,000+), ISRO & NASA Hackathons, and industry skill badges from Google Cloud, Microsoft & Tata.
+            Verified credentials from Rotary Club of Surat 2nd Prize, ₹4.37L in Total Grants (₹2.87L SSIP Govt Prototype Grants + ₹1.5L Tech Initiative Grant), ₹1.5L Sarvam AI Credits, ISRO & NASA Hackathons, and industry skill badges from Google Cloud, Microsoft & Tata.
           </p>
 
           {/* Filter Navigation */}

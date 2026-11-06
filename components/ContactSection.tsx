@@ -33,14 +33,23 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const rawSubject = `Portfolio inquiry: ${formData.topic}`;
+    const rawBody = `Name: ${formData.name}\nEmail: ${formData.email}\nTopic: ${formData.topic}\n\n${formData.message}`;
+    const subject = encodeURIComponent(rawSubject);
+    const body = encodeURIComponent(rawBody);
+    sound.playClick();
+    navigator.clipboard?.writeText(`To: ronaktalaviya51@gmail.com\nSubject: ${rawSubject}\n\n${rawBody}`).catch(() => {});
+    window.location.href = `mailto:ronaktalaviya51@gmail.com?subject=${subject}&body=${body}`;
+    setDraftOpened(true);
+  };
+
+  const gmailComposeUrl = (() => {
     const subject = encodeURIComponent(`Portfolio inquiry: ${formData.topic}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\nTopic: ${formData.topic}\n\n${formData.message}`,
     );
-    sound.playClick();
-    window.location.href = `mailto:ronaktalaviya51@gmail.com?subject=${subject}&body=${body}`;
-    setDraftOpened(true);
-  };
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=ronaktalaviya51@gmail.com&su=${subject}&body=${body}`;
+  })();
 
   return (
     <section id="contact" className="border-b border-border py-20 bg-background/50 relative overflow-hidden">
@@ -184,9 +193,23 @@ export default function ContactSection() {
             </p>
 
             {draftOpened && (
-              <p role="status" className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-sm text-emerald-300">
-                Your email draft should open in your mail app. Review it and press Send to deliver your message. If no mail app opened, use the email address at left.
-              </p>
+              <div role="status" className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3.5 text-xs sm:text-sm text-emerald-300 space-y-2">
+                <p>
+                  Your formatted message was copied to your clipboard and opened in your default mail app.
+                </p>
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <a
+                    href={gmailComposeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => sound.playClick()}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-3 py-1 text-xs font-bold text-emerald-200 hover:bg-emerald-500 hover:text-white transition-colors"
+                  >
+                    <Send className="size-3" />
+                    <span>Send via Gmail Web instead</span>
+                  </a>
+                </div>
+              </div>
             )}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
