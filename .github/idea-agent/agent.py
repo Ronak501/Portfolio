@@ -339,6 +339,7 @@ def ask_model(cfg: dict, system: str, user: str) -> dict | None:
             },
             method="POST",
         )
+        status, raw = 0, ""
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
                 status = resp.status
@@ -358,7 +359,8 @@ def ask_model(cfg: dict, system: str, user: str) -> dict | None:
             log(f"! model {model}: HTTP {exc.code} {body_text}")
             continue
         except Exception as exc:  # noqa: BLE001 - any failure falls through
-            log(f"! model {model} failed: {type(exc).__name__}: {clip(str(exc), 200)}")
+            log(f"! model {model} failed: {type(exc).__name__}: {clip(str(exc), 160)} "
+                f"| HTTP {status} body={clip(raw, 200)!r}")
             continue
     return None
 
