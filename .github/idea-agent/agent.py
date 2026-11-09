@@ -406,8 +406,15 @@ def heuristic_topics(issues: list[dict], existing_titles: list[str], max_topics:
         bad = 3 if any(w in text for w in BUGGY) else 0
         return (bad - good, issue.get("comments", 0))
 
+    def is_bug(issue: dict) -> bool:
+        text = f"{issue.get('title', '')} {' '.join(issue.get('labels') or [])}".lower()
+        return any(w in text for w in BUGGY)
+
+    # security fixes and crash reports are work, not ideas: only use them as a last resort
+    pool = [i for i in issues if not is_bug(i)] or list(issues)
+
     picked = []
-    for issue in sorted(issues, key=rank):
+    for issue in sorted(pool, key=rank):
         if len(picked) >= max_topics:
             break
         title = tidy_title(issue["title"])
