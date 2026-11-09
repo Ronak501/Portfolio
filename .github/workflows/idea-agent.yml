@@ -21,6 +21,10 @@ on:
         description: Print what it would do, write nothing
         type: boolean
         default: false
+      diagnose:
+        description: Only test the model endpoint and print the raw response
+        type: boolean
+        default: false
   discussion_comment:
     types: [created]
 
@@ -57,4 +61,5 @@ jobs:
           IDEA_AGENT_DISCUSSION: ${{ github.event.discussion.number }}
           IDEA_AGENT_MAX_TOPICS: ${{ inputs.max_topics }}
           IDEA_AGENT_DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          IDEA_AGENT_DIAGNOSE: ${{ inputs.diagnose && '1' || '' }}
         run: python .github/idea-agent/agent.py

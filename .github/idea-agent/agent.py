@@ -306,13 +306,29 @@ def repo_files(gh: GitHub, owner: str, name: str, branch: str, limit: int = 400)
 # model
 # --------------------------------------------------------------------------- #
 
+def model_endpoint(model_cfg: dict) -> tuple[str, str]:
+    """Where to send the request and which env var holds the key.
+
+    Defaults to GitHub Models, which needs no extra secret. Point `base_url` at any
+    OpenAI-compatible endpoint and name the secret in `api_key_env` to use another
+    provider (the workflow only passes GITHUB_TOKEN through, so add the secret to
+    the `env:` block of the workflow step).
+    """
+    base = (model_cfg.get("base_url") or "").rstrip("/")
+    url = base + "/chat/completions" if base else MODELS_URL
+    key_env = model_cfg.get("api_key_env") or "GITHUB_TOKEN"
+    return url, key_env
+
+
 def ask_model(cfg: dict, system: str, user: str) -> dict | None:
-    """Call GitHub Models with the workflow token. Returns parsed JSON or None."""
+    """Call the model endpoint. Returns parsed JSON or None."""
     model_cfg = cfg.get("model") or {}
     if not model_cfg.get("enabled", True):
         return None
-    token = os.environ.get("GITHUB_TOKEN") or ""
+    url, key_env = model_endpoint(model_cfg)
+    token = os.environ.get(key_env) or ""
     if not token:
+        log(f"! no model key in ${key_env}")
         return None
     names = [model_cfg.get("name") or "openai/gpt-4o-mini"]
     names += [m for m in (model_cfg.get("fallback_models") or []) if m not in names]
@@ -329,7 +345,7 @@ def ask_model(cfg: dict, system: str, user: str) -> dict | None:
             ],
         }
         req = urllib.request.Request(
-            MODELS_URL,
+            url,
             data=json.dumps(body).encode("utf-8"),
             headers={
                 "Authorization": f"Bearer {token}",
@@ -363,6 +379,43 @@ def ask_model(cfg: dict, system: str, user: str) -> dict | None:
                 f"| HTTP {status} body={clip(raw, 200)!r}")
             continue
     return None
+
+
+def diagnose(cfg: dict) -> int:
+    """Explain why the model is not answering. Run: workflow_dispatch with diagnose."""
+    model_cfg = cfg.get("model") or {}
+    url, key_env = model_endpoint(model_cfg)
+    token = os.environ.get(key_env) or ""
+    log(f"endpoint: {url}")
+    log(f"key env:  ${key_env} -> {'present, ' + str(len(token)) + ' chars' if token else 'MISSING'}")
+    log(f"model:    {model_cfg.get('name')}")
+    if not token:
+        return 1
+
+    probes = {
+        "minimal": {"model": model_cfg.get("name"),
+                    "messages": [{"role": "user", "content": "Say OK"}],
+                    "max_tokens": 5},
+        "json_mode": {"model": model_cfg.get("name"),
+                      "messages": [{"role": "user", "content": "Reply with {\"ok\":true} as JSON"}],
+                      "max_tokens": 20, "response_format": {"type": "json_object"}},
+    }
+    for label, body in probes.items():
+        req = urllib.request.Request(
+            url, data=json.dumps(body).encode("utf-8"), method="POST",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
+                     "Accept": "application/json", "User-Agent": "idea-discussion-agent"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                text = resp.read().decode("utf-8", "replace")
+                log(f"[{label}] HTTP {resp.status} ct={resp.headers.get('content-type')} "
+                    f"body={clip(text, 300)!r}")
+        except urllib.error.HTTPError as exc:
+            text = exc.read().decode("utf-8", "replace")
+            log(f"[{label}] HTTP {exc.code} body={clip(text, 300)!r}")
+        except Exception as exc:  # noqa: BLE001
+            log(f"[{label}] {type(exc).__name__}: {exc}")
+    return 0
 
 
 # --------------------------------------------------------------------------- #
@@ -843,6 +896,9 @@ def main() -> int:
 
     cfg = load_config()
     gh = GitHub(token, dry_run=dry_run)
+
+    if os.environ.get("IDEA_AGENT_DIAGNOSE") == "1":
+        return diagnose(cfg)
 
     log(f"idea-agent · {repo_full} · mode={mode} · dry_run={dry_run}")
     try:
