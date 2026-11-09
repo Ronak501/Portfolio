@@ -341,9 +341,22 @@ def ask_model(cfg: dict, system: str, user: str) -> dict | None:
         )
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
-                payload = json.loads(resp.read().decode("utf-8"))
-            content = payload["choices"][0]["message"]["content"]
+                status = resp.status
+                raw = resp.read().decode("utf-8", "replace")
+            if not raw.strip():
+                log(f"! model {model}: HTTP {status}, empty body")
+                continue
+            payload = json.loads(raw)
+            content = (payload.get("choices") or [{}])[0].get("message", {}).get("content") or ""
+            if not content.strip():
+                finish = (payload.get("choices") or [{}])[0].get("finish_reason")
+                log(f"! model {model}: HTTP {status}, empty content (finish_reason={finish})")
+                continue
             return json.loads(content)
+        except urllib.error.HTTPError as exc:
+            body_text = exc.read().decode("utf-8", "replace")[:300]
+            log(f"! model {model}: HTTP {exc.code} {body_text}")
+            continue
         except Exception as exc:  # noqa: BLE001 - any failure falls through
             log(f"! model {model} failed: {type(exc).__name__}: {clip(str(exc), 200)}")
             continue
@@ -367,14 +380,38 @@ Return JSON only, shaped exactly as:
 Return at most {max_topics} topics. An empty list is a valid answer."""
 
 
+def tidy_title(raw: str) -> str:
+    """Turn a bracketed issue title into a discussion title a human would write."""
+    title = re.sub(r"\[(?:security|bug|p1|p2|p3|high|medium|low|critical)\]", " ", raw, flags=re.I)
+    title = re.sub(r"\[[^\]]{0,24}\]", " ", title)
+    title = re.sub(r"\s+", " ", title).strip(" -—:·")
+    title = title or raw.strip()
+    title = (title[0].upper() + title[1:]) if title else title
+    return clip(title, 88)
+
+
+BUGGY = ("bug", "security", "vulnerability", "regression", "crash", "broken", "hotfix",
+         "p0", "p1", "critical", "cve", "leak")
+GOOD = ("enhancement", "feature", "idea", "improvement", "discussion", "proposal", "rfc")
+
+
 def heuristic_topics(issues: list[dict], existing_titles: list[str], max_topics: int) -> list[dict]:
-    """No model available: turn quiet open issues into discussion threads."""
+    """No model available: turn quiet, forward-looking issues into threads."""
     existing = {t.strip().lower() for t in existing_titles}
+
+    def rank(issue: dict) -> tuple:
+        labels = {l.lower() for l in issue.get("labels") or []}
+        text = f"{issue.get('title', '')} {' '.join(labels)}".lower()
+        good = 2 if labels & set(GOOD) else 0
+        bad = 3 if any(w in text for w in BUGGY) else 0
+        return (bad - good, issue.get("comments", 0))
+
     picked = []
-    for issue in issues:
+    for issue in sorted(issues, key=rank):
         if len(picked) >= max_topics:
             break
-        if issue["title"].strip().lower() in existing:
+        title = tidy_title(issue["title"])
+        if not title or title.strip().lower() in existing:
             continue
         if issue["comments"] > 2:
             continue
@@ -389,7 +426,7 @@ def heuristic_topics(issues: list[dict], existing_titles: list[str], max_topics:
             "Reply here with ideas — the agent posts a first-pass review on each pitch.</sub>"
         )
         picked.append({
-            "title": clip(issue["title"], 90),
+            "title": title,
             "body_markdown": body,
             "source_issues": [issue["number"]],
             "why_now": "quiet open issue",
