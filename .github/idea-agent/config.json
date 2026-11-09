@@ -10,10 +10,9 @@
   },
   "model": {
     "enabled": true,
-    "name": "openai/gpt-4o-mini",
-    "fallback_models": [
-      "openai/gpt-4.1-mini"
-    ],
+    "provider": "auto",
+    "name": "",
+    "fallback_models": [],
     "temperature": 0.2,
     "max_output_tokens": 1400
   }

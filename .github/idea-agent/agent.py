@@ -35,7 +35,6 @@ import urllib.request
 
 API = "https://api.github.com"
 GQL_URL = API + "/graphql"
-MODELS_URL = "https://models.github.ai/inference/chat/completions"
 
 MARKER_REVIEW = "<!-- idea-agent:review:{} -->"
 MARKER_SEED = "<!-- idea-agent:seed:{} -->"
@@ -306,115 +305,168 @@ def repo_files(gh: GitHub, owner: str, name: str, branch: str, limit: int = 400)
 # model
 # --------------------------------------------------------------------------- #
 
-def model_endpoint(model_cfg: dict) -> tuple[str, str]:
-    """Where to send the request and which env var holds the key.
+# GitHub Models (models.github.ai) was retired on 30 July 2026 and now answers
+# HTTP 200 with a 4-byte "OK" body and no completion, so the agent speaks plain
+# OpenAI-compatible chat-completions to whichever provider has a key.
+PROVIDERS = {
+    "openai": {
+        "base_url": "https://api.openai.com/v1",
+        "key_env": "OPENAI_API_KEY",
+        "name": "gpt-4o-mini",
+        "fallback_models": ["gpt-4.1-mini"],
+    },
+    "groq": {
+        "base_url": "https://api.groq.com/openai/v1",
+        "key_env": "GROQ_API_KEY",
+        "name": "llama-3.3-70b-versatile",
+        "fallback_models": ["llama-3.1-8b-instant"],
+    },
+    "gemini": {
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "key_env": "GEMINI_API_KEY",
+        "name": "gemini-2.0-flash",
+        "fallback_models": [],
+    },
+    "sarvam": {
+        "base_url": "https://api.sarvam.ai/v1",
+        "key_env": "SARVAM_API_KEY",
+        "name": "sarvam-m",
+        "fallback_models": [],
+    },
+}
 
-    Defaults to GitHub Models, which needs no extra secret. Point `base_url` at any
-    OpenAI-compatible endpoint and name the secret in `api_key_env` to use another
-    provider (the workflow only passes GITHUB_TOKEN through, so add the secret to
-    the `env:` block of the workflow step).
-    """
-    base = (model_cfg.get("base_url") or "").rstrip("/")
-    url = base + "/chat/completions" if base else MODELS_URL
-    key_env = model_cfg.get("api_key_env") or "GITHUB_TOKEN"
-    return url, key_env
 
-
-def ask_model(cfg: dict, system: str, user: str) -> dict | None:
-    """Call the model endpoint. Returns parsed JSON or None."""
-    model_cfg = cfg.get("model") or {}
+def resolve_model(model_cfg: dict) -> dict | None:
+    """Work out which endpoint, key and model to use. None = rule-based only."""
     if not model_cfg.get("enabled", True):
         return None
-    url, key_env = model_endpoint(model_cfg)
-    token = os.environ.get(key_env) or ""
-    if not token:
-        log(f"! no model key in ${key_env}")
+    provider = (model_cfg.get("provider") or "auto").strip().lower()
+    if provider == "auto":
+        provider = next((name for name, spec in PROVIDERS.items()
+                         if os.environ.get(spec["key_env"])), "")
+        if not provider:
+            log("· no model key set (OPENAI_API_KEY / GROQ_API_KEY / GEMINI_API_KEY / SARVAM_API_KEY)")
+            return None
+    spec = dict(PROVIDERS.get(provider) or {})
+    if not spec:  # a custom OpenAI-compatible endpoint
+        spec = {"base_url": "", "key_env": "MODEL_API_KEY", "name": "", "fallback_models": []}
+    for key, out in (("base_url", "base_url"), ("api_key_env", "key_env"),
+                     ("name", "name"), ("fallback_models", "fallback_models")):
+        if model_cfg.get(key):
+            spec[out] = model_cfg[key]
+    spec.setdefault("fallback_models", [])
+    spec["temperature"] = model_cfg.get("temperature", 0.2)
+    spec["max_output_tokens"] = model_cfg.get("max_output_tokens", 1400)
+    spec["provider"] = provider
+    if not spec.get("base_url") or not spec.get("name"):
+        log("! model config incomplete: base_url and name are required")
         return None
-    names = [model_cfg.get("name") or "openai/gpt-4o-mini"]
-    names += [m for m in (model_cfg.get("fallback_models") or []) if m not in names]
+    return spec
 
-    for model in names:
-        body = {
-            "model": model,
-            "temperature": model_cfg.get("temperature", 0.2),
-            "max_tokens": model_cfg.get("max_output_tokens", 1400),
-            "response_format": {"type": "json_object"},
-            "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-        }
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(body).encode("utf-8"),
-            headers={
-                "Authorization": f"Bearer {token}",
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "User-Agent": "idea-discussion-agent",
-            },
-            method="POST",
-        )
-        status, raw = 0, ""
-        try:
-            with urllib.request.urlopen(req, timeout=90) as resp:
-                status = resp.status
-                raw = resp.read().decode("utf-8", "replace")
-            if not raw.strip():
-                log(f"! model {model}: HTTP {status}, empty body")
-                continue
-            payload = json.loads(raw)
-            content = (payload.get("choices") or [{}])[0].get("message", {}).get("content") or ""
-            if not content.strip():
-                finish = (payload.get("choices") or [{}])[0].get("finish_reason")
-                log(f"! model {model}: HTTP {status}, empty content (finish_reason={finish})")
-                continue
-            return json.loads(content)
-        except urllib.error.HTTPError as exc:
-            body_text = exc.read().decode("utf-8", "replace")[:300]
-            log(f"! model {model}: HTTP {exc.code} {body_text}")
-            continue
-        except Exception as exc:  # noqa: BLE001 - any failure falls through
-            log(f"! model {model} failed: {type(exc).__name__}: {clip(str(exc), 160)} "
-                f"| HTTP {status} body={clip(raw, 200)!r}")
-            continue
+
+def _post_json(url: str, token: str, body: dict, timeout: int = 90) -> tuple[int, str]:
+    req = urllib.request.Request(
+        url, data=json.dumps(body).encode("utf-8"), method="POST",
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
+                 "Accept": "application/json", "User-Agent": "idea-discussion-agent"})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.status, resp.read().decode("utf-8", "replace")
+
+
+def parse_json_block(text: str):
+    """Models sometimes wrap JSON in fences or chatter. Dig it out."""
+    text = (text or "").strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```[A-Za-z0-9_-]*\s*", "", text)
+        text = re.sub(r"```\s*$", "", text).strip()
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        start, end = text.find("{"), text.rfind("}")
+        if 0 <= start < end:
+            try:
+                return json.loads(text[start:end + 1])
+            except json.JSONDecodeError:
+                return None
     return None
 
 
+def ask_model(cfg: dict, system: str, user: str) -> dict | None:
+    """Ask the model for a JSON object. Returns None if nothing usable came back."""
+    spec = resolve_model(cfg.get("model") or {})
+    if not spec:
+        return None
+    token = os.environ.get(spec["key_env"]) or ""
+    if not token:
+        log(f"! no key in ${spec['key_env']}")
+        return None
+    url = spec["base_url"].rstrip("/") + "/chat/completions"
+    names = [spec["name"]] + [m for m in spec.get("fallback_models") or [] if m != spec["name"]]
+
+    for model in names:
+        for json_mode in (True, False):
+            body = {
+                "model": model,
+                "temperature": spec["temperature"],
+                "max_tokens": spec["max_output_tokens"],
+                "messages": [{"role": "system", "content": system},
+                             {"role": "user", "content": user}],
+            }
+            if json_mode:
+                body["response_format"] = {"type": "json_object"}
+            try:
+                status, raw = _post_json(url, token, body)
+            except urllib.error.HTTPError as exc:
+                detail = clip(exc.read().decode("utf-8", "replace"), 200)
+                log(f"! {model}: HTTP {exc.code} {detail}")
+                if exc.code in (400, 422) and json_mode:
+                    continue  # provider dislikes json_mode: retry as plain text
+                break
+            except Exception as exc:  # noqa: BLE001
+                log(f"! {model}: {type(exc).__name__}: {clip(str(exc), 160)}")
+                break
+            payload = parse_json_block(raw) or {}
+            content = ((payload.get("choices") or [{}])[0].get("message") or {}).get("content") or ""
+            if not content.strip():
+                log(f"! {model}: HTTP {status}, no completion in response")
+                break
+            parsed = parse_json_block(content)
+            if parsed is not None:
+                return parsed
+            log(f"! {model}: answer was not JSON")
+            break
+    return None
+
+
+def model_label(cfg: dict) -> str:
+    spec = resolve_model(cfg.get("model") or {})
+    return f"{spec['provider']}/{spec['name']}" if spec else "rule-based review"
+
+
 def diagnose(cfg: dict) -> int:
-    """Explain why the model is not answering. Run: workflow_dispatch with diagnose."""
+    """Explain why the model is or is not answering (workflow input: diagnose)."""
     model_cfg = cfg.get("model") or {}
-    url, key_env = model_endpoint(model_cfg)
-    token = os.environ.get(key_env) or ""
+    log(f"provider setting: {model_cfg.get('provider') or 'auto'}")
+    spec = resolve_model(model_cfg)
+    if not spec:
+        log("! no usable model config — the agent will use the rule-based reviewer")
+        return 1
+    token = os.environ.get(spec["key_env"]) or ""
+    url = spec["base_url"].rstrip("/") + "/chat/completions"
     log(f"endpoint: {url}")
-    log(f"key env:  ${key_env} -> {'present, ' + str(len(token)) + ' chars' if token else 'MISSING'}")
-    log(f"model:    {model_cfg.get('name')}")
+    log(f"key env:  ${spec['key_env']} -> {'present' if token else 'MISSING'}")
+    log(f"model:    {spec['name']}")
     if not token:
         return 1
-
-    probes = {
-        "minimal": {"model": model_cfg.get("name"),
-                    "messages": [{"role": "user", "content": "Say OK"}],
-                    "max_tokens": 5},
-        "json_mode": {"model": model_cfg.get("name"),
-                      "messages": [{"role": "user", "content": "Reply with {\"ok\":true} as JSON"}],
-                      "max_tokens": 20, "response_format": {"type": "json_object"}},
-    }
-    for label, body in probes.items():
-        req = urllib.request.Request(
-            url, data=json.dumps(body).encode("utf-8"), method="POST",
-            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
-                     "Accept": "application/json", "User-Agent": "idea-discussion-agent"})
-        try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                text = resp.read().decode("utf-8", "replace")
-                log(f"[{label}] HTTP {resp.status} ct={resp.headers.get('content-type')} "
-                    f"body={clip(text, 300)!r}")
-        except urllib.error.HTTPError as exc:
-            text = exc.read().decode("utf-8", "replace")
-            log(f"[{label}] HTTP {exc.code} body={clip(text, 300)!r}")
-        except Exception as exc:  # noqa: BLE001
-            log(f"[{label}] {type(exc).__name__}: {exc}")
+    body = {"model": spec["name"], "max_tokens": 30,
+            "messages": [{"role": "user", "content": 'Reply with {"ok": true} as JSON'}]}
+    try:
+        status, raw = _post_json(url, token, body, timeout=60)
+        log(f"HTTP {status} body={clip(raw, 400)}")
+    except urllib.error.HTTPError as exc:
+        log(f"HTTP {exc.code} body={clip(exc.read().decode('utf-8', 'replace'), 400)}")
+    except Exception as exc:  # noqa: BLE001
+        log(f"{type(exc).__name__}: {exc}")
     return 0
 
 
@@ -745,11 +797,11 @@ def review_comment(gh: GitHub, cfg: dict, owner: str, repo: str, thread: dict,
     }
     review = ask_model(cfg, REVIEW_SYSTEM.format(repo=f"{owner}/{repo}"),
                        json.dumps(payload, ensure_ascii=False))
-    model_label = (cfg.get("model") or {}).get("name") or "openai/gpt-4o-mini"
+    label = model_label(cfg)
     if not review or not isinstance(review, dict) or "verdict" not in review:
         review = heuristic_review(comment, thread, ctx["discussion_titles"],
                                   ctx["issue_titles"], ctx["files"])
-        model_label = "rule-based review"
+        label = "rule-based review"
 
     # never trust a hallucinated path
     real = set(ctx["files"])
@@ -758,7 +810,7 @@ def review_comment(gh: GitHub, cfg: dict, owner: str, repo: str, thread: dict,
         if not isinstance(review.get(key), list):
             review[key] = []
 
-    text = format_review(review, comment, model_label) + "\n" + marker
+    text = format_review(review, comment, label) + "\n" + marker
     if dry_run:
         log(f"[dry-run] would review comment {comment.get('databaseId')} in #{thread.get('number')}")
         log(text)
@@ -847,8 +899,9 @@ DEFAULT_CONFIG = {
     "review": {"enabled": True, "max_reviews_per_run": 10, "lookback_days": 45},
     "model": {
         "enabled": True,
-        "name": "openai/gpt-4o-mini",
-        "fallback_models": ["openai/gpt-4.1-mini"],
+        "provider": "auto",
+        "name": "",
+        "fallback_models": [],
         "temperature": 0.2,
         "max_output_tokens": 1400,
     },
