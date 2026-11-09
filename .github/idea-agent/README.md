@@ -4,7 +4,9 @@ An autonomous agent that keeps a GitHub repository's Discussions alive:
 
 - **Seed** — every Monday it reads the repo's open issues and the last two weeks of
   commits, picks up to three themes worth arguing about, and opens a discussion for
-  each so contributors have somewhere to pitch.
+  each so contributors have somewhere to pitch. Bug and security issues are skipped —
+  those are work, not ideas — unless they are the only thing open, in which case a
+  single thread is opened.
 - **Review** — when someone posts an idea in a discussion, the agent answers within a
   minute with a first-pass review: a verdict, a score out of 100, overlaps with
   existing discussions and issues, the files the idea would touch (checked against the

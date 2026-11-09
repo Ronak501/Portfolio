@@ -518,11 +518,16 @@ def heuristic_topics(issues: list[dict], existing_titles: list[str], max_topics:
         return any(w in text for w in BUGGY)
 
     # security fixes and crash reports are work, not ideas: only use them as a last resort
-    pool = [i for i in issues if not is_bug(i)] or list(issues)
+    pool = [i for i in issues if not is_bug(i)]
+    limit = max_topics
+    if not pool:
+        # every open issue is a bug or a security fix: one thread at most, not a wall of them
+        pool, limit = list(issues), min(max_topics, 1)
+        log("· only bug/security issues open; seeding at most one thread")
 
     picked = []
     for issue in sorted(pool, key=rank):
-        if len(picked) >= max_topics:
+        if len(picked) >= limit:
             break
         title = tidy_title(issue["title"])
         if not title or title.strip().lower() in existing:
