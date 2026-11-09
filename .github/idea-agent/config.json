@@ -1,0 +1,20 @@
+{
+  "category_name": "Ideas",
+  "max_topics_per_run": 3,
+  "lookback_days": 14,
+  "min_comment_chars": 40,
+  "review": {
+    "enabled": true,
+    "max_reviews_per_run": 10,
+    "lookback_days": 45
+  },
+  "model": {
+    "enabled": true,
+    "name": "openai/gpt-4o-mini",
+    "fallback_models": [
+      "openai/gpt-4.1-mini"
+    ],
+    "temperature": 0.2,
+    "max_output_tokens": 1400
+  }
+}
