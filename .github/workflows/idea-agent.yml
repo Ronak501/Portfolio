@@ -1,0 +1,70 @@
+name: Idea Discussion Agent
+
+# Opens GitHub Discussions from repo activity (weekly) and reviews every idea
+# posted in a discussion (on the spot, and again on the weekly sweep).
+
+on:
+  schedule:
+    - cron: "30 3 * * 1"        # Mondays, 03:30 UTC = 09:00 IST
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: What to run
+        type: choice
+        options: [both, seed, review]
+        default: both
+      max_topics:
+        description: Max discussions to open this run (blank = config.json)
+        required: false
+        default: ""
+      dry_run:
+        description: Print what it would do, write nothing
+        type: boolean
+        default: false
+      diagnose:
+        description: Only test the model endpoint and print the raw response
+        type: boolean
+        default: false
+  discussion_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  discussions: write
+  issues: read
+  pull-requests: read
+
+concurrency:
+  group: idea-agent
+  cancel-in-progress: false
+
+jobs:
+  agent:
+    # never react to our own review comments
+    if: >
+      github.event_name != 'discussion_comment' ||
+      github.event.comment.user.login != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run the agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # the agent auto-detects whichever of these exists; with none it uses
+          # the built-in rule-based reviewer. Add one in Settings -> Secrets.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
+          IDEA_AGENT_MODE: ${{ github.event_name == 'discussion_comment' && 'review' || inputs.mode || 'both' }}
+          IDEA_AGENT_DISCUSSION: ${{ github.event.discussion.number }}
+          IDEA_AGENT_MAX_TOPICS: ${{ inputs.max_topics }}
+          IDEA_AGENT_DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
+          IDEA_AGENT_DIAGNOSE: ${{ inputs.diagnose && '1' || '' }}
+        run: python .github/idea-agent/agent.py

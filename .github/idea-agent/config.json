@@ -1,0 +1,19 @@
+{
+  "category_name": "Ideas",
+  "max_topics_per_run": 3,
+  "lookback_days": 14,
+  "min_comment_chars": 40,
+  "review": {
+    "enabled": true,
+    "max_reviews_per_run": 10,
+    "lookback_days": 45
+  },
+  "model": {
+    "enabled": true,
+    "provider": "auto",
+    "name": "",
+    "fallback_models": [],
+    "temperature": 0.2,
+    "max_output_tokens": 1400
+  }
+}
