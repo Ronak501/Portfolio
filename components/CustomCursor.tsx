@@ -79,7 +79,7 @@ export default function CustomCursor() {
           top: `${trailing.y}px`,
           width: isHovered ? '42px' : '26px',
           height: isHovered ? '42px' : '26px',
-          borderColor: isHovered ? 'var(--accent-ink)' : 'rgba(249, 115, 22, 0.35)',
+          borderColor: isHovered ? 'rgb(var(--accent-ink))' : 'rgb(var(--accent-ink) / 0.4)',
         }}
       />
     </>

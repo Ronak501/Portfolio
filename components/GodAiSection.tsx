@@ -15,6 +15,7 @@ import {
   TrendingDown,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
+import RonakVoiceAgent from '@/components/RonakVoiceAgent';
 
 export default function GodAiSection() {
   const [activeSchemaTab, setActiveSchemaTab] = useState<'json' | 'optimized'>('optimized');
@@ -152,6 +153,21 @@ confidence: 0.984`;
           </div>
         </div>
 
+        {/* Live Interactive Voice & Data Extraction Agent */}
+        <div className="mb-10">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground">
+                Talk to Ronak AI &amp; Extract Portfolio Data
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">
+                Ask questions by voice or text, listen in Ronak&apos;s AI voice, and export ventures, grants, projects, or credentials as JSON, CSV, or Markdown.
+              </p>
+            </div>
+          </div>
+          <RonakVoiceAgent variant="embedded" />
+        </div>
+
         {/* 2 Interactive Showcase Cards */}
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Card 1: Token & Payload Serialization Benchmark (Synitx-inspired!) */}
@@ -258,7 +274,7 @@ confidence: 0.984`;
                   type="button"
                   onClick={runAgentTest}
                   disabled={isAgentRunning}
-                  className="flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold text-white hover:bg-accent-hover transition-all disabled:opacity-50"
+                  className="flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground hover:bg-accent-hover transition-all disabled:opacity-50"
                 >
                   {isAgentRunning ? (
                     <RefreshCw className="size-3 animate-spin" />

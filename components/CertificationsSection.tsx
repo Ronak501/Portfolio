@@ -562,14 +562,14 @@ export default function CertificationsSection() {
                 }}
                 className={`flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs font-semibold transition-all ${
                   filter === tab.id
-                    ? 'bg-accent text-white shadow-md shadow-accent/20 ring-2 ring-accent/30'
+                    ? 'bg-accent text-accent-foreground shadow-md shadow-accent/20 ring-2 ring-accent/30'
                     : 'border border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground'
                 }`}
               >
                 <span>{tab.label}</span>
                 <span
                   className={`rounded-full px-1.5 py-0.2 text-[10px] ${
-                    filter === tab.id ? 'bg-white/20 text-white' : 'bg-muted text-muted-foreground'
+                    filter === tab.id ? 'bg-accent-foreground/15 text-accent-foreground' : 'bg-muted text-muted-foreground'
                   }`}
                 >
                   {tab.count}
@@ -648,7 +648,7 @@ export default function CertificationsSection() {
 
                   {/* Frosted Hover Overlay */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-xs z-20">
-                    <span className="flex items-center gap-1.5 font-mono text-xs font-bold text-white bg-accent px-4 py-2 rounded-full shadow-lg shadow-accent/30 border border-white/20">
+                    <span className="flex items-center gap-1.5 font-mono text-xs font-bold text-accent-foreground bg-accent px-4 py-2 rounded-full shadow-lg shadow-accent/30 border border-border/30">
                       <Eye className="size-3.5" />
                       <span>Inspect Credential</span>
                     </span>
@@ -706,23 +706,23 @@ export default function CertificationsSection() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative flex flex-col max-w-4xl w-full max-h-[92vh] rounded-3xl border border-zinc-800 bg-[#0c0e16] shadow-2xl animate-in zoom-in-95 duration-200 overflow-hidden"
+            className="relative flex flex-col max-w-4xl w-full max-h-[92vh] rounded-3xl border border-border bg-card shadow-2xl animate-in zoom-in-95 duration-200 overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-start justify-between p-4 sm:p-6 border-b border-border/80 bg-zinc-950/60">
+            <div className="flex items-start justify-between p-4 sm:p-6 border-b border-border/80 bg-muted/40">
               <div className="flex items-center gap-3 min-w-0 pr-4">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-accent/20 text-accent border border-accent/30">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-accent/15 text-accent border border-accent/30">
                   {getCategoryIcon(activeModal)}
                 </div>
                 <div className="min-w-0">
                   <h4
                     id="credential-modal-title"
-                    className="font-heading text-lg sm:text-2xl font-extrabold text-white leading-tight"
+                    className="font-heading text-lg sm:text-2xl font-extrabold text-foreground leading-tight"
                   >
                     {activeModal.title}
                   </h4>
                   <div className="flex flex-wrap items-center gap-2 mt-1 font-mono text-xs text-muted-foreground">
-                    <span className="text-zinc-300 font-semibold">{activeModal.issuer}</span>
+                    <span className="text-foreground/90 font-semibold">{activeModal.issuer}</span>
                     <span>·</span>
                     <span>{activeModal.issueDate}</span>
                     <span className="font-bold text-accent bg-accent/15 px-2 py-0.5 rounded-full border border-accent/20 text-[10px]">
@@ -739,7 +739,7 @@ export default function CertificationsSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => sound.playClick()}
-                    className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-zinc-300 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 px-3 py-1.5 rounded-full transition-colors"
+                    className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-foreground/80 hover:text-foreground bg-muted hover:bg-muted/80 border border-border px-3 py-1.5 rounded-full transition-colors"
                   >
                     <ExternalLink className="size-3.5" />
                     <span>Open High-Res</span>
@@ -751,7 +751,7 @@ export default function CertificationsSection() {
                     sound.playClick();
                     setActiveModal(null);
                   }}
-                  className="flex size-9 items-center justify-center rounded-full bg-zinc-800/80 text-zinc-300 hover:text-white hover:bg-zinc-700 transition-colors"
+                  className="flex size-9 items-center justify-center rounded-full bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80 border border-border/60 transition-colors"
                   aria-label="Close dialog"
                 >
                   <X className="size-4" />
@@ -834,12 +834,12 @@ export default function CertificationsSection() {
               )}
 
               {/* Narrative Breakdown */}
-              <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950/50 p-5 space-y-4">
+              <div className="rounded-2xl border border-border bg-muted/40 p-5 space-y-4">
                 <div>
                   <h5 className="font-mono text-xs uppercase tracking-wider text-accent font-bold mb-1">
                     Executive Scope & Impact Summary
                   </h5>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                  <p className="text-sm sm:text-base text-foreground/85 leading-relaxed">
                     {activeModal.description}
                   </p>
                 </div>
@@ -852,7 +852,7 @@ export default function CertificationsSection() {
                     {activeModal.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-lg bg-zinc-900 border border-zinc-700/80 px-3 py-1 font-mono text-xs text-zinc-200"
+                        className="rounded-lg bg-card border border-border px-3 py-1 font-mono text-xs text-foreground/85"
                       >
                         {skill}
                       </span>
@@ -863,17 +863,17 @@ export default function CertificationsSection() {
             </div>
 
             {/* Footer Toolbar */}
-            <div className="flex items-center justify-between p-4 sm:px-6 border-t border-border/80 bg-zinc-950/80 font-mono text-xs">
+            <div className="flex items-center justify-between p-4 sm:px-6 border-t border-border/80 bg-muted/40 font-mono text-xs">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => handleCopySummary(activeModal)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-zinc-700 bg-zinc-900 px-3.5 py-1.5 font-semibold text-zinc-200 hover:bg-zinc-800 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-1.5 font-semibold text-foreground hover:bg-muted transition-colors"
                 >
                   {copiedId === activeModal.id ? (
                     <>
-                      <Check className="size-3.5 text-emerald-400" />
-                      <span className="text-emerald-400">Copied to Clipboard!</span>
+                      <Check className="size-3.5 text-emerald-500" />
+                      <span className="text-emerald-500">Copied to Clipboard!</span>
                     </>
                   ) : (
                     <>
@@ -885,7 +885,7 @@ export default function CertificationsSection() {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="hidden sm:flex items-center gap-1.5 text-emerald-400 font-bold">
+                <div className="hidden sm:flex items-center gap-1.5 text-emerald-500 font-bold">
                   <FileCheck className="size-4" />
                   <span>Verified Authenticity</span>
                 </div>
@@ -895,7 +895,7 @@ export default function CertificationsSection() {
                     sound.playClick();
                     setActiveModal(null);
                   }}
-                  className="rounded-full bg-accent text-white px-5 py-1.5 font-bold hover:bg-accent/90 transition-colors"
+                  className="rounded-full bg-accent text-accent-foreground px-5 py-1.5 font-bold hover:bg-accent-hover transition-colors"
                 >
                   Close
                 </button>

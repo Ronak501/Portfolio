@@ -5,30 +5,33 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Sun,
+  Flame,
   CloudRain,
   Terminal,
   Sparkles,
+  Sun,
   ChevronDown,
   ChevronRight,
+  Check,
   Menu,
   X,
 } from 'lucide-react';
 import { sound } from '@/lib/audio';
+import { ThemeId } from '@/lib/themes';
+import { useTheme } from '@/components/ThemeProvider';
 
-type Theme = 'sunset' | 'rainy' | 'matrix' | 'cyber';
-
-const THEMES: { id: Theme; label: string; icon: typeof Sun }[] = [
-  { id: 'sunset', label: 'Sunset', icon: Sun },
-  { id: 'rainy', label: 'Rainy', icon: CloudRain },
-  { id: 'matrix', label: 'Matrix', icon: Terminal },
-  { id: 'cyber', label: 'Cyber', icon: Sparkles },
-];
+const THEME_ICONS: Record<ThemeId, typeof Flame> = {
+  sunset: Flame,
+  rainy: CloudRain,
+  matrix: Terminal,
+  cyber: Sparkles,
+  editorial: Sun,
+};
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { theme, setTheme, currentTheme, themes } = useTheme();
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [theme, setTheme] = useState<Theme>('sunset');
   const [themeOpen, setThemeOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const themeDropdownRef = useRef<HTMLDivElement>(null);
@@ -52,13 +55,6 @@ export default function Navbar() {
   }, [themeOpen]);
 
   useEffect(() => {
-    // Read saved theme
-    const savedTheme = localStorage.getItem('portfolio-theme') as Theme | null;
-    if (savedTheme && THEMES.some((t) => t.id === savedTheme)) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-
     const handleScroll = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
@@ -71,11 +67,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleThemeChange = (newTheme: Theme) => {
+  const handleThemeChange = (newTheme: ThemeId) => {
     sound.playClick();
     setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('portfolio-theme', newTheme);
     setThemeOpen(false);
   };
 
@@ -88,14 +82,13 @@ export default function Navbar() {
     { label: 'Contact', href: '/contact' },
   ];
 
-  const currentThemeData = THEMES.find((t) => t.id === theme) || THEMES[0];
-  const CurrentThemeIcon = currentThemeData.icon;
+  const CurrentThemeIcon = THEME_ICONS[currentTheme.id] || Flame;
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md transition-colors duration-300">
       {/* Scroll progress bar */}
       <div
-        className="absolute inset-x-0 -bottom-px h-[2px] bg-accent transition-all duration-75 ease-out shadow-[0_0_8px_var(--accent-ink)]"
+        className="absolute inset-x-0 -bottom-px h-[2px] bg-accent transition-all duration-75 ease-out shadow-[0_0_8px_rgb(var(--accent-ink))]"
         style={{ width: `${scrollProgress}%` }}
       />
 
@@ -160,11 +153,11 @@ export default function Navbar() {
                 setThemeOpen(!themeOpen);
               }}
               aria-expanded={themeOpen}
-              aria-label={`Theme: ${currentThemeData.label}. Change theme`}
+              aria-label={`Theme: ${currentTheme.label}. Change theme`}
               className="flex h-9 items-center gap-2 rounded-full border border-border bg-card px-3 text-xs sm:text-sm font-medium text-foreground shadow-sm transition-all hover:bg-muted hover:border-accent/40"
             >
               <CurrentThemeIcon className="size-4 text-accent" />
-              <span className="hidden sm:inline">{currentThemeData.label}</span>
+              <span className="hidden sm:inline">{currentTheme.label}</span>
               <ChevronDown
                 className={`size-3 text-muted-foreground transition-transform duration-200 ${
                   themeOpen ? 'rotate-180' : ''
@@ -173,22 +166,58 @@ export default function Navbar() {
             </button>
 
             {themeOpen && (
-              <div className="absolute right-0 mt-2 w-36 rounded-2xl border border-border bg-card p-1.5 shadow-xl backdrop-blur-lg animate-in fade-in zoom-in-95 z-50">
-                {THEMES.map((t) => {
-                  const Icon = t.icon;
+              <div
+                role="menu"
+                aria-label="Color theme selector"
+                className="absolute right-0 mt-2 w-56 rounded-2xl border border-border bg-card/95 p-1.5 shadow-2xl backdrop-blur-xl animate-in fade-in zoom-in-95 z-50"
+              >
+                <div className="px-2.5 py-1.5 flex items-center justify-between border-b border-border/70 mb-1">
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Appearance
+                  </span>
+                  <span className="font-mono text-[10px] text-accent uppercase">
+                    {currentTheme.mode}
+                  </span>
+                </div>
+                {themes.map((t) => {
+                  const Icon = THEME_ICONS[t.id] || Flame;
                   const isActive = t.id === theme;
                   return (
                     <button
                       key={t.id}
+                      type="button"
+                      role="menuitemradio"
+                      aria-checked={isActive}
                       onClick={() => handleThemeChange(t.id)}
-                      className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium transition-colors ${
+                      className={`flex w-full items-center justify-between gap-2 rounded-xl px-2.5 py-2 text-left transition-colors ${
                         isActive
-                          ? 'bg-accent/15 text-accent font-semibold'
+                          ? 'bg-accent/15 text-foreground font-semibold'
                           : 'text-foreground/80 hover:bg-muted hover:text-foreground'
                       }`}
                     >
-                      <Icon className="size-3.5" />
-                      <span>{t.label}</span>
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span
+                          className="flex size-6 shrink-0 items-center justify-center rounded-lg border border-border/80"
+                          style={{ backgroundColor: t.swatch.canvas }}
+                          aria-hidden="true"
+                        >
+                          <Icon className="size-3.5" style={{ color: t.swatch.accent }} />
+                        </span>
+                        <div className="min-w-0">
+                          <span className="block text-xs sm:text-sm leading-tight">{t.label}</span>
+                          <span className="block font-mono text-[10px] text-muted-foreground truncate">
+                            {t.tagline}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <span
+                          className="size-2.5 rounded-full ring-1 ring-border"
+                          style={{ backgroundColor: t.swatch.accent }}
+                          aria-hidden="true"
+                        />
+                        {isActive && <Check className="size-3.5 text-accent" />}
+                      </div>
                     </button>
                   );
                 })}
@@ -200,7 +229,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => sound.playClick()}
-            className="motion-scale hidden sm:inline-flex items-center gap-1.5 h-9 rounded-full bg-accent px-4 text-xs sm:text-sm font-semibold text-white shadow-md shadow-accent/20 transition-all duration-200 hover:bg-accent-hover hover:scale-105 active:scale-95"
+            className="motion-scale hidden sm:inline-flex items-center gap-1.5 h-9 rounded-full bg-accent px-4 text-xs sm:text-sm font-semibold text-accent-foreground shadow-md shadow-accent/20 transition-all duration-200 hover:bg-accent-hover hover:scale-105 active:scale-95"
           >
             <span>Let&apos;s Talk</span>
             <ChevronRight className="size-4" />
@@ -254,7 +283,7 @@ export default function Navbar() {
                 sound.playClick();
                 setMobileMenuOpen(false);
               }}
-              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-accent py-2.5 text-sm font-semibold text-white shadow"
+              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-accent py-2.5 text-sm font-semibold text-accent-foreground shadow"
             >
               Let&apos;s Talk
             </Link>

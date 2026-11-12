@@ -120,7 +120,7 @@ export default function Hero() {
               <Link
                 href="/work"
                 onClick={() => sound.playClick()}
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm sm:text-base font-semibold text-white shadow-lg shadow-accent/25 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent-hover active:translate-y-0"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm sm:text-base font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent-hover active:translate-y-0"
               >
                 <Terminal className="size-4" />
                 <span>See my work</span>
@@ -197,7 +197,7 @@ export default function Hero() {
                     <Cpu className="size-3 text-accent" /> Python & FastAPI
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-semibold text-foreground">
-                    <Layers className="size-3 text-accent" /> YOLOv8 Vision
+                    <Layers className="size-3 text-accent" /> Computer Vision
                   </span>
                 </div>
               </div>

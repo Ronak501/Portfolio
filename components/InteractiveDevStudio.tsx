@@ -262,7 +262,7 @@ export default function InteractiveDevStudio() {
                   type="button"
                   onClick={handleRunCode}
                   disabled={isRunning}
-                  className="flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold text-white hover:bg-accent-hover transition-colors disabled:opacity-50"
+                  className="flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground hover:bg-accent-hover transition-colors disabled:opacity-50"
                 >
                   {isRunning ? (
                     <RefreshCw className="size-3 animate-spin" />

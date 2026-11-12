@@ -9,21 +9,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        background: 'rgb(var(--background) / <alpha-value>)',
+        foreground: 'rgb(var(--foreground) / <alpha-value>)',
         card: {
-          DEFAULT: 'var(--card)',
-          foreground: 'var(--card-foreground)',
+          DEFAULT: 'rgb(var(--card) / <alpha-value>)',
+          foreground: 'rgb(var(--card-foreground) / <alpha-value>)',
         },
-        border: 'var(--border)',
+        border: 'rgb(var(--border) / <alpha-value>)',
         accent: {
-          DEFAULT: 'var(--accent-ink)',
-          hover: 'var(--accent-hover)',
-          soft: 'var(--accent-soft)',
+          DEFAULT: 'rgb(var(--accent-ink) / <alpha-value>)',
+          hover: 'rgb(var(--accent-hover) / <alpha-value>)',
+          foreground: 'rgb(var(--accent-foreground) / <alpha-value>)',
+          soft: 'rgb(var(--accent-soft) / <alpha-value>)',
         },
         muted: {
-          DEFAULT: 'var(--muted)',
-          foreground: 'var(--muted-foreground)',
+          DEFAULT: 'rgb(var(--muted) / <alpha-value>)',
+          foreground: 'rgb(var(--muted-foreground) / <alpha-value>)',
         },
       },
       fontFamily: {
@@ -63,4 +64,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

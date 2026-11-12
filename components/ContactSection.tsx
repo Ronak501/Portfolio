@@ -89,7 +89,7 @@ export default function ContactSection() {
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="flex items-center gap-1.5 rounded-full bg-accent/15 border border-accent/30 px-3 py-1 text-xs font-bold text-accent hover:bg-accent hover:text-white transition-all"
+                    className="flex items-center gap-1.5 rounded-full bg-accent/15 border border-accent/30 px-3 py-1 text-xs font-bold text-accent hover:bg-accent hover:text-accent-foreground transition-all"
                   >
                     {copied ? (
                       <>
@@ -286,7 +286,7 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-full bg-accent py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:bg-accent-hover hover:scale-[1.01] active:scale-[0.99] transition-all"
+                  className="w-full flex items-center justify-center gap-2 rounded-full bg-accent py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/25 hover:bg-accent-hover hover:scale-[1.01] active:scale-[0.99] transition-all"
                 >
                   <Send className="size-4" />
                   <span>Open Email Draft</span>

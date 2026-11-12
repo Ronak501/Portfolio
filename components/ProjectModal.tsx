@@ -166,7 +166,7 @@ export default function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => sound.playClick()}
-                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs sm:text-sm font-semibold text-white hover:bg-accent-hover transition-colors shadow-md shadow-accent/20"
+                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs sm:text-sm font-semibold text-accent-foreground hover:bg-accent-hover transition-colors shadow-md shadow-accent/20"
               >
                 <span>Visit Live Platform</span>
                 <ExternalLink className="size-3.5" />

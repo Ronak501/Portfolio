@@ -71,10 +71,10 @@ export default function VenturePreviewModal({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative flex flex-col h-[90vh] w-full max-w-6xl rounded-2xl sm:rounded-3xl border border-border bg-[#0d0f14] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 ring-1 ring-accent/20"
+        className="relative flex flex-col h-[90vh] w-full max-w-6xl rounded-2xl sm:rounded-3xl border border-border bg-card shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 ring-1 ring-accent/20"
       >
         {/* Browser Mockup Top Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/80 bg-[#141721] px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/80 bg-muted/60 px-4 py-3">
           {/* Traffic lights & Venture Name */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
@@ -145,7 +145,7 @@ export default function VenturePreviewModal({
                 }}
                 title="Desktop View"
                 className={`flex size-7 items-center justify-center rounded-md transition-colors ${
-                  device === 'desktop' ? 'bg-accent text-white' : 'text-muted-foreground hover:text-foreground'
+                  device === 'desktop' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 <Monitor className="size-3.5" />
@@ -158,7 +158,7 @@ export default function VenturePreviewModal({
                 }}
                 title="Tablet View"
                 className={`flex size-7 items-center justify-center rounded-md transition-colors ${
-                  device === 'tablet' ? 'bg-accent text-white' : 'text-muted-foreground hover:text-foreground'
+                  device === 'tablet' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 <Tablet className="size-3.5" />
@@ -171,7 +171,7 @@ export default function VenturePreviewModal({
                 }}
                 title="Mobile View"
                 className={`flex size-7 items-center justify-center rounded-md transition-colors ${
-                  device === 'mobile' ? 'bg-accent text-white' : 'text-muted-foreground hover:text-foreground'
+                  device === 'mobile' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 <Smartphone className="size-3.5" />
@@ -194,7 +194,7 @@ export default function VenturePreviewModal({
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => sound.playChime()}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-white shadow hover:bg-accent-hover transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground shadow hover:bg-accent-hover transition-colors"
             >
               <span>Open Live</span>
               <ExternalLink className="size-3.5" />

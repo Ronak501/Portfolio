@@ -11,7 +11,7 @@
 - ⚡ **Intro Sequence Screen**: An animated greeting screen inspired by synitx.dev with a smooth progress bar, skip action, and `sessionStorage` persistence.
 - 📜 **Scroll Progress Bar**: A glowing real-time scroll indicator attached to the sticky navbar.
 - 💻 **Interactive Dev Studio ("Watch Ronak Build")**:
-  - **Architecture**: Visual system dataflow blueprint showing client inputs, YOLOv8 vision pipeline, FastAPI core, and database persistence.
+  - **Architecture**: Visual system dataflow blueprint showing client inputs, Computer vision pipeline, FastAPI core, and database persistence.
   - **AI Pipeline (`AI-Pipeline.ts`)**: Interactive code runner simulating an AI agent claim verification with live console output.
   - **Interactive Terminal**: Real working terminal supporting commands like `help`, `skills`, `projects`, `ventures`, `whoami`, and `clear`.
 - 🚀 **Featured Projects & Case Studies**:
@@ -28,11 +28,13 @@
 ## 🚀 Running Locally
 
 1. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
 2. **Start development server**:
+
    ```bash
    npm run dev
    ```
@@ -46,6 +48,7 @@
 ### Option 1: Automatic Deployment via GitHub (Recommended)
 
 1. Commit and push your changes to GitHub:
+
    ```bash
    git add .
    git commit -m "feat: upgrade portfolio to modern Next.js inspired by synitx.dev"
@@ -67,9 +70,11 @@ Set `NEXT_PUBLIC_SITE_URL` in the Vercel project environment variables to the pr
 ### Option 2: Deploy via Vercel CLI
 
 Run the following command in your terminal:
+
 ```bash
 npx vercel
 ```
+
 Follow the quick prompts to link and deploy immediately.
 
 ---

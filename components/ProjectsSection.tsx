@@ -307,7 +307,7 @@ export default function ProjectsSection() {
                 }}
                 className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-semibold transition-all ${
                   filter === tab.id
-                    ? 'bg-accent text-white shadow-md shadow-accent/20'
+                    ? 'bg-accent text-accent-foreground shadow-md shadow-accent/20'
                     : 'border border-border bg-card text-foreground/75 hover:bg-muted hover:text-foreground'
                 }`}
                 aria-pressed={filter === tab.id}
@@ -373,7 +373,7 @@ export default function ProjectsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => sound.playClick()}
-                      className="inline-flex min-h-10 items-center rounded-full border border-accent/30 bg-accent/15 px-4 text-xs font-semibold text-accent transition-colors hover:bg-accent hover:text-white"
+                      className="inline-flex min-h-10 items-center rounded-full border border-accent/30 bg-accent/15 px-4 text-xs font-semibold text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
                     >
                       Visit Live Site
                     </a>

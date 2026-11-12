@@ -186,7 +186,7 @@ export default function VenturesSection() {
                           sound.playChime();
                           setPreviewVenture(v);
                         }}
-                        className="flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-3 py-1 font-mono text-xs font-bold text-accent hover:bg-accent hover:text-white transition-all shadow-sm"
+                        className="flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-3 py-1 font-mono text-xs font-bold text-accent hover:bg-accent hover:text-accent-foreground transition-all shadow-sm"
                       >
                         <Eye className="size-3" />
                         <span>Preview</span>

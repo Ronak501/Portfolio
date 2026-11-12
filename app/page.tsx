@@ -108,7 +108,7 @@ export default function HomePage() {
             <p className="mt-2 text-muted-foreground">I’m open to thoughtful collaborations and engineering opportunities.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/contact" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover">
+            <Link href="/contact" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent-hover">
               Get in touch <ArrowRight className="size-4" />
             </Link>
             <a href="https://github.com/Ronak501" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" className="inline-flex size-11 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-accent/50 hover:text-accent">
